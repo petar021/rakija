@@ -1,0 +1,47 @@
+/*--------------------------------------------------------------
+## Main Variables
+--------------------------------------------------------------*/
+// Fonts
+$font-default-serif: 'Platypi';
+$font-default-sans-serif: 'Josefin Sans';
+$font-section-title: 'Jomhuria';
+$font-highlight: 'Roboto Mono';
+
+$font-main: $font-default-sans-serif;
+$font-second: $font-default-serif;
+$font-section-title: $font-section-title;
+$font-highlight: $font-highlight;
+
+$site-fonts: (
+	'font-main': $font-main,
+	'font-second': $font-second,
+) !default;
+
+// Colors
+$white: #fff;
+$black: #000;
+$pale-brown: #997249;
+
+$site-colors: (
+	'white': $white,
+	'black': $black,
+	'pale-brown': $pale-brown,
+) !default;
+
+// Transitions
+$dur: 350ms;
+$ease: ease;
+
+/*--------------------------------------------------------------
+## Breakpoint Variables
+--------------------------------------------------------------*/
+$xs: 	400px;
+$smx: 	500px;
+$sm: 	575px;
+$md: 	767px;
+$lg: 	991px;
+$ipad: 	1024px;
+$xl: 	1199px;
+$xxl: 	1399px;
+$mac: 	1440px;
+$xxxl: 	1599px;

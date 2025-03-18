@@ -1,0 +1,137 @@
+
+.banner__container {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-top: 80px;
+    margin-bottom: 30px;
+}
+
+.hero__left {
+    flex: 50%;
+    max-width: 50%;
+}
+
+.hero__right {
+    max-width: 516px;
+}
+
+.hero__title {
+    font-family: $font-section-title;
+    font-size: 130px;
+    text-transform: uppercase;
+    line-height: 0.6;
+}
+
+.hero__subtitle {
+    font-family: $font-second;
+    @include clamp-font-size(16, 20);
+    font-style: italic;
+}
+
+.hero__highlight {
+    position: relative;
+    padding-left: 60px;
+    font-family: $font-highlight;
+    font-size: 14px;
+    color: $pale-brown;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 44px;
+        height: 1px;
+        background-color: $pale-brown;
+    }
+}
+
+.hero__images {
+    display: flex;
+
+    img {
+        border-radius: 20px;
+    }
+}
+
+.hero-image__left-main {
+    position: relative;
+}
+
+.hero-image__right {
+    transform: translate(-22px, -20px);
+    img {
+        width: 100%;
+    }
+}
+
+.hero-image__left-logo {
+    position: absolute;
+    left: 5%;
+    top: 5%;
+}
+
+.hero-image__left-text {
+    position: absolute;
+    left: 5%;
+    bottom: 5%;
+    font-size: 48px;
+    line-height: 1.39;
+    color: $white;
+    font-family: $font-second;
+    font-style: italic;
+}
+
+.hero-image__right-info {
+    transform: translateX(20px);
+    padding-left: 30px;
+}
+
+.hero-image__right-info-price {
+    @include clamp-font-size(16, 20);
+    font-family: $font-second;
+    font-style: normal;
+    display: block;
+    margin-bottom: 10px;
+    position: relative;
+    padding-bottom: 10px;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 20px;
+        height: 1px;
+        background-color: $black;
+    }
+}
+
+.hero-image__right-info-distillery {
+    span {
+        font-size: 14px;
+        color: $pale-brown;
+        display: block;
+        font-family: $font-highlight;
+        margin-bottom: 5px;
+    }
+}
+
+.hero-image__right-info-product-name {
+    font-size: 18px;
+    font-family: $font-second;
+    line-height: 1.05;
+    font-style: normal;
+    margin-bottom: 5px;
+}
+
+.hero-image__right-info-product-size {
+    span {
+        font-family: $font-second;
+        font-style: italic;
+        font-weight: 600;
+        line-height: 1.3;
+    }
+}

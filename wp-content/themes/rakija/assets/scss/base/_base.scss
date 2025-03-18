@@ -1,0 +1,32 @@
+/*--------------------------------------------------------------
+## Base Layout
+--------------------------------------------------------------*/
+html, body {
+	@include font-smoothing(antialiased);
+	height: 100%;
+}
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+.container {
+    width: 100%;
+    max-width: 1370px;
+    margin: 0 auto;
+    padding: 0 25px;
+
+    @include mq($lg) {
+        padding: 0 40px;
+    }
+
+    @include mq($md) {
+        padding: 0 15px;
+    }
+}

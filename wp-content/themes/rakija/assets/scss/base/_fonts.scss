@@ -1,0 +1,56 @@
+/*--------------------------------------------------------------
+## Fonts
+--------------------------------------------------------------*/
+// @font-face {
+//     font-family: 'Open Sans';
+//     src: url('assets/fonts/OpenSans-Regular.woff2') format('woff2'),
+//         url('assets/fonts/OpenSans-Regular.woff') format('woff');
+//     font-weight: normal;
+//     font-style: normal;
+//     font-display: swap;
+// }
+@font-face {
+    font-family: 'Josefin Sans';
+    src: url('assets/fonts/JosefinSans-Regular.woff2') format('woff2'),
+        url('assets/fonts/JosefinSans-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Jomhuria';
+    src: url('assets/fonts/Jomhuria-Regular.woff2') format('woff2'),
+        url('assets/fonts/Jomhuria-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Platypi';
+    src: url('assets/fonts/Platypi-LightItalic.woff2') format('woff2'),
+        url('assets/fonts/Platypi-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Platypi';
+    src: url('assets/fonts/Platypi-Light.woff2') format('woff2'),
+        url('assets/fonts/Platypi-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'Roboto Mono';
+    src: url('assets/fonts/RobotoMono-Regular.woff2') format('woff2'),
+        url('assets/fonts/RobotoMono-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
