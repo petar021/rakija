@@ -35,6 +35,9 @@ wp-config.php
 # htaccess
 /.htaccess
 
+#Node Modules 
+/wp-content/themes/bdap_theme/node_modules
+
 # All plugins
 #
 # Note: If you wish to whitelist plugins,
