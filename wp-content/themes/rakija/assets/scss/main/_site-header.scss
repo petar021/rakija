@@ -3,18 +3,38 @@
 --------------------------------------------------------------*/
 .site-header {
 	padding: 15px 0;
-	position: relative;
+	position: sticky;
 	z-index: 999;
 	width: 100%;
 	top: 0;
+	left: 0;
 	transition: $dur $ease;
-	background-color: transparent;
+	background-color: $white;
 	border-bottom: 1px solid transparent;
 
-	// &.is-sticky {
-	// 	background-color: $white;
-	// 	border-bottom: 1px solid $black;
-	// }
+	&.is-sticky {
+		padding: 5px 0;
+		border-bottom: 1px solid $black;
+	}
+
+	&__cart {
+		display: flex;
+		align-items: center;
+
+		&-left {
+			margin-right: 15px;
+			cursor: pointer;
+
+			span {
+				color: $black;
+				transition: $dur $ease;
+
+				&:hover {
+					color: $pale-brown;
+				}
+			}
+		}
+	}
 }
 
 .site-header__container {

@@ -63,8 +63,7 @@
 						<span class="font-search"></span>
 					</div>
 					<div class="site-header__cart-right">
-						<span class="font-cart"></span>
-						<span>Korpa</span>
+						<a href="javascript:;" class="btn-icon"><span class="font-cart"></span> Korpa</a>
 					</div>
 				</div>
 			</div>

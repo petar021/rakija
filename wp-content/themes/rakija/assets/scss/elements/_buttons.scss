@@ -20,3 +20,54 @@ input[type='submit'] {
 		color: $black;
 	}
 }
+
+.btn-icon {
+	background-color: $black;
+	border-radius: 15px;
+	border: 1px solid $black;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	padding: 10px 20px;
+	color: $white;
+	font-size: 16px;
+	max-width: fit-content;
+	width: 100%;
+
+	span {
+		color: $white;
+		transition: $dur $ease;
+		margin-right: 10px;
+	}
+
+	&:hover {
+		background-color: $white;
+		color: $black;
+
+		span {
+			color: $black;
+		}
+	}
+
+	&__center {
+		margin: 0 auto;
+	}
+
+	&__white {
+		background-color: $white;
+		color: $black;
+
+		span {
+			color: $black;
+		}
+
+		&:hover {
+			background-color: $black;
+			color: $white;
+
+			span {
+				color: $white;
+			}
+		}
+	}
+}

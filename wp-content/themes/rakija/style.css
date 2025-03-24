@@ -738,6 +738,50 @@ input[type=submit] {
   }
 }
 
+.btn-icon {
+  background-color: #000;
+  border-radius: 15px;
+  border: 1px solid #000;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 16px;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  width: 100%;
+}
+.btn-icon span {
+  color: #fff;
+  transition: 350ms ease;
+  margin-right: 10px;
+}
+.btn-icon:hover {
+  background-color: #fff;
+  color: #000;
+}
+.btn-icon:hover span {
+  color: #000;
+}
+.btn-icon__center {
+  margin: 0 auto;
+}
+.btn-icon__white {
+  background-color: #fff;
+  color: #000;
+}
+.btn-icon__white span {
+  color: #000;
+}
+.btn-icon__white:hover {
+  background-color: #000;
+  color: #fff;
+}
+.btn-icon__white:hover span {
+  color: #fff;
+}
+
 /*--------------------------------------------------------------
 ## Forms
 --------------------------------------------------------------*/
@@ -1095,13 +1139,33 @@ img {
 --------------------------------------------------------------*/
 .site-header {
   padding: 15px 0;
-  position: relative;
+  position: sticky;
   z-index: 999;
   width: 100%;
   top: 0;
+  left: 0;
   transition: 350ms ease;
-  background-color: transparent;
+  background-color: #fff;
   border-bottom: 1px solid transparent;
+}
+.site-header.is-sticky {
+  padding: 5px 0;
+  border-bottom: 1px solid #000;
+}
+.site-header__cart {
+  display: flex;
+  align-items: center;
+}
+.site-header__cart-left {
+  margin-right: 15px;
+  cursor: pointer;
+}
+.site-header__cart-left span {
+  color: #000;
+  transition: 350ms ease;
+}
+.site-header__cart-left span:hover {
+  color: #997249;
 }
 
 .site-header__container {
@@ -1255,7 +1319,7 @@ a:hover, a:focus, a:active {
   transform-origin: left;
   will-change: transform;
   display: block;
-  height: 2px;
+  height: 1px;
   background-color: #000;
   transition: transform 455ms ease;
 }
