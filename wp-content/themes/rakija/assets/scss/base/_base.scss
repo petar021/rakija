@@ -30,3 +30,11 @@ html {
         padding: 0 15px;
     }
 }
+
+a,
+svg,
+input,
+textarea,
+select {
+    transition: $dur $ease;
+}

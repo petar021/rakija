@@ -58,6 +58,15 @@
 						</button>
 					</nav><!-- #site-navigation -->
 				</div>
+				<div class="site-header__cart">
+					<div class="site-header__cart-left">
+						<span class="font-search"></span>
+					</div>
+					<div class="site-header__cart-right">
+						<span class="font-cart"></span>
+						<span>Korpa</span>
+					</div>
+				</div>
 			</div>
 		</div>
 	</header>

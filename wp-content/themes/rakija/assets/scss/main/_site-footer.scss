@@ -3,12 +3,154 @@
 --------------------------------------------------------------*/
 .site-footer {
 	background-color: $black;
-}
 
-.site-footer__copyright {
-	font-family: $font-main;
-	font-weight: 600;
-	font-size: 0.875rem;
-	line-height: 1.35;
-	color: $white;
+	a {
+		color: $white;
+	}
+
+	&__bottom {
+		background-color: $pale-brown;
+		padding: 10px 0;
+
+		&-box {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		&-right {
+			p {
+				display: flex;
+				align-items: center;
+				color: $white;
+
+				a {
+					margin-left: 15px;
+					position: relative;
+					top: 0;
+
+					&:hover {
+						top: -3px;
+					}
+				}
+			}
+		}
+
+		&-left {
+			p {
+				font-size: 14px;
+				font-family: $font-main;
+				color: $white;
+			}
+		}
+	}
+
+	&__top {
+		padding: 120px 0;
+
+		a {
+			width: fit-content;
+
+			&:hover {
+				color: $pale-brown;
+			}
+		}
+
+		&-box {
+			display: flex;
+			align-items: flex-start;
+		}
+
+		&-left {
+			max-width: 300px;
+			width: 100%;
+			margin-right: 100px;
+
+			.contact-box {
+				margin-top: 50px;
+				display: flex;
+				flex-direction: column;
+
+				a {
+					margin-bottom: 25px;
+
+					&:last-of-type {
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
+
+		&-center {
+			margin-right: 100px;
+			border-radius: 100px;
+			overflow: hidden;
+
+			a {
+				img {
+					transition: $dur $ease;
+					transform: scale(1);
+				}
+
+				&:hover {
+					img {
+						transform: scale(1.05);
+					}
+				}
+			}
+		}
+
+		&-right {
+			display: flex;
+			align-items: flex-start;
+			position: relative;
+			padding-bottom: 60px;
+
+			ul {
+				margin-right: 75px;
+
+				&:last-of-type {
+					margin-right: 0;
+				}
+
+				li {
+					margin-bottom: 35px;
+				}
+			}
+
+			.social-box {
+				position: absolute;
+				bottom: 0;
+				right: 65px;
+				max-width: 95px;
+				width: 100%;
+				display: flex;
+				flex-wrap: wrap;
+				padding-top: 30px;
+				justify-content: space-between;
+
+				&::after {
+					content: '';
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 1px;
+					background-color: rgba($white, 0.2);
+				}
+
+				h5 {
+					color: $white;
+					font-size: 16px;
+					margin-bottom: 15px;
+					width: 100%;
+				}
+
+				a {
+					max-width: 25px;
+					width: 100%;
+				}
+			}
+		}
+	}
 }

@@ -22,8 +22,29 @@
 @function font-char($filename) {
 	$char: "";
 
-	@if $filename == search {
+	@if $filename == at {
 		$char: "\E001";
+	}
+	@if $filename == cart {
+		$char: "\E002";
+	}
+	@if $filename == eye {
+		$char: "\E003";
+	}
+	@if $filename == facebook {
+		$char: "\E004";
+	}
+	@if $filename == instagram {
+		$char: "\E005";
+	}
+	@if $filename == phone {
+		$char: "\E006";
+	}
+	@if $filename == pin {
+		$char: "\E007";
+	}
+	@if $filename == search {
+		$char: "\E008";
 	}
 
 	@return $char;
@@ -40,6 +61,27 @@
 	}
 }
 
+.font-at {
+	@include font(at);
+}
+.font-cart {
+	@include font(cart);
+}
+.font-eye {
+	@include font(eye);
+}
+.font-facebook {
+	@include font(facebook);
+}
+.font-instagram {
+	@include font(instagram);
+}
+.font-phone {
+	@include font(phone);
+}
+.font-pin {
+	@include font(pin);
+}
 .font-search {
 	@include font(search);
 }
