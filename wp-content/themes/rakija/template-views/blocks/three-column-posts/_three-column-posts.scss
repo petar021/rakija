@@ -1,0 +1,76 @@
+.three-column-posts {
+    padding: 100px 0;
+    background-color: $white;
+
+    .section-title {
+        margin-bottom: 0;
+    }
+
+    .title-description {
+        text-align: center;
+        font-style: italic;
+        font-family: $font-second;
+    }
+
+    &__wrapper {
+        margin-top: 100px;
+        display: flex;
+        gap: 85px;
+    }
+
+    &__box {
+        flex: 0 0 33%;
+
+        &-top {
+            height: 260px;
+            position: relative;
+            border-radius: 25px;
+            margin-bottom: 60px;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                border-radius: 25px;
+                position: absolute;
+                inset: 0;
+                object-fit: cover;
+                object-position: center center;
+                width: 100%;
+                height: 100%;
+                transform: scale(1);
+                transition: $dur $ease;
+            }
+
+            @include hover {
+                img {
+                    transform: scale(1.05);
+                }
+            }
+        }
+
+        &-bottom {
+            h4 {
+                font-size: 1.25rem;
+                font-weight: 500;
+                font-family: $font-main;
+                margin: 0 0 20px;
+                color: $black;
+                transition: $dur $ease;
+
+                a {
+                    color: $black;
+                }
+
+                @include hover {
+                    a {
+                        color: $pale-brown;
+                    }
+                }
+            }
+
+            p {
+                margin: 0 0 20px;
+            }
+        }
+    }
+}

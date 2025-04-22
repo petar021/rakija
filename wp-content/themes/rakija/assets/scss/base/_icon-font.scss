@@ -22,29 +22,35 @@
 @function font-char($filename) {
 	$char: "";
 
-	@if $filename == at {
+	@if $filename == arrow-right {
 		$char: "\E001";
 	}
-	@if $filename == cart {
+	@if $filename == arrow-small {
 		$char: "\E002";
 	}
-	@if $filename == eye {
+	@if $filename == at {
 		$char: "\E003";
 	}
-	@if $filename == facebook {
+	@if $filename == cart {
 		$char: "\E004";
 	}
-	@if $filename == instagram {
+	@if $filename == eye {
 		$char: "\E005";
 	}
-	@if $filename == phone {
+	@if $filename == facebook {
 		$char: "\E006";
 	}
-	@if $filename == pin {
+	@if $filename == instagram {
 		$char: "\E007";
 	}
-	@if $filename == search {
+	@if $filename == phone {
 		$char: "\E008";
+	}
+	@if $filename == pin {
+		$char: "\E009";
+	}
+	@if $filename == search {
+		$char: "\E00A";
 	}
 
 	@return $char;
@@ -61,6 +67,12 @@
 	}
 }
 
+.font-arrow-right {
+	@include font(arrow-right);
+}
+.font-arrow-small {
+	@include font(arrow-small);
+}
 .font-at {
 	@include font(at);
 }

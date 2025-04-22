@@ -23,12 +23,24 @@ pre {
 }
 
 .section-title {
-	font-family: $font-second;
+	font-family: $font-section-title;
 	color: $black;
-	line-height: 1.45;
-	font-weight: 700;
-	@include clamp-font-size(20, 33);
+	line-height: 70px;
+	@include clamp-font-size(32, 75);
 	margin-bottom: clamp(1.25rem, 1rem + 1.25vw, 1.5rem);
+	text-transform: uppercase;
+
+	&--center {
+		text-align: center;
+	}
+}
+
+.page-title {
+	@include clamp-font-size(32, 160);
+	font-family: $font-section-title;
+	color: $black;
+	text-transform: uppercase;
+	line-height: 6rem;
 }
 
 /*--------------------------------------------------------------

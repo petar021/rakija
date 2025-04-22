@@ -26,12 +26,6 @@
 
 				a {
 					margin-left: 15px;
-					position: relative;
-					top: 0;
-
-					&:hover {
-						top: -3px;
-					}
 				}
 			}
 		}
@@ -59,6 +53,7 @@
 		&-box {
 			display: flex;
 			align-items: flex-start;
+			justify-content: space-between;
 		}
 
 		&-left {
@@ -76,25 +71,6 @@
 
 					&:last-of-type {
 						margin-bottom: 0;
-					}
-				}
-			}
-		}
-
-		&-center {
-			margin-right: 100px;
-			border-radius: 100px;
-			overflow: hidden;
-
-			a {
-				img {
-					transition: $dur $ease;
-					transform: scale(1);
-				}
-
-				&:hover {
-					img {
-						transform: scale(1.05);
 					}
 				}
 			}

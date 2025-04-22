@@ -8,8 +8,6 @@
 
 <div class="basic-block">
 	<div class="container">
-		<h2 class="section-title basic-block__title">TEST</h2>
-		<i class="icon font-search"></i>
 		<div class="entry-content">
 			Section content
 		</div>

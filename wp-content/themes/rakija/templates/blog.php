@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: O Nama
+ * Template Name: Blog
  *
  * This is the template that displays all pages by default.
  * Please note that this is the WordPress construct of pages
@@ -18,9 +18,10 @@ get_header();
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
 		<?php // get content blocks
-			get_template_part( 'template-views/blocks/banner-title/banner-title' );
-			get_template_part( 'template-views/blocks/text-image/text-image' );
+			// get_template_part( 'template-views/blocks/banner-title/banner-title' );
+			// get_template_part( 'template-views/blocks/text-image/text-image' );
 		?>
+		<h1>::blog here::</h1>
 	</main>
 </div>
 

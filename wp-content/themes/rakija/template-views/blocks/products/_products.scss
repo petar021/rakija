@@ -1,0 +1,117 @@
+.products {
+    margin: 50px 0;
+
+    &-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 60px;
+        margin-bottom: 50px;
+    }
+
+    .product-box {
+        flex: 0 0 calc(25% - 45px);
+        box-sizing: border-box;
+
+        &__top {
+            overflow: hidden;
+            transition: $dur $ease;
+            border-radius: 10px;
+
+            img {
+                transition: $dur $ease;
+                transform: scale(1);
+                border-radius: 10px;
+            }
+
+            @include hover {
+                img {
+                    transform: scale(1.05);
+                }
+            }
+        }
+
+        &__bottom {
+            padding: 20px 15px;
+            position: relative;
+
+            .price-box {
+                display: flex;
+                align-items: flex-end;
+                margin-bottom: 20px;
+
+                .price {
+                    font-size: 1.5rem;
+                    line-height: 2rem;
+                    font-family: $font-second;
+                    font-weight: 600;
+                }
+
+                .value {
+                    margin-left: 5px;
+                    font-size: 0.875rem;
+                    text-transform: uppercase;
+                    font-family: $font-second;
+                }
+            }
+
+            .product-cat {
+                color: $pale-brown;
+                position: relative;
+                font-family: $font-highlight;
+                font-size: 0.813rem;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: -10px;
+                    left: 0;
+                    width: 20px;
+                    height: 1px;
+                    background-color: $pale-brown;
+                }
+            }
+
+            .product-title {
+                font-size: 1rem;
+                font-family: $font-second;
+            }
+
+            .product-tax {
+                font-style: italic;
+                font-size: 0.875rem;
+                font-weight: 600;
+                font-family: $font-main;
+            }
+
+            .add-to-cart-btn {
+                position: absolute;
+                bottom: 20px;
+                right: 15px;
+                border: 2px solid rgba($pale-brown, 0.3);
+                border-radius: 18px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 44px;
+                height: 44px;
+
+                span {
+                    transition: $dur $ease;
+                }
+
+                @include hover {
+                    background-color: rgba($pale-brown, 1);
+
+                    span {
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+
+    .btn-icon {
+        margin: 0 auto;
+        width: fit-content;
+    }
+}

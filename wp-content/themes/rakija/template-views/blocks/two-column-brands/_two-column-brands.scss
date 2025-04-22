@@ -1,0 +1,48 @@
+.two-column-brands {
+    margin: 100px 0;
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        gap: 100px;
+    }
+
+    &__content {
+        max-width: calc(100% - 490px);
+        width: 100%;
+
+        .section-title {
+            margin-bottom: 0;
+            line-height: 4rem;
+        }
+
+        p {
+            margin: 0 0 30px;
+        }
+    }
+
+    &__logos {
+        max-width: 100%;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+
+        a {
+            flex: 0 0 calc(19% - 15px);
+            display: flex;
+            align-items: center;
+
+            img {
+                transform: scale(1);
+                transition: $dur $ease;
+            }
+
+            @include hover {
+                img {
+                    transform: scale(1.05);
+                }
+            }
+        }
+    }
+}

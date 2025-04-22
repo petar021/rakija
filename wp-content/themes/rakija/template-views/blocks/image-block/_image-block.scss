@@ -1,0 +1,22 @@
+.image-block {
+    margin: 50px 0;
+    
+    &__wrapper {
+        border-radius: 25px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 460px;
+        padding: 0 65px;
+
+        &-left {
+            filter: grayscale(1);
+        }
+    }
+}

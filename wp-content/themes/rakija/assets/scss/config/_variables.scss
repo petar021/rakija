@@ -18,14 +18,16 @@ $site-fonts: (
 ) !default;
 
 // Colors
-$white: #fff;
-$black: #000;
-$pale-brown: #997249;
+$white: 		#fff;
+$black: 		#000;
+$pale-brown: 	#997249;
+$gray: 			#f5f5f5;
 
 $site-colors: (
 	'white': $white,
 	'black': $black,
 	'pale-brown': $pale-brown,
+	'gray': $gray,
 ) !default;
 
 // Transitions

@@ -27,11 +27,6 @@
 							<a href="mailto:rakijahouse2023@gmail.com" class="phone"><span class="font-at"></span> rakijahouse2023@gmail.com</a>
 						</div>
 					</div>
-					<div class="site-footer__top-center">
-						<a href="https://www.google.com/maps/place/Rakija+House+-+prodavnica+doma%C4%87ih+rakija+iz+Srbije/@45.2570514,19.8393177,17z/data=!3m1!4b1!4m6!3m5!1s0x475b116dddbbcedd:0xddb2fc1eb87543ee!8m2!3d45.2570477!4d19.8418926!16s%2Fg%2F11v4h_18hk?entry=ttu&g_ep=EgoyMDI1MDMxMi4wIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D" target="_blank">
-							<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/map.png" alt="location">
-						</a>
-					</div>
 					<div class="site-footer__top-right">
 						<ul>
 							<li>
@@ -89,7 +84,7 @@
 						<p class="site-footer__copyright">Rakija House &copy; <?php echo date('Y'); ?> All Rights Reserved.</p>
 					</div>
 					<div class="site-footer__bottom-right">
-						<p>SEO / Design / Development
+						<p>Website & SEO
 							<a href="https://wearebaseline.com/" target="_blank">
 								<img class="site-footer__logo-img" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/baseline-logo.svg" alt="baseline studio">
 							</a>

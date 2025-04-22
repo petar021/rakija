@@ -1,0 +1,43 @@
+.banner-title {
+    margin: 75px 0;
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__left,
+    &__right {
+        max-width: 50%;
+        width: 100%;
+    }
+
+    &__left {
+        span {
+            color: $pale-brown;
+            font-size: 0.813rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+
+            &::before {
+                content: '';
+                width: 40px;
+                height: 1px;
+                background-color: $pale-brown;
+                margin-right: 10px;
+            }
+        }
+    }
+
+    &__right {
+        p {
+            font-size: 1.25rem;
+            font-family: $font-second;
+            font-style: italic;
+            max-width: 75%;
+            width: 100%;
+        }
+    }
+}

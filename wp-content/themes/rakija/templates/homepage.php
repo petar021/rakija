@@ -19,6 +19,12 @@ get_header();
 	<main id="main" class="site-main" role="main">
 		<?php // get content blocks
 			get_template_part( 'template-views/blocks/hero/hero' );
+			get_template_part( 'template-views/blocks/three-column-cat/three-column-cat' );
+			get_template_part( 'template-views/blocks/products/products' );
+			get_template_part( 'template-views/blocks/image-block/image-block' );
+			get_template_part( 'template-views/blocks/two-column-brands/two-column-brands' );
+			get_template_part( 'template-views/blocks/reviews/reviews' );
+			get_template_part( 'template-views/blocks/three-column-posts/three-column-posts' );
 		?>
 	</main>
 </div>
