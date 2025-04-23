@@ -20,6 +20,7 @@ get_header();
 		<?php // get content blocks
 			get_template_part( 'template-views/blocks/banner-title/banner-title' );
 			get_template_part( 'template-views/blocks/text-image/text-image' );
+			get_template_part( 'template-views/blocks/basic-block/basic-block-about' );
 		?>
 	</main>
 </div>

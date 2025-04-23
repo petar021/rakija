@@ -47,13 +47,15 @@ pre {
 ## Entry Content
 --------------------------------------------------------------*/
 .entry-content {
+	margin: 50px 0 100px;
+
 	h1,
 	h2,
 	h3,
 	h4,
 	h5,
 	h6 {
-		font-family: $font-second;
+		font-family: $font-main;
 		color: $black;
 		line-height: 1.45;
 		font-weight: 700;
@@ -86,6 +88,10 @@ pre {
 
 		&:last-of-type {
 			margin-bottom: 0;
+		}
+
+		em {
+			font-family: $font-second;
 		}
 	}
 
@@ -174,5 +180,11 @@ pre {
 			color: $black;
 			text-decoration: underline;
 		}
+	}
+
+	img {
+		width: 100%;
+		height: auto;
+		margin-bottom: 50px;
 	}
 }

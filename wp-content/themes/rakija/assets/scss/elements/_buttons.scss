@@ -79,4 +79,8 @@ input[type='submit'] {
 			margin-left: 10px;
 		}
 	}
+
+	&__gray {
+		background-color: $gray;
+	}
 }

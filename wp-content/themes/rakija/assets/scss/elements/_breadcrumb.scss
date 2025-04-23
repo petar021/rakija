@@ -1,0 +1,39 @@
+.breadcrumb {
+    margin: 55px 0 25px;
+
+    ul {
+        display: flex;
+        align-items: center;
+
+        li {
+            margin-left: 40px;
+            position: relative;
+            color: $pale-brown;
+            font-family: $font-highlight;
+
+            a {
+                color: $black;
+
+                @include hover {
+                    color: $pale-brown;
+                }
+            }
+
+            &::before {
+                content: '/';
+                position: absolute;
+                top: 0;
+                left: -23px;
+                color: $pale-brown;
+            }
+
+            &:first-of-type {
+                margin-left: 0;
+
+                &::before {
+                    display: none;
+                }
+            }
+        }
+    }
+}

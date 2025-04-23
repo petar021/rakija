@@ -16,10 +16,11 @@
         margin-top: 100px;
         display: flex;
         gap: 85px;
+        flex-wrap: wrap;
     }
 
     &__box {
-        flex: 0 0 33%;
+        flex: 0 0 29%;
 
         &-top {
             height: 260px;
@@ -72,5 +73,58 @@
                 margin: 0 0 20px;
             }
         }
+    }
+
+    &__pagination {
+        margin-top: 75px;
+
+        .page-numbers {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            li {
+                margin: 0 5px;
+                border-radius: 15px;
+                transition: $dur $ease;
+
+                @include hover {
+                    a {
+                        color: $pale-brown;
+                        background-color: $white;
+                    }
+                }
+            }
+
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                padding: 10px;
+                border: 1px solid rgba($black, 0.1);
+                border-radius: 15px;
+                
+                span {
+                    transition: $dur $ease;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: $gray-dark;
+                    font-size: 12px;
+                }
+
+                &.next {
+                    span {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+        }
+    }
+
+    &.gray {
+        background-color: $gray;
     }
 }

@@ -18,10 +18,9 @@ get_header();
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
 		<?php // get content blocks
-			// get_template_part( 'template-views/blocks/banner-title/banner-title' );
-			// get_template_part( 'template-views/blocks/text-image/text-image' );
+			get_template_part( 'template-views/blocks/banner-title/banner-title-blog' );
+			get_template_part( 'template-views/blocks/three-column-posts/three-column-posts-blog' );
 		?>
-		<h1>::blog here::</h1>
 	</main>
 </div>
 

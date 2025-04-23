@@ -1,97 +1,64 @@
 ///* ========================================================================
 //   #404/403
 //   ======================================================================== */
-.error404 {
+.error-404 {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	text-align: center;
+	min-height: 100vh;
 
-	.site-header,
-	.site-footer {
-		display: none;
+	.error-right {
+		max-width: 640px;
+
+		h1 {
+			@include clamp-font-size(32, 45);
+			font-family: $font-second;
+		}
+
+		p {
+			&:first-of-type {
+				margin-bottom: 20px;
+			}
+
+			a {
+				text-decoration: underline;
+
+				@include hover {
+					color: $pale-brown;
+				}
+			}
+		}
 	}
-}
 
-.s-404__title {
-	margin-bottom: 40px;
-
-	span {
-		font-size: 300px;
-		line-height: 1;
-		color: $black;
-		display: inline-block;
+	.error-left {
 		position: relative;
-		margin: 0 10px;
-	}
+		max-width: 290px;
+		width: 100%;
+		display: flex;
+		margin-right: 75px;
 
-	&-1 {
-		transform: rotate(-7deg);
-		animation: 5s float ease-in-out infinite alternate-reverse 0.5s;
-	}
+		&::after,
+		&::before {
+			content: '4';
+			font-size: 180px;
+			font-family: $font-highlight;
+			position: relative;
+			font-weight: 300;
+		}
 
-	&-2 {
-		transform: translateY(10%);
-		animation: 5s float-2 ease-in-out infinite alternate-reverse 0.5s;
-	}
+		&::after {
+			margin-left: auto;
+		}
 
-	&-3 {
-		transform: rotate(10deg);
-		animation: 5s float-3 ease-in-out infinite alternate-reverse 0.5s;
-	}
-}
+		&::before {
+			margin-right: auto;
+		}
 
-.s-404__text {
-	font-size: 40px;
-	color: $black;
-	margin-bottom: 40px;
-}
-
-.s-404__btn {
-	display: inline-block;
-	font-size: 16px;
-	font-family: $font-main;
-	background-color: $black;
-	color: $white;
-	text-transform: uppercase;
-	padding: 15px 30px;
-	transition: $dur $ease;
-	border: 1px solid $black;
-
-	@include hover {
-		background-color: $white;
-		color: $black;
-	}
-}
-
-
-// 404 / 403 floating animation
-@keyframes float {
-	0% {
-		transform: rotate(-1deg) translate(0, 0);
-	}
-
-	100% {
-		transform: rotate(-7deg) translate(10%, 10%);
-	}
-}
-
-@keyframes float-2 {
-	0% {
-		transform: translateY(0);
-	}
-
-	100% {
-		transform: translateY(10%);
-	}
-}
-
-@keyframes float-3 {
-	0% {
-		transform: rotate(-4deg) translateY(0);
-	}
-
-	100% {
-		transform: rotate(10deg) translateY(-10%);
+		img {
+			position: absolute;
+			left: 25%;
+			top: 25%;
+			z-index: 5;
+		}
 	}
 }

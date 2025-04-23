@@ -26,6 +26,13 @@ html {
     margin: 0 auto;
     padding: 0 25px;
 
+    &-small {
+        max-width: 1070px;
+        margin: 0 auto;
+        padding: 0 25px;
+        width: 100%;
+    }
+
     @include mq($lg) {
         padding: 0 40px;
     }

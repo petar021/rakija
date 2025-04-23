@@ -1,3 +1,27 @@
 /*--------------------------------------------------------------
 ## basic-block
 --------------------------------------------------------------*/
+
+.basic-block {
+    &-title {
+        font-family: $font-second;
+        @include clamp-font-size(28, 45);
+        margin-top: 50px;
+    }
+
+    .pretitle {
+        text-align: center;
+        color: $pale-brown;
+        font-size: 20px;
+        font-style: italic;
+        margin: 0 auto;
+        display: block;
+        font-family: $font-second;
+    }
+
+    .basic-block-section-title {
+        text-align: center;
+        @include clamp-font-size(28, 45);
+        font-family: $font-second;
+    }
+}

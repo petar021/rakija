@@ -22,12 +22,14 @@ $white: 		#fff;
 $black: 		#000;
 $pale-brown: 	#997249;
 $gray: 			#f5f5f5;
+$gray-dark: 	#3e3e3e;
 
 $site-colors: (
 	'white': $white,
 	'black': $black,
 	'pale-brown': $pale-brown,
 	'gray': $gray,
+	'gray-dark': $gray-dark,
 ) !default;
 
 // Transitions
