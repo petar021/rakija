@@ -9,11 +9,9 @@ input[type='submit'] {
 	color: $white;
 	padding: 12px 25px;
 	transition: $dur $ease;
-	font-weight: 700;
-	text-transform: uppercase;
-	min-width: 200px;
 	text-align: center;
 	display: inline-block;
+	border-radius: 18px;
 
 	@include hover {
 		background-color: $white;

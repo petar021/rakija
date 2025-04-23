@@ -38,6 +38,40 @@
                     </div>
                 </div>
             </div>
+            <div class="hero-image__right">
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/_demo/hero-image-right.png" alt="">
+                <div class="hero-image__right-info">
+                    <div class="hero-image__right-info-price">
+                        <span>3.350 RSD</span>
+                    </div>
+                    <div class="hero-image__right-info-distillery">
+                        <span>Zlatni Tok</span>
+                    </div>
+                    <div class="hero-image__right-info-product-name">
+                        <h3>Alba šljiva prepečenica</h3>
+                    </div>
+                    <div class="hero-image__right-info-product-size">
+                        <span>700ml</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image__right">
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/_demo/hero-image-right.png" alt="">
+                <div class="hero-image__right-info">
+                    <div class="hero-image__right-info-price">
+                        <span>3.350 RSD</span>
+                    </div>
+                    <div class="hero-image__right-info-distillery">
+                        <span>Zlatni Tok</span>
+                    </div>
+                    <div class="hero-image__right-info-product-name">
+                        <h3>Alba šljiva prepečenica</h3>
+                    </div>
+                    <div class="hero-image__right-info-product-size">
+                        <span>700ml</span>
+                    </div>
+                </div>
+            </div>
        </div>
     </div>
 </div>

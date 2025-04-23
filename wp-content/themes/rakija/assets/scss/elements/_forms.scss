@@ -36,11 +36,12 @@ input[type='datetime-local'],
 input[type='color'],
 textarea {
 	width: 100%;
-    border: 1px solid $black;
+    border: 1px solid rgba($black, 0.1);
+	border-radius: 10px;
     margin-top: 2px;
     transition: $dur $ease;
     padding: 10px 21px;
-	background-color: $white;
+	background-color: $gray;
 
 	&:focus,
 	&:active {
@@ -48,13 +49,15 @@ textarea {
 	}
 
 	&:invalid {
-		border: 1px solid #dc3232;
+		border: 1px solid $red;
 		background-color: $white;
+		color: $red;
+		font-style: italic;
 	}
 }
 
 textarea {
-	height: 150px;
+	height: 233px;
 	resize: none;
 }
 
@@ -73,12 +76,19 @@ textarea {
 .wpcf7 form.failed .wpcf7-response-output,
 .wpcf7 form.aborted .wpcf7-response-output {
 	border: none;
-	color: $black;
+	color: $white;
 	font-size: 0.875rem;
-    padding: 0;
     margin: 0;
     position: absolute;
-    top: 100%;
+	width: 100%;
+    text-align: center;
+    top: -50px;
+    background: $red;
+    border-radius: 20px;
+    max-width: 1320px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 25px;
 }
 
 .wpcf7-spinner {
@@ -111,6 +121,30 @@ textarea {
 	}
 }
 
+.wpcf7-form.sent {
+	transition: $dur $ease;
+
+	.wpcf7-response-output {
+		position: absolute;
+		top: -50px;
+		left: 50%;
+		transform: translateX(-50%);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0 auto;
+		transition: $dur $ease;
+		font-size: 0.875rem;
+		text-align: center;
+		color: $white;
+		background-color: #46b450;
+		border-radius: 20px;
+    	max-width: 1320px;
+		padding: 5px 25px;
+		width: 100%;
+	}
+}
+
 /*--------------------------------------------------------------
 ## CF7 Plugin Form
 --------------------------------------------------------------*/
@@ -138,7 +172,6 @@ textarea {
 		display: none !important; //sass-lint:disable-line no-important
 	}
 }
-
 
 //CF7 POPUP
 .cf7-holder__popup {
