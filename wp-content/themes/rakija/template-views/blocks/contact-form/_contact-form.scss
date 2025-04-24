@@ -1,10 +1,20 @@
 .contact-form-block {
-    margin-bottom: 100px;
+    padding-bottom: 100px;
+    background-color: $gray;
+
+    @include mq($md) {
+        padding-bottom: 25px;
+    }
 
     .contact-form-wrapper {
         display: flex;
         align-items: center;
         gap: 100px;
+
+        @include mq($md) {
+            flex-direction: column;
+            gap: 25px;
+        }
     }
 
     .contact-form-right {
@@ -37,6 +47,10 @@
         max-width: calc(100% - 500px);
         width: 100%;
 
+        @include mq($md) {
+            max-width: 100%;
+        }
+
         &-top {
             margin-bottom: 50px;
 
@@ -47,6 +61,11 @@
                 padding: 15px 30px;
                 display: flex;
                 justify-content: space-between;
+
+                @include mq($md) {
+                    flex-direction: column;
+                    padding: 15px;
+                }
 
                 &:last-of-type {
                     margin-bottom: 0;
@@ -64,6 +83,31 @@
             display: flex;
             align-items: flex-start;
             gap: 20px;
+
+            @include mq($md) {
+                flex-direction: column;
+            }
+
+            .contact-form-inner-left {
+                @include mq($md) {
+                    width: 100%;
+                }
+
+                label.mobile,
+                textarea {
+                    display: none;
+
+                    @include mq($md) {
+                        display: block;
+                    }
+                }
+            }
+
+            .contact-form-inner-right {
+                @include mq($md) {
+                    display: none;
+                }
+            }
         }
     }
 }

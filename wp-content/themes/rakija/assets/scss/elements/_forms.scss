@@ -59,6 +59,10 @@ textarea {
 textarea {
 	height: 233px;
 	resize: none;
+
+	@include mq($md) {
+		height: 175px;
+	}
 }
 
 .wpcf7-not-valid-tip {
@@ -82,7 +86,7 @@ textarea {
     position: absolute;
 	width: 100%;
     text-align: center;
-    top: -50px;
+    top: 20px;
     background: $red;
     border-radius: 20px;
     max-width: 1320px;
@@ -126,7 +130,7 @@ textarea {
 
 	.wpcf7-response-output {
 		position: absolute;
-		top: -50px;
+		top: 20px;
 		left: 50%;
 		transform: translateX(-50%);
 		display: flex;
@@ -142,6 +146,11 @@ textarea {
     	max-width: 1320px;
 		padding: 5px 25px;
 		width: 100%;
+
+		@include mq($xl) {
+			max-width: calc(100% - 30px);
+			padding: 5px 15px;
+		}
 	}
 }
 

@@ -2,6 +2,10 @@
     padding: 100px 0;
     background-color: $white;
 
+    @include mq($md) {
+        padding: 25px 0;
+    }
+
     .section-title {
         margin-bottom: 0;
     }
@@ -17,10 +21,21 @@
         display: flex;
         gap: 85px;
         flex-wrap: wrap;
+
+        @include mq($md) {
+            gap: 25px;
+            flex-direction: column;
+            margin-top: 25px;
+        }
     }
 
     &__box {
         flex: 0 0 29%;
+
+        @include mq($md) {
+            flex: 0 0 100%;
+            margin: 0 0 50px;
+        }
 
         &-top {
             height: 260px;
@@ -28,6 +43,11 @@
             border-radius: 25px;
             margin-bottom: 60px;
             overflow: hidden;
+
+            @include mq($md) {
+                margin-bottom: 15px;
+                height: 200px;
+            }
 
             img {
                 width: 100%;
@@ -58,6 +78,10 @@
                 color: $black;
                 transition: $dur $ease;
 
+                @include mq($md) {
+                    margin: 0 0 15px;
+                }
+
                 a {
                     color: $black;
                 }
@@ -71,12 +95,20 @@
 
             p {
                 margin: 0 0 20px;
+
+                @include mq($md) {
+                    margin: 0 0 15px;
+                }
             }
         }
     }
 
     &__pagination {
         margin-top: 75px;
+
+        @include mq($md) {
+            margin: 25px 0 50px;
+        }
 
         .page-numbers {
             display: flex;
@@ -105,6 +137,13 @@
                 padding: 10px;
                 border: 1px solid rgba($black, 0.1);
                 border-radius: 15px;
+
+                @include mq($md) {
+                    width: 30px;
+                    height: 30px;
+                    padding: 8px;
+                    font-size: 14px;
+                }
                 
                 span {
                     transition: $dur $ease;

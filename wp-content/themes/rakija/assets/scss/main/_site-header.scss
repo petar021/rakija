@@ -9,12 +9,22 @@
 	top: 0;
 	left: 0;
 	transition: $dur $ease;
-	background-color: $white;
+	background-color: transparent;
 	border-bottom: 1px solid transparent;
 
 	&.is-sticky {
 		padding: 5px 0;
 		border-bottom: 1px solid $black;
+		background-color: $white;
+	}
+
+	@include mq($xl) {
+		background-color: $white;
+
+		&.hidden {
+			transition: $dur $ease;
+			top: -100%;
+		}
 	}
 
 	&__cart {

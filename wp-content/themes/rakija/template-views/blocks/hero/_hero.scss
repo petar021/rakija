@@ -1,3 +1,7 @@
+.hero {
+    background-color: $gray;
+    padding-bottom: 100px;
+}
 
 .banner__container {
     display: flex;
@@ -7,13 +11,60 @@
     margin-bottom: 30px;
 }
 
-.hero__left {
-    flex: 50%;
-    max-width: 50%;
-}
-
 .hero__right {
     max-width: 516px;
+    transform: translate(-22px, -20px);
+    overflow: hidden;
+    padding-bottom: 30px;
+
+    .swiper {
+        overflow: visible;
+    }
+
+    .swiper-pagination {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        bottom: -30px;
+
+        .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background-color: $pale-brown;
+            border-radius: 50%;
+            transition: $dur $ease;
+            margin: 0 5px;
+            cursor: pointer;
+            opacity: 1;
+
+            &.swiper-pagination-bullet-active {
+                width: 30px;
+                background-color: $black;
+                border-radius: 10px;
+            }
+        }
+    }
+
+    .add-to-cart-btn {
+        position: absolute;
+        bottom: 0;
+        right: 25px;
+        border: 2px solid rgba($pale-brown, 0.3);
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+
+        @include hover {
+            background-color: rgba($pale-brown, 1);
+
+            span {
+                color: $white;
+            }
+        }
+    }
 }
 
 .hero__title {
@@ -61,7 +112,6 @@
 }
 
 .hero-image__right {
-    transform: translate(-22px, -20px);
     img {
         width: 100%;
     }
@@ -87,6 +137,7 @@
 .hero-image__right-info {
     transform: translateX(20px);
     padding-left: 30px;
+    margin-bottom: 25px;
 }
 
 .hero-image__right-info-price {

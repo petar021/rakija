@@ -1,4 +1,4 @@
-<section class="banner-title">
+<section class="banner-title gray">
     <div class="container">
         <div class="banner-title__wrapper">
             <div class="banner-title__left">

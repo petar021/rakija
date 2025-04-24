@@ -1,7 +1,5 @@
 <section class="three-column-posts gray">
     <div class="container">
-        <h2 class="section-title section-title--center">Blog</h2>
-        <p class="title-description">Sve što niste znali, a želećete da probate</p>
         <div class="three-column-posts__wrapper">
             <div class="three-column-posts__box">
                 <div class="three-column-posts__box-top">

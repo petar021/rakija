@@ -15,8 +15,18 @@
         height: 460px;
         padding: 0 65px;
 
+        @include mq($md) {
+            flex-direction: column;
+            padding: 25px 0;
+        }
+
         &-left {
             filter: grayscale(1);
+
+            @include mq($md) {
+                max-width: 90%;
+                margin: 0 auto;
+            }
         }
     }
 }

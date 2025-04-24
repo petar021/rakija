@@ -47,7 +47,11 @@ pre {
 ## Entry Content
 --------------------------------------------------------------*/
 .entry-content {
-	margin: 50px 0 100px;
+	margin: 50px 0 0;
+
+	@include mq($md) {
+		margin: 25px 0 0;
+	}
 
 	h1,
 	h2,
@@ -137,8 +141,8 @@ pre {
 			content: '';
 			background-color: $black;
 			display: block;
-			width: 6px;
-			height: 6px;
+			width: 4px;
+			height: 4px;
 			border-radius: 50%;
 			position: absolute;
 			top: 10px;
@@ -149,11 +153,7 @@ pre {
 	ul,
 	ol {
 		li {
-			margin-bottom: 6px;
-
-			&:last-of-type {
-				margin-bottom: 0;
-			}
+			margin-bottom: 15px;
 		}
 	}
 
@@ -177,7 +177,7 @@ pre {
 		text-decoration: underline;
 
 		@include hover {
-			color: $black;
+			color: $pale-brown;
 			text-decoration: underline;
 		}
 	}

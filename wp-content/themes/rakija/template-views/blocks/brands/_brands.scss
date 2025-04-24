@@ -1,10 +1,18 @@
 .brands {
     margin: 50px 0;
 
+    @include mq($md) {
+        margin: 25px 0;
+    }
+
     &-grid {
         display: flex;
         flex-wrap: wrap;
         gap: 16px;
+
+        @include mq($md) {
+            justify-content: space-between;
+        }
       
         a {
             flex: 1 1 calc(20% - 16px);
@@ -14,6 +22,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
+
+            @include mq($md) {
+                flex: 1 1 calc(50% - 15px);
+                max-width: 100%;
+            }
       
             img {
                 height: auto;

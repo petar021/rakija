@@ -1,9 +1,17 @@
 .breadcrumb {
     margin: 55px 0 25px;
 
+    @include mq($md) {
+        margin: 25px 0;
+    }
+
     ul {
         display: flex;
         align-items: center;
+
+        @include mq($md) {
+            align-items: flex-start;
+        }
 
         li {
             margin-left: 40px;
@@ -11,8 +19,17 @@
             color: $pale-brown;
             font-family: $font-highlight;
 
+            @include mq($md) {
+                margin-left: 20px;
+                font-size: 14px;
+            }
+
             a {
                 color: $black;
+
+                @include mq($md) {
+                    font-size: 14px;
+                }
 
                 @include hover {
                     color: $pale-brown;
@@ -25,6 +42,10 @@
                 top: 0;
                 left: -23px;
                 color: $pale-brown;
+
+                @include mq($md) {
+                    left: -14px;
+                }
             }
 
             &:first-of-type {

@@ -27,6 +27,7 @@ Theme Name: NM Theme
 /*--------------------------------------------------------------
 # Plugins
 --------------------------------------------------------------*/
+@import 'assets/css-plugins/swiper-bundle.min.css';
 
 /*--------------------------------------------------------------
 # Helpers
@@ -63,3 +64,10 @@ Theme Name: NM Theme
 # Components / Templates
 --------------------------------------------------------------*/
 @import 'components/blocks';
+
+/*--------------------------------------------------------------
+# WooCommerce
+--------------------------------------------------------------*/
+@import 'woocommerce/woo-cart';
+@import 'woocommerce/woo-checkout';
+@import 'woocommerce/woo-products';

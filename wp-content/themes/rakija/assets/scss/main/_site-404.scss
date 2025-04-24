@@ -7,12 +7,25 @@
 	justify-content: center;
 	min-height: 100vh;
 
+	@include mq($md) {
+		flex-direction: column;
+		padding: 0 15px;
+	}
+
 	.error-right {
 		max-width: 640px;
+
+		@include mq($md) {
+			text-align: center;
+		}
 
 		h1 {
 			@include clamp-font-size(32, 45);
 			font-family: $font-second;
+
+			@include mq($md) {
+				margin-bottom: 25px;
+			}
 		}
 
 		p {
@@ -37,6 +50,11 @@
 		display: flex;
 		margin-right: 75px;
 
+		@include mq($md) {
+			margin-right: 0;
+			max-width: 100%;
+		}
+
 		&::after,
 		&::before {
 			content: '4';
@@ -59,6 +77,10 @@
 			left: 25%;
 			top: 25%;
 			z-index: 5;
+
+			@include mq($md) {
+				top: 19%;
+			}
 		}
 	}
 }

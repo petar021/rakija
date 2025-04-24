@@ -1,0 +1,13 @@
+.woocommerce-ordering {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 50px;
+
+    label {
+        padding: 0;
+        margin: 0;
+        font-family: $font-highlight;
+        margin-right: 15px;
+    }
+}

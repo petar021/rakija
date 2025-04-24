@@ -26,6 +26,7 @@
 		"webpack-stream": "^7.0.0"
 	},
 	"dependencies": {
+		"swiper": "^11.2.6",
 		"vanilla-lazyload": "^17.8.3"
 	}
 }

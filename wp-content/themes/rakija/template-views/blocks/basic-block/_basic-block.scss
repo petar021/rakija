@@ -3,10 +3,25 @@
 --------------------------------------------------------------*/
 
 .basic-block {
+    padding: 100px 0;
+    background-color: $white;
+
+    @include mq($md) {
+        padding: 25px 0;
+    }
+
+    @include mq($md) {
+        padding: 25px 0;
+    }
+
     &-title {
         font-family: $font-second;
         @include clamp-font-size(28, 45);
         margin-top: 50px;
+
+        @include mq($md) {
+            margin-top: 0;
+        }
     }
 
     .pretitle {

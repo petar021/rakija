@@ -12,10 +12,16 @@ input[type='submit'] {
 	text-align: center;
 	display: inline-block;
 	border-radius: 18px;
+	border: none;
+
+	@include mq($md) {
+		margin: 0 auto;
+		display: block;
+	}
 
 	@include hover {
-		background-color: $white;
-		color: $black;
+		background-color: $pale-brown;
+		color: $white;
 	}
 }
 

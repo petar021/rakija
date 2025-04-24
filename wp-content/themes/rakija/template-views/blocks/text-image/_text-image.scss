@@ -1,5 +1,10 @@
 .text-image {
-    margin: 75px 0;
+    padding: 75px 0;
+    background-color: $white;
+
+    @include mq($md) {
+        padding: 25px 0;
+    }
 
     &__wrapper {
         display: flex;
@@ -15,11 +20,25 @@
         align-items: center;
         margin-bottom: 80px;
 
+        @include mq($md) {
+            margin-bottom: 50px;
+            flex-direction: column;
+            gap: 15px;
+        }
+
         &:nth-child(even) {
             flex-direction: row-reverse;
 
+            @include mq($md) {
+                flex-direction: column;
+            }
+
             p {
                 padding-left: 55px;
+
+                @include mq($md) {
+                    padding-left: 0;
+                }
             }
         }
     }
