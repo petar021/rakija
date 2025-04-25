@@ -2,23 +2,53 @@
     <div class="container">
         <div class="banner__container">
             <div class="hero__left">
-                <h1 class="hero__title">Selekcija najboljih domaćih rakija</h1>
-                <span class="hero__highlight">Kod nas ne važi pravilo „sve rakije su iste“</span>
+                <?php 
+                    $title = get_sub_field('title');
+
+                    if (!empty($title)) : ?>
+                    <h1 class="hero__title"><?php echo esc_html($title); ?></h1>
+                <?php endif; ?>
+                <?php 
+                    $title_desc = get_sub_field('title_description');
+
+                    if (!empty($title_desc)) : ?>
+                    <span class="hero__highlight"><?php echo esc_html($title_desc); ?></span>
+                <?php endif; ?>
             </div>
             <div class="hero__right">
-                <p class="hero__subtitle">Svaka flaša krije priču, tradiciju i vrhunski ukus koji će probuditi čula. Kliknite, izaberite i uživajte – jer život je prekratak za lošu rakiju!</p>
+                <?php 
+                    $content_right = get_sub_field('content_right');
+
+                    if (!empty($title_desc)) : ?>
+                    <p class="hero__subtitle"><?php echo esc_html($content_right); ?></p>
+                <?php endif; ?>
             </div>
         </div>
         <div class="hero__images">
             <div class="hero__left">
                 <div class="hero-image__left">
                     <div class="hero-image__left-main">
-                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/_demo/hero-image-left.jpg" alt="">
+                        <?php 
+                            $image_left = get_sub_field('image_left');
+
+                            if (!empty($image_left)) : ?>
+                                <img src="<?php echo esc_url($image_left['url']); ?>" alt="<?php echo esc_attr($image_left['alt'] ?? ''); ?>">
+                        <?php endif; ?>
                         <div class="hero-image__left-logo">
-                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/_demo/destilerija-logo.svg" alt="">
+                            <?php 
+                                $image_left_logo = get_sub_field('image_left_logo');
+
+                                if (!empty($image_left_logo)) : ?>
+                                    <img src="<?php echo esc_url($image_left_logo['url']); ?>" alt="<?php echo esc_attr($image_left_logo['alt'] ?? ''); ?>">
+                            <?php endif; ?>
                         </div>
                         <div class="hero-image__left-text">
-                            <p>Mesto gde rakija živi</p>
+                            <?php 
+                                $image_left_text = get_sub_field('image_left_text');
+
+                                if (!empty($image_left_text)) : ?>
+                                <p><?php echo esc_html($image_left_text); ?></p>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -28,7 +58,7 @@
                 <div class="swiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide hero-image__right">
-                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/_demo/hero-image-right.png" alt="">
+                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/image-05.png" alt="">
                             <div class="hero-image__right-info">
                                 <div class="hero-image__right-info-price">
                                     <span>3.350 RSD</span>
@@ -46,7 +76,7 @@
                             </div>
                         </div>
                         <div class="swiper-slide hero-image__right">
-                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/_demo/hero-image-right.png" alt="">
+                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/image-05.png" alt="">
                             <div class="hero-image__right-info">
                                 <div class="hero-image__right-info-price">
                                     <span>3.350 RSD</span>
@@ -64,7 +94,7 @@
                             </div>
                         </div>
                         <div class="swiper-slide hero-image__right">
-                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/_demo/hero-image-right.png" alt="">
+                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/image-05.png" alt="">
                             <div class="hero-image__right-info">
                                 <div class="hero-image__right-info-price">
                                     <span>3.350 RSD</span>

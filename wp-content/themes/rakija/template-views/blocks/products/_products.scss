@@ -60,6 +60,8 @@
         &__bottom {
             padding: 20px 15px;
             position: relative;
+            display: flex;
+            flex-direction: column;
 
             .price-box {
                 display: flex;
@@ -108,6 +110,19 @@
                 font-size: 0.875rem;
                 font-weight: 600;
                 font-family: $font-main;
+            }
+
+            .product-title-link {
+                width: fit-content;
+                display: inline-block;
+
+                h3 {
+                    width: fit-content;
+                }
+
+                @include hover {
+                    color: $pale-brown;
+                }
             }
 
             .add-to-cart-btn {

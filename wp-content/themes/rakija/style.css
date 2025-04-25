@@ -1935,8 +1935,25 @@ a:hover, a:focus, a:active {
   position: relative;
 }
 
-.hero-image__right img {
+.hero-image__right {
+  position: relative;
+}
+.hero-image__right::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #f6f0db;
+  border-radius: 20px;
   width: 100%;
+  height: 370px;
+  z-index: 1;
+}
+.hero-image__right img {
+  width: auto;
+  margin: 35px auto 0;
+  position: relative;
+  z-index: 5;
 }
 
 .hero-image__left-logo {
@@ -2158,6 +2175,8 @@ a:hover, a:focus, a:active {
 .products .product-box__bottom {
   padding: 20px 15px;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 .products .product-box__bottom .price-box {
   display: flex;
@@ -2201,6 +2220,20 @@ a:hover, a:focus, a:active {
   font-weight: 600;
   font-family: "Josefin Sans";
 }
+.products .product-box__bottom .product-title-link {
+  width: -moz-fit-content;
+  width: fit-content;
+  display: inline-block;
+}
+.products .product-box__bottom .product-title-link h3 {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+@media only screen and (min-width: 1199px) {
+  .products .product-box__bottom .product-title-link:hover {
+    color: #997249;
+  }
+}
 .products .product-box__bottom .add-to-cart-btn {
   position: absolute;
   bottom: 20px;
@@ -2235,7 +2268,8 @@ a:hover, a:focus, a:active {
 }
 
 .image-block {
-  margin: 50px 0;
+  padding: 50px 0;
+  background-color: #f5f5f5;
 }
 .image-block__wrapper {
   border-radius: 25px;
@@ -2267,11 +2301,12 @@ a:hover, a:focus, a:active {
 }
 
 .two-column-brands {
-  margin: 100px 0;
+  padding: 100px 0;
+  background-color: #f5f5f5;
 }
 @media screen and (max-width: 767px) {
   .two-column-brands {
-    margin: 25px 0;
+    padding: 25px 0;
   }
 }
 .two-column-brands__wrapper {
