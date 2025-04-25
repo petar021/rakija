@@ -18,16 +18,16 @@
                         $link = get_sub_field('link');
                     ?>
 
-                        <?php if ($link): ?>
-                            <a 
-                                href="<?php echo esc_url($link['url']); ?>" 
-                                class="btn-icon btn-icon__reverse" 
-                                target="<?php echo esc_attr($link['target'] ?: '_self'); ?>"
-                                >
-                                <span class="font-arrow-right"></span>
-                                <?php echo esc_html($link['title']); ?> 
-                            </a>
-                        <?php endif; ?>
+                    <?php if ($link): ?>
+                        <a 
+                            href="<?php echo esc_url($link['url']); ?>" 
+                            class="btn-icon btn-icon__reverse" 
+                            target="<?php echo esc_attr($link['target'] ?: '_self'); ?>"
+                            >
+                            <span class="font-arrow-right"></span>
+                            <?php echo esc_html($link['title']); ?> 
+                        </a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

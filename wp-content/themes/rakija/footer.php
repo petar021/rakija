@@ -19,12 +19,57 @@
 				<div class="site-footer__top-box">
 					<div class="site-footer__top-left">
 						<a class="site-footer__logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-							<img class="site-footer__logo-img" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/footer-logo.svg" alt="baseline studio">
+							<?php 
+								$footer_logo = get_field('footer_logo', 'option');
+
+								if (!empty($footer_logo)) : ?>
+									<img class="site-footer__logo-img" 
+										src="<?php echo esc_url($footer_logo['url']); ?>" 
+										alt="<?php echo esc_attr(get_bloginfo('name') . ' Logo'); ?>" 
+										title="<?php echo esc_attr(get_bloginfo('name')); ?>">
+							<?php endif; ?>
 						</a>
 						<div class="contact-box">
-							<a href="tel:+381659505568" class="phone"><span class="font-phone"></span> +381 65 950 55 68</a>
-							<a href="https://www.google.com/maps/place/Rakija+House+-+prodavnica+doma%C4%87ih+rakija+iz+Srbije/@45.2570514,19.8393177,17z/data=!3m1!4b1!4m6!3m5!1s0x475b116dddbbcedd:0xddb2fc1eb87543ee!8m2!3d45.2570477!4d19.8418926!16s%2Fg%2F11v4h_18hk?entry=ttu&g_ep=EgoyMDI1MDMxMi4wIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D" target="_blank" class="location"><span class="font-pin"></span> Njegoševa 15, 21000 Novi Sad</a>
-							<a href="mailto:rakijahouse2023@gmail.com" class="phone"><span class="font-at"></span> rakijahouse2023@gmail.com</a>
+							<?php
+								$phone = get_field('phone', 'option');
+							?>
+							<?php if ($phone): ?>
+								<a 
+									href="tel:<?php echo $phone; ?>" 
+									class="phone"
+									>
+									<span class="font-phone"></span>
+									<?php echo esc_html($phone); ?> 
+								</a>
+							<?php endif; ?>
+
+							<?php
+								// Dohvati ACF polje tipa Link sa Options Page
+								$link = get_field('address', 'option');
+
+								// Proveri da li polje ima vrednost
+								if ($link && is_array($link)): 
+									// Ekstraktuj putanju iz URL-a (bez domena)
+									$url_path = parse_url($link['url'], PHP_URL_PATH);
+								?>
+								<a href="https://www.google.com/maps/place<?php echo esc_attr($url_path); ?>" target="_blank" class="location">
+									<span class="font-pin"></span> <?php echo esc_html($link['title']); ?>
+								</a>
+							<?php endif; ?>
+							
+							<?php
+								// Dobavljanje email-a iz ACF options page
+								$email = get_field('email', 'option');
+							?>
+							<?php if ($email): ?>
+								<a 
+									href="mailto:<?php echo $email; ?>" 
+									class="location"
+								>
+									<span class="font-at"></span>
+									<?php echo esc_html($email); ?> 
+								</a>
+							<?php endif; ?>
 						</div>
 					</div>
 					<div class="site-footer__top-right">

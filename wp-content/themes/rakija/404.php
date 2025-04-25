@@ -17,9 +17,18 @@ get_header();
 				<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/casa.png" alt="">
 			</div>
 			<div class="error-right">
-				<h1>Ups! Izgleda da ste zalutali...</h1>
-				<p>Stranica koju tražite nije pronađena. Možda je premestili, obrisali ili se dogodila greška u adresi.</p>
-				<p>Ne brinite, vratite se na <a href="<?php echo esc_url( home_url( '/' ) ); ?>">početnu stranicu</a> ili istražite našu <a href="<?php echo esc_url( home_url( '/' ) ); ?>">ponudu</a> - sigurni smo da ćete pronaći nešto za uživanje!</p>
+				<?php 
+					$error_title = get_field('error_title', 'option');
+
+					if (!empty($error_title)) : ?>
+					<h1><?php echo esc_html($error_title); ?></h1>
+				<?php endif; ?>
+				<?php 
+					$error_content = get_field('error_content', 'option'); 
+
+					if (!empty($error_content)) : ?>
+						<?php echo wp_kses_post($error_content); ?>
+				<?php endif; ?>
 			</div>
 		</section><!-- .error-404 -->
 

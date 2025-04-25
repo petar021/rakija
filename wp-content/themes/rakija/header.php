@@ -35,7 +35,17 @@
 			<div class="site-header__container">
 				<div class="site-header__branding">
 					<a class="site-header__logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-						<img class="site-header__logo-img" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.svg" alt="<?php bloginfo( 'name' ); ?> Logo" title="<?php bloginfo( 'name' ); ?>">
+						<?php 
+							$header_logo = get_field('header_logo', 'option');
+							if (!empty($header_logo)) : ?>
+								<img 
+									id="logo"
+									class="site-header__logo-img"
+									src="<?php echo esc_url($header_logo['url']); ?>" 
+									alt="<?php echo esc_attr(get_bloginfo('name') . ' Logo'); ?>" 
+									title="<?php echo esc_attr(get_bloginfo('name')); ?>"
+								>
+						<?php endif; ?>
 					</a>
 				</div>
 				<div class="site-header__nav">
