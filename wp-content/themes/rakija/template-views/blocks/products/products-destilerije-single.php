@@ -25,7 +25,7 @@
                         <span class="value">rsd</span>
                     </div>
                     <span class="product-cat">Zlatni Tok</span>
-                    <a href="javascript:;">
+                    <a href="javascript:;" class="product-title-link">
                         <h3 class="product-title">Alba šljiva prepečenica</h3>
                     </a>
                     <span class="product-tax">700ml</span>
@@ -44,7 +44,7 @@
                         <span class="value">rsd</span>
                     </div>
                     <span class="product-cat">Zlatni Tok</span>
-                    <a href="javascript:;">
+                    <a href="javascript:;" class="product-title-link">
                         <h3 class="product-title">Alba šljiva prepečenica</h3>
                     </a>
                     <span class="product-tax">700ml</span>
@@ -63,7 +63,7 @@
                         <span class="value">rsd</span>
                     </div>
                     <span class="product-cat">Zlatni Tok</span>
-                    <a href="javascript:;">
+                    <a href="javascript:;" class="product-title-link">
                         <h3 class="product-title">Alba šljiva prepečenica</h3>
                     </a>
                     <span class="product-tax">700ml</span>
@@ -82,7 +82,7 @@
                         <span class="value">rsd</span>
                     </div>
                     <span class="product-cat">Zlatni Tok</span>
-                    <a href="javascript:;">
+                    <a href="javascript:;" class="product-title-link">
                         <h3 class="product-title">Alba šljiva prepečenica</h3>
                     </a>
                     <span class="product-tax">700ml</span>
@@ -101,7 +101,7 @@
                         <span class="value">rsd</span>
                     </div>
                     <span class="product-cat">Zlatni Tok</span>
-                    <a href="javascript:;">
+                    <a href="javascript:;" class="product-title-link">
                         <h3 class="product-title">Alba šljiva prepečenica</h3>
                     </a>
                     <span class="product-tax">700ml</span>
@@ -120,7 +120,7 @@
                         <span class="value">rsd</span>
                     </div>
                     <span class="product-cat">Zlatni Tok</span>
-                    <a href="javascript:;">
+                    <a href="javascript:;" class="product-title-link">
                         <h3 class="product-title">Alba šljiva prepečenica</h3>
                     </a>
                     <span class="product-tax">700ml</span>

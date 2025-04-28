@@ -1,0 +1,27 @@
+.reviews {
+    background-color: $gray;
+    padding: 100px 0;
+
+    .font-star {
+        color: $yellow;
+    }
+
+    .swiper-slide {
+        margin-right: 0 !important;
+        cursor: grab;
+
+        p {
+            font-family: $font-highlight;
+            font-size: 13px;
+            margin: 25px 0;
+            padding-right: 30px;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-family: $font-second;
+            font-style: italic;
+            padding-right: 30px;
+        }
+    }
+}

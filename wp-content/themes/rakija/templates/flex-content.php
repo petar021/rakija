@@ -43,7 +43,13 @@ get_header();
                     <?php get_template_part('template-views/blocks/contact-form/contact-form'); ?>
                 
                 <?php elseif (get_row_layout() == 'three_column_posts') : ?>
+                    <?php get_template_part('template-views/blocks/three-column-posts/three-column-posts'); ?>
+
+                <?php elseif (get_row_layout() == 'all_posts') : ?>
                     <?php get_template_part('template-views/blocks/three-column-posts/three-column-posts-blog'); ?>
+                    
+                <?php elseif (get_row_layout() == 'google_reviews') : ?>
+                    <?php get_template_part('template-views/blocks/reviews/reviews'); ?>
 
                 <?php endif; ?>
 

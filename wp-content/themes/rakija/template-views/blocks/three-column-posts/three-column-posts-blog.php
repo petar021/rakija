@@ -1,134 +1,81 @@
+<?php
+// Uzimamo ACF polja
+$display_type = get_field('display_type'); // checkbox polje
+$selected_posts = get_field('selected_posts'); // relationship polje
+
+// Trenutna strana za paginaciju
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+// Osnovni WP_Query argumenti
+$args = [
+    'post_type' => 'post',
+    'posts_per_page' => 9,
+    'paged' => $paged,
+];
+
+// Ako je Display Type čekiran i postoje Selected Posts -> prikazujemo samo njih
+if (!empty($display_type) && !empty($selected_posts)) {
+    $args['post__in'] = wp_list_pluck($selected_posts, 'ID');
+    $args['orderby'] = 'post__in'; // čuva redosled iz relationship polja
+}
+
+$query = new WP_Query($args);
+
+if ($query->have_posts()) : ?>
 <section class="three-column-posts gray">
     <div class="container">
         <div class="three-column-posts__wrapper">
-            <div class="three-column-posts__box">
-                <div class="three-column-posts__box-top">
-                    <a href="javascript:;">
-                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/image-03.jpg" alt="">
-                    </a>
+            <?php while ($query->have_posts()) : $query->the_post(); ?>
+                <div class="three-column-posts__box">
+                    <div class="three-column-posts__box-top">
+                        <a href="<?php the_permalink(); ?>">
+                            <?php if (has_post_thumbnail()) : ?>
+                                <?php the_post_thumbnail('medium_large'); ?>
+                            <?php else : ?>
+                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/image-03.jpg" alt="<?php the_title(); ?>">
+                            <?php endif; ?>
+                        </a>
+                    </div>
+                    <div class="three-column-posts__box-bottom">
+                        <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+                        <p><?php echo wp_trim_words(get_the_excerpt(), 20); ?></p>
+                        <a href="<?php the_permalink(); ?>" class="btn-icon btn-icon__white btn-icon__center btn-icon__gray">
+                            <span class="font-eye"></span>Pročitaj
+                        </a>
+                    </div>
                 </div>
-                <div class="three-column-posts__box-bottom">
-                    <h4><a href="javascript:;">Od šljive do čaše - kako nastaje prava domaća rakija?</a></h4>
-                    <p>Proces proizvodnje rakije počinje pažljivim odabirom voća. Najbolje šljive, kajsije ili dunje beru se u punoj zrelosti, a zatim fermentišu u kontrolisanim uslovima.</p>
-                    <a href="javascript:;" class="btn-icon btn-icon__white btn-icon__center btn-icon__gray"><span class="font-eye"></span>Pročitaj</a>
-                </div>
-            </div>
-            <div class="three-column-posts__box">
-                <div class="three-column-posts__box-top">
-                    <a href="javascript:;">
-                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/_demo/hero-image-left.jpg" alt="">
-                    </a>
-                </div>
-                <div class="three-column-posts__box-bottom">
-                    <h4><a href="javascript:;">Kako pravilno čuvati rakiju da zadrži vrhunski kvalitet?</a></h4>
-                    <p>Ako želite da vaša rakija sačuva pun ukus i aromu, pravilno skladištenje je ključno. Rakiju uvek čuvajte u staklenim bocama, daleko od sunčeve svetlosti i na stabilnoj temperaturi između 10 i 18°C.</p>
-                    <a href="javascript:;" class="btn-icon btn-icon__white btn-icon__center btn-icon__gray"><span class="font-eye"></span>Pročitaj</a>
-                </div>
-            </div>
-            <div class="three-column-posts__box">
-                <div class="three-column-posts__box-top">
-                    <a href="javascript:;">
-                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/image-03.jpg" alt="">
-                    </a>
-                </div>
-                <div class="three-column-posts__box-bottom">
-                    <h4><a href="javascript:;">Kako pravilno čuvati rakiju da zadrži vrhunski kvalitet?</a></h4>
-                    <p>Ako želite da vaša rakija sačuva pun ukus i aromu, pravilno skladištenje je ključno. Rakiju uvek čuvajte u staklenim bocama, daleko od sunčeve svetlosti i na stabilnoj temperaturi između 10 i 18°C.</p>
-                    <a href="javascript:;" class="btn-icon btn-icon__white btn-icon__center btn-icon__gray"><span class="font-eye"></span>Pročitaj</a>
-                </div>
-            </div>
-            <div class="three-column-posts__box">
-                <div class="three-column-posts__box-top">
-                    <a href="javascript:;">
-                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/image-03.jpg" alt="">
-                    </a>
-                </div>
-                <div class="three-column-posts__box-bottom">
-                    <h4><a href="javascript:;">Od šljive do čaše - kako nastaje prava domaća rakija?</a></h4>
-                    <p>Proces proizvodnje rakije počinje pažljivim odabirom voća. Najbolje šljive, kajsije ili dunje beru se u punoj zrelosti, a zatim fermentišu u kontrolisanim uslovima.</p>
-                    <a href="javascript:;" class="btn-icon btn-icon__white btn-icon__center btn-icon__gray"><span class="font-eye"></span>Pročitaj</a>
-                </div>
-            </div>
-            <div class="three-column-posts__box">
-                <div class="three-column-posts__box-top">
-                    <a href="javascript:;">
-                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/_demo/hero-image-left.jpg" alt="">
-                    </a>
-                </div>
-                <div class="three-column-posts__box-bottom">
-                    <h4><a href="javascript:;">Kako pravilno čuvati rakiju da zadrži vrhunski kvalitet?</a></h4>
-                    <p>Ako želite da vaša rakija sačuva pun ukus i aromu, pravilno skladištenje je ključno. Rakiju uvek čuvajte u staklenim bocama, daleko od sunčeve svetlosti i na stabilnoj temperaturi između 10 i 18°C.</p>
-                    <a href="javascript:;" class="btn-icon btn-icon__white btn-icon__center btn-icon__gray"><span class="font-eye"></span>Pročitaj</a>
-                </div>
-            </div>
-            <div class="three-column-posts__box">
-                <div class="three-column-posts__box-top">
-                    <a href="javascript:;">
-                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/image-03.jpg" alt="">
-                    </a>
-                </div>
-                <div class="three-column-posts__box-bottom">
-                    <h4><a href="javascript:;">Kako pravilno čuvati rakiju da zadrži vrhunski kvalitet?</a></h4>
-                    <p>Ako želite da vaša rakija sačuva pun ukus i aromu, pravilno skladištenje je ključno. Rakiju uvek čuvajte u staklenim bocama, daleko od sunčeve svetlosti i na stabilnoj temperaturi između 10 i 18°C.</p>
-                    <a href="javascript:;" class="btn-icon btn-icon__white btn-icon__center btn-icon__gray"><span class="font-eye"></span>Pročitaj</a>
-                </div>
-            </div>
-            <div class="three-column-posts__box">
-                <div class="three-column-posts__box-top">
-                    <a href="javascript:;">
-                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/image-03.jpg" alt="">
-                    </a>
-                </div>
-                <div class="three-column-posts__box-bottom">
-                    <h4><a href="javascript:;">Od šljive do čaše - kako nastaje prava domaća rakija?</a></h4>
-                    <p>Proces proizvodnje rakije počinje pažljivim odabirom voća. Najbolje šljive, kajsije ili dunje beru se u punoj zrelosti, a zatim fermentišu u kontrolisanim uslovima.</p>
-                    <a href="javascript:;" class="btn-icon btn-icon__white btn-icon__center btn-icon__gray"><span class="font-eye"></span>Pročitaj</a>
-                </div>
-            </div>
-            <div class="three-column-posts__box">
-                <div class="three-column-posts__box-top">
-                    <a href="javascript:;">
-                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/_demo/hero-image-left.jpg" alt="">
-                    </a>
-                </div>
-                <div class="three-column-posts__box-bottom">
-                    <h4><a href="javascript:;">Kako pravilno čuvati rakiju da zadrži vrhunski kvalitet?</a></h4>
-                    <p>Ako želite da vaša rakija sačuva pun ukus i aromu, pravilno skladištenje je ključno. Rakiju uvek čuvajte u staklenim bocama, daleko od sunčeve svetlosti i na stabilnoj temperaturi između 10 i 18°C.</p>
-                    <a href="javascript:;" class="btn-icon btn-icon__white btn-icon__center btn-icon__gray"><span class="font-eye"></span>Pročitaj</a>
-                </div>
-            </div>
-            <div class="three-column-posts__box">
-                <div class="three-column-posts__box-top">
-                    <a href="javascript:;">
-                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/image-03.jpg" alt="">
-                    </a>
-                </div>
-                <div class="three-column-posts__box-bottom">
-                    <h4><a href="javascript:;">Kako pravilno čuvati rakiju da zadrži vrhunski kvalitet?</a></h4>
-                    <p>Ako želite da vaša rakija sačuva pun ukus i aromu, pravilno skladištenje je ključno. Rakiju uvek čuvajte u staklenim bocama, daleko od sunčeve svetlosti i na stabilnoj temperaturi između 10 i 18°C.</p>
-                    <a href="javascript:;" class="btn-icon btn-icon__white btn-icon__center btn-icon__gray"><span class="font-eye"></span>Pročitaj</a>
-                </div>
-            </div>
+            <?php endwhile; ?>
         </div>
         <div class="three-column-posts__pagination">
             <nav class="pagination" role="navigation">
-                <ul class="page-numbers">
-                    <li><a class="prev page-numbers" href="javascript:;"><span class="font-arrow-small"></span></a></li>
-                    
-                    <li><a class="page-numbers" href="javascript:;">01</a></li>
-                    <li><a class="page-numbers" href="javascript:;">02</a></li>
-                    <li><a class="page-numbers" href="javascript:;">03</a></li>
-                    <li><a class="page-numbers" href="javascript:;">04</a></li>
-                    
-                    <li><span class="page-numbers dots">…</span></li>
-                    
-                    <li><a class="page-numbers" href="javascript:;">36</a></li>
-                    <li><a class="page-numbers" href="javascript:;">37</a></li>
-                    
-                    <li><a class="next page-numbers" href="javascript:;"><span class="font-arrow-small"></span></a></li>
-                </ul>
+                <?php
+                $big = 999999999; // potrebno za ispravan rad paginacije
+
+                $pagination_links = paginate_links([
+                    'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+                    'format' => '?paged=%#%',
+                    'current' => max(1, get_query_var('paged')),
+                    'total' => $query->max_num_pages,
+                    'type' => 'array', // Ovo nam omogućava da dobijemo listu linkova
+                    'prev_text' => '<span class="font-arrow-small"></span>',
+                    'next_text' => '<span class="font-arrow-small"></span>',
+                ]);
+
+                if (!empty($pagination_links)) : ?>
+                    <ul class="page-numbers">
+                        <?php foreach ($pagination_links as $link) : ?>
+                            <li><?php echo str_replace('page-numbers', 'page-numbers', $link); ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
             </nav>
         </div>
     </div>
 </section>
+
+    <?php wp_reset_postdata(); ?>
+<?php else : ?>
+    <p>Trenutno nema dostupnih postova.</p>
+<?php endif; ?>
+
 

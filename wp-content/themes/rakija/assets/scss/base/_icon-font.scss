@@ -52,6 +52,9 @@
 	@if $filename == search {
 		$char: "\E00A";
 	}
+	@if $filename == star {
+		$char: "\E00B";
+	}
 
 	@return $char;
 }
@@ -96,5 +99,8 @@
 }
 .font-search {
 	@include font(search);
+}
+.font-star {
+	@include font(star);
 }
 
