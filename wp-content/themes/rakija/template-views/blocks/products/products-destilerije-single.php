@@ -2,13 +2,18 @@
     <div class="container">
         <form class="woocommerce-ordering" method="get">
             <label for="orderby">6 proizvoda</label>
-            <select name="orderby" id="orderby" class="orderby" onchange="this.form.submit()">
-                <option value="popularity" selected>Najpopularnije</option>
-                <option value="date">Najnovije</option>
-                <option value="price">Cena: rastuće</option>
-                <option value="price-desc">Cena: opadajuće</option>
+            <select class="js-example-basic-single" name="state">
+                <option value="A">Najpopularnije</option>
+                <option value="B">Najnovije</option>
+                <option value="C">Cena: rastuće</option>
+                <option value="D">Cena: opadajuće</option>
             </select>
-
+            <script>
+                // In your Javascript (external .js resource or <script> tag)
+                jQuery(document).ready(function() {
+                    jQuery('.js-example-basic-single').select2();
+                });
+            </script>
             <!-- Zadrži postojeće GET parametre (osim 'orderby') -->
             <input type="hidden" name="paged" value="1" />
         </form>
