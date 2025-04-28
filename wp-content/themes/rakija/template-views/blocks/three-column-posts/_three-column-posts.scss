@@ -23,6 +23,11 @@
         gap: 85px;
         flex-wrap: wrap;
 
+        @include mq($xxl) {
+            gap: 0;
+            justify-content: space-between;
+        }
+
         @include mq($md) {
             gap: 25px;
             flex-direction: column;
@@ -33,9 +38,16 @@
     &__box {
         flex: 0 0 29%;
 
+        @include mq($xxl) {
+            flex: 0 0 100%;
+            max-width: calc(50% - 10px);
+            margin-bottom: 25px;
+        }
+
         @include mq($md) {
             flex: 0 0 100%;
             margin: 0 0 50px;
+            max-width: 100%;
         }
 
         &-top {

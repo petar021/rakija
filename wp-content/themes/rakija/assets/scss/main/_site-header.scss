@@ -31,6 +31,10 @@
 		display: flex;
 		align-items: center;
 
+		@include mq($xl) {
+			order: 3;
+		}
+
 		&-left {
 			margin-right: 15px;
 			cursor: pointer;
@@ -51,11 +55,25 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+
+	@include mq($xl) {
+		justify-content: flex-start;
+
+		.site-header__branding {	
+			order: 2;
+			margin-right: auto;
+		}
+	}
 }
 
 .site-header__nav {
 	display: flex;
 	align-items: center;
+
+	@include mq($xl) {
+		order: 1;
+		margin-right: 15px;
+	}
 }
 
 .site-header__logo {

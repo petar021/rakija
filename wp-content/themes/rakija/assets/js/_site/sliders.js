@@ -31,6 +31,17 @@ const Sliders = {
                 reviewsSwiper = new Swiper('.reviews-swiper', {
                     direction: 'horizontal', // Koristi horizontalno pomeranje
                     slidesPerView: 3, // Prikazuje 3 slajda
+                    breakpoints: {
+                        992: { // Ekrani širi od 992px
+                            slidesPerView: 3,
+                        },
+                        768: { // Ekrani od 768px do 991px
+                            slidesPerView: 2,
+                        },
+                        0: { // Ekrani manji od 768px
+                            slidesPerView: 1,
+                        },
+                    },
                     loop: true,
                     pagination: false, // Nema dots
                     navigation: false, // Nema strelica

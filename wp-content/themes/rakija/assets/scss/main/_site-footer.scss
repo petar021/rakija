@@ -43,6 +43,10 @@
 				font-size: 14px;
 				font-family: $font-main;
 				color: $white;
+
+				@include mq($md) {
+					text-align: center;
+				}
 			}
 		}
 	}
@@ -77,6 +81,11 @@
 			max-width: 300px;
 			width: 100%;
 			margin-right: 100px;
+
+			@include mq($lg) {
+				margin-right: 50px;
+				max-width: 275px;
+			}
 
 			@include mq($md) {
 				max-width: 100%;
@@ -125,6 +134,10 @@
 
 			ul {
 				margin-right: 75px;
+
+				@include mq($lg) {
+					margin-right: 25px;
+				}
 
 				@include mq($md) {
 					margin-right: 0;

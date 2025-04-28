@@ -22,7 +22,7 @@ a {
 	display: block;
 	padding: 0;
 
-	@include mq($md + 1, min) {
+	@include mq($xl + 1, min) {
 		display: none;
 	}
 }
@@ -67,7 +67,7 @@ a {
 }
 
 .main-navigation__menu-wrap {
-	@include mq($md) {
+	@include mq($xl) {
 		position: fixed;
 		top: 0;
 		right: 0;
@@ -93,7 +93,7 @@ a {
 .main-navigation__menu {
 	text-align: center;
 
-	@include mq($md + 1, min) {
+	@include mq($xl + 1, min) {
 		display: flex;
 		align-items: center;
 		text-align: left;
@@ -104,7 +104,7 @@ a {
 .main-navigation__menu li {
 	margin-bottom: 25px;
 
-	@include mq($md + 1, min) {
+	@include mq($xl + 1, min) {
 		padding: 0 16px;
 		margin-bottom: 0;
 	}

@@ -20,7 +20,7 @@
         align-items: center;
         margin-bottom: 80px;
 
-        @include mq($md) {
+        @include mq($lg) {
             margin-bottom: 50px;
             flex-direction: column;
             gap: 15px;
@@ -29,14 +29,14 @@
         &:nth-child(even) {
             flex-direction: row-reverse;
 
-            @include mq($md) {
+            @include mq($lg) {
                 flex-direction: column;
             }
 
             p {
                 padding-left: 55px;
 
-                @include mq($md) {
+                @include mq($lg) {
                     padding-left: 0;
                 }
             }
