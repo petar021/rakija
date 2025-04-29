@@ -159,10 +159,10 @@
                 border-radius: 15px;
 
                 @include mq($md) {
-                    width: 30px;
-                    height: 30px;
-                    padding: 8px;
-                    font-size: 14px;
+                    width: 25px;
+                    height: 25px;
+                    padding: 0;
+                    font-size: 12px;
                 }
                 
                 span {

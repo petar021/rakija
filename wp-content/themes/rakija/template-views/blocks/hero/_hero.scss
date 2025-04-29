@@ -13,7 +13,7 @@
 
 .banner__container {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
     padding-top: 83px;
     margin-bottom: 30px;
@@ -21,6 +21,11 @@
     @include mq($lg) {
         flex-direction: column;
         gap: 25px;
+    }
+
+    .hero__right {
+        max-width: 520px;
+        width: 100%;
     }
 }
 

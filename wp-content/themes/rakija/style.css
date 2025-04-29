@@ -1065,12 +1065,14 @@ textarea {
   transition: 350ms ease;
   font-size: 0.875rem;
   text-align: center;
-  color: #fff;
-  background-color: #46b450;
+  color: #687a47;
+  background-color: #cce0a5;
+  border-color: #cce0a5 !important;
   border-radius: 20px;
   max-width: 1320px;
   padding: 5px 25px;
   width: 100%;
+  font-family: "Roboto Mono";
 }
 @media screen and (max-width: 1199px) {
   .wpcf7-form.sent .wpcf7-response-output {
@@ -1954,7 +1956,7 @@ a:hover, a:focus, a:active {
 
 .banner__container {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   padding-top: 83px;
   margin-bottom: 30px;
@@ -1964,6 +1966,10 @@ a:hover, a:focus, a:active {
     flex-direction: column;
     gap: 25px;
   }
+}
+.banner__container .hero__right {
+  max-width: 520px;
+  width: 100%;
 }
 
 .hero__images {
@@ -2183,9 +2189,20 @@ a:hover, a:focus, a:active {
   padding: 50px 0;
   background-color: #f5f5f5;
 }
+@media screen and (max-width: 767px) {
+  .three-column-cat {
+    padding: 25px 0;
+  }
+}
 .three-column-cat__wrapper {
   display: flex;
   gap: 40px;
+}
+@media screen and (max-width: 767px) {
+  .three-column-cat__wrapper {
+    gap: 15px;
+    flex-direction: column;
+  }
 }
 .three-column-cat__box {
   width: 414px;
@@ -2198,6 +2215,11 @@ a:hover, a:focus, a:active {
   border-radius: 30px;
   align-items: center;
   overflow: hidden;
+}
+@media screen and (max-width: 767px) {
+  .three-column-cat__box {
+    width: 100%;
+  }
 }
 .three-column-cat__box::after {
   content: "";
@@ -2747,10 +2769,10 @@ a:hover, a:focus, a:active {
 @media screen and (max-width: 767px) {
   .three-column-posts__pagination .page-numbers span.dots,
   .three-column-posts__pagination .page-numbers a {
-    width: 30px;
-    height: 30px;
-    padding: 8px;
-    font-size: 14px;
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    font-size: 12px;
   }
 }
 .three-column-posts__pagination .page-numbers span.dots span,
@@ -2835,6 +2857,11 @@ a:hover, a:focus, a:active {
   height: 1px;
   background-color: #997249;
   margin-right: 14px;
+}
+@media screen and (max-width: 767px) {
+  .banner-title__right {
+    margin-top: 15px;
+  }
 }
 .banner-title__right p {
   font-size: 1.25rem;

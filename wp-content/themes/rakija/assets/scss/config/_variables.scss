@@ -26,7 +26,8 @@ $gray-dark: 	#3e3e3e;
 $red: 			#db332a;
 $yellow-light: 	#f6f0db;
 $yellow: 		#eac50b;
-
+$green: 		#cce0a5;
+$green-dark: 	#687a47;
 
 $site-colors: (
 	'white': $white,
@@ -37,6 +38,8 @@ $site-colors: (
 	'red': $red,
 	'yellow-light': $yellow-light,
 	'yellow': $yellow,
+	'green': $green,
+	'green-dark': $green-dark,
 ) !default;
 
 // Transitions

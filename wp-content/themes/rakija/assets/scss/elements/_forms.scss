@@ -141,12 +141,14 @@ textarea {
 		transition: $dur $ease;
 		font-size: 0.875rem;
 		text-align: center;
-		color: $white;
-		background-color: #46b450;
+		color: $green-dark;
+		background-color: $green;
+		border-color: $green !important; //sass-lint:disable-line no-important
 		border-radius: 20px;
     	max-width: 1320px;
 		padding: 5px 25px;
 		width: 100%;
+		font-family: $font-highlight;
 
 		@include mq($xl) {
 			max-width: calc(100% - 30px);
