@@ -17,7 +17,6 @@ get_header();
 
 <div id="primary-div" class="content-area">
     <main id="primary" class="site-main">
-        <div class="page-animate"></div>
         <?php if (have_rows('content')) : ?>
             <?php while (have_rows('content')) : the_row(); ?>
 

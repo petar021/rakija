@@ -2,7 +2,7 @@
 ## Header
 --------------------------------------------------------------*/
 .site-header {
-	padding: 15px 0;
+	padding: 30px 0;
 	position: sticky;
 	z-index: 999;
 	width: 100%;
@@ -13,7 +13,7 @@
 	border-bottom: 1px solid transparent;
 
 	&.is-sticky {
-		padding: 5px 0;
+		padding: 15px 0;
 		border-bottom: 1px solid $black;
 		background-color: $white;
 	}
@@ -36,8 +36,12 @@
 		}
 
 		&-left {
-			margin-right: 15px;
+			margin-right: 38px;
 			cursor: pointer;
+
+			@include mq($xxl) {
+				margin-right: 10px;
+			}
 
 			span {
 				color: $black;
@@ -45,6 +49,25 @@
 
 				&:hover {
 					color: $pale-brown;
+				}
+			}
+		}
+
+		&-right {
+			@include mq($xxl) {
+				.btn-icon {
+					font-size: 0;
+					padding: 0;
+					border: none;
+
+					span {
+						font-size: 20px;
+						margin-right: 0;
+						background-color: $white;
+						color: $black;
+						display: flex;
+						align-items: center;
+					}
 				}
 			}
 		}
@@ -71,8 +94,8 @@
 	align-items: center;
 
 	@include mq($xl) {
-		order: 1;
-		margin-right: 15px;
+		order: 4;
+		margin-left: 10px;
 	}
 }
 
@@ -90,6 +113,6 @@
 	}
 
 	@include mq($lg + 1, min) {
-		max-width: 222px;
+		max-width: 232px;
 	}
 }

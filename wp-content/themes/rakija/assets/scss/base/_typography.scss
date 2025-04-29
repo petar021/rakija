@@ -14,19 +14,21 @@ textarea {
 }
 
 pre {
-	background: #ededed;
+	background: $pale-brown;
 	max-width: 100%;
 	overflow: auto;
 	padding: 1.6em;
-	font-size: 12px;
+	font-size: 1.25rem;
+	letter-spacing: 0.15rem;
 	margin-bottom: 30px;
+	color: $white;
 }
 
 .section-title {
 	font-family: $font-section-title;
 	color: $black;
 	line-height: 70px;
-	@include clamp-font-size(32, 75);
+	@include clamp-font-size(32, 120);
 	margin-bottom: clamp(1.25rem, 1rem + 1.25vw, 1.5rem);
 	text-transform: uppercase;
 
@@ -48,6 +50,18 @@ pre {
 --------------------------------------------------------------*/
 .entry-content {
 	margin: 50px 0 0;
+
+	&.post-article__content {
+		padding-bottom: 120px;
+
+		@include mq($xl) {
+			padding-bottom: 80px;
+		}
+
+		@include mq($md) {
+			padding-bottom: 50px;
+		}
+	}
 
 	@include mq($md) {
 		margin: 25px 0 0;
@@ -94,8 +108,17 @@ pre {
 			margin-bottom: 0;
 		}
 
+		@include mq($md) {
+			font-size: 0.875rem;
+		}
+
 		em {
 			font-family: $font-second;
+			font-size: 1.25rem;
+
+			@include mq($md) {
+				font-size: 0.875rem;
+			}
 		}
 	}
 
@@ -104,11 +127,12 @@ pre {
 		padding-left: 27px;
 		position: relative;
 		margin-bottom: clamp(1rem, 1.125rem + 0.625vw, 1.5rem);
+		padding-top: 27px;
 
 		&::before {
 			content: '“';
 			font-family: $font-second;
-			font-size: 150px;
+			font-size: 50px;
 			line-height: 0.6;
 			color: $black;
 			position: absolute;

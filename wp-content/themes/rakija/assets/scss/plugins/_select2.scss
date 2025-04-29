@@ -1,6 +1,10 @@
 .select2-container {
     min-width: 290px;
-    border-radius: 10px;   
+    border-radius: 10px;
+    
+    @include mq($md) {
+        width: 100% !important; // sass-lint:disable-line no-important
+    }
 }
 
 .select2-search--dropdown {

@@ -32,7 +32,7 @@ if ($query->have_posts()) : ?>
                             <?php if (has_post_thumbnail()) : ?>
                                 <?php the_post_thumbnail('medium_large'); ?>
                             <?php else : ?>
-                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/image-03.jpg" alt="<?php the_title(); ?>">
+                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/placeholder-image.webp" alt="<?php the_title(); ?>">
                             <?php endif; ?>
                         </a>
                     </div>
@@ -47,29 +47,44 @@ if ($query->have_posts()) : ?>
             <?php endwhile; ?>
         </div>
         <div class="three-column-posts__pagination">
-            <nav class="pagination" role="navigation">
-                <?php
-                $big = 999999999; // potrebno za ispravan rad paginacije
+    <nav class="pagination" role="navigation">
+        <?php
+        $big = 999999999;
 
-                $pagination_links = paginate_links([
-                    'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
-                    'format' => '?paged=%#%',
-                    'current' => max(1, get_query_var('paged')),
-                    'total' => $query->max_num_pages,
-                    'type' => 'array', // Ovo nam omogućava da dobijemo listu linkova
-                    'prev_text' => '<span class="font-arrow-small"></span>',
-                    'next_text' => '<span class="font-arrow-small"></span>',
-                ]);
+        $pagination_links = paginate_links([
+            'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+            'format' => '?paged=%#%',
+            'current' => max(1, get_query_var('paged')),
+            'total' => $query->max_num_pages,
+            'type' => 'array',
+            'prev_text' => '<span class="font-arrow-small"></span>',
+            'next_text' => '<span class="font-arrow-small"></span>',
+        ]);
 
-                if (!empty($pagination_links)) : ?>
-                    <ul class="page-numbers">
-                        <?php foreach ($pagination_links as $link) : ?>
-                            <li><?php echo str_replace('page-numbers', 'page-numbers', $link); ?></li>
-                        <?php endforeach; ?>
-                    </ul>
-                <?php endif; ?>
-            </nav>
-        </div>
+        if (!empty($pagination_links)) : ?>
+            <ul class="page-numbers">
+                <?php foreach ($pagination_links as $link) : ?>
+                    <li>
+                        <?php
+                        // Pronađi brojeve stranica u linku
+                        $modified_link = preg_replace_callback(
+                            '/>(\d{1,2})</',
+                            function ($matches) {
+                                $number = (int)$matches[1];
+                                $formatted = $number < 10 ? '0' . $number : $number;
+                                return '>' . $formatted . '<';
+                            },
+                            $link
+                        );
+                        echo $modified_link;
+                        ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        <?php endif; ?>
+    </nav>
+</div>
+
     </div>
 </section>
 

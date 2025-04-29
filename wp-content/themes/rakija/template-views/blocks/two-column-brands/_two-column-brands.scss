@@ -1,5 +1,5 @@
 .two-column-brands {
-    padding: 100px 0;
+    padding: 48px 0 40px;
     background-color: $gray;
 
     @include mq($md) {
@@ -22,7 +22,7 @@
     }
 
     &__content {
-        max-width: calc(100% - 490px);
+        max-width: 500px;
         width: 100%;
 
         @include mq($md) {

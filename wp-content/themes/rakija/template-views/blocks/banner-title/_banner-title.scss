@@ -33,17 +33,18 @@
     &__left {
         span {
             color: $pale-brown;
-            font-size: 0.813rem;
+            font-size: 0.815rem;
             display: flex;
             align-items: center;
             justify-content: flex-start;
+            font-family: $font-highlight;
 
             &::before {
                 content: '';
-                width: 40px;
+                width: 45px;
                 height: 1px;
                 background-color: $pale-brown;
-                margin-right: 10px;
+                margin-right: 14px;
             }
         }
     }

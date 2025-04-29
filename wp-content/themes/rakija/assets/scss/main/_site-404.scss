@@ -6,10 +6,12 @@
 	align-items: center;
 	justify-content: center;
 	min-height: 100vh;
+	overflow: hidden;
 
 	@include mq($md) {
 		flex-direction: column;
-		padding: 0 15px;
+		padding: 0 15px 50px;
+		min-height: auto;
 	}
 
 	.error-right {
@@ -52,7 +54,7 @@
 
 		@include mq($md) {
 			margin-right: 0;
-			max-width: 100%;
+			max-width: 75%;
 		}
 
 		&::after,
@@ -62,6 +64,10 @@
 			font-family: $font-highlight;
 			position: relative;
 			font-weight: 300;
+
+			@include mq($md) {
+				font-weight: 400;
+			}
 		}
 
 		&::after {
@@ -79,7 +85,7 @@
 			z-index: 5;
 
 			@include mq($md) {
-				top: 19%;
+				top: 25%;
 			}
 		}
 	}
