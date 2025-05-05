@@ -68,13 +68,15 @@
 						<button type="button" class="main-navigation__toggle js-menu-btn">
 							<span class="main-navigation__toggle-stripe"></span>
 							<span class="main-navigation__toggle-stripe"></span>
-							<span class="main-navigation__toggle-stripe"></span>
 						</button>
 					</nav><!-- #site-navigation -->
 				</div>
 				<div class="site-header__cart">
 					<div class="site-header__cart-left">
-						<span class="font-search"></span>
+						<button id="search-toggle" class="font-search" aria-label="Search"></button>
+						<form id="search-form" class="search-form" action="<?php echo esc_url(home_url('/')); ?>" method="get">
+							<input type="text" name="s" id="search-input" placeholder="Pretraži..." />
+						</form>
 					</div>
 					<div class="site-header__cart-right">
 						<a href="javascript:;" class="btn-icon"><span class="font-cart"></span> Korpa</a>

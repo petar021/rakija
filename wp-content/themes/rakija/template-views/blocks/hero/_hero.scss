@@ -131,6 +131,8 @@
 
     @include mq($md) {
         margin-top: 0;
+        padding-left: 35px;
+        font-size: 12px;
     }
 
     &::before {
@@ -142,6 +144,10 @@
         width: 44px;
         height: 1px;
         background-color: $pale-brown;
+
+        @include mq($md) {
+            width: 20px;
+        }
     }
 }
 

@@ -15,7 +15,7 @@ a {
 .main-navigation__toggle {
 	position: relative;
 	z-index: 1;
-	width: 24px;
+	width: 28px;
   	height: 20px;
 	border: none;
 	background-color: transparent;
@@ -42,8 +42,7 @@ a {
 	}
 
 	&:nth-child(2) {
-		top: 50%;
-		transform: translateY(-50%);
+		bottom: 0;
 	}
 
 	&:nth-child(3) {
@@ -54,14 +53,16 @@ a {
 	.is-active & {
 		&:nth-child(1) {
 			transform: rotate(45deg);
+			top: -3px;
 		}
 
 		&:nth-child(2) {
-			display: none;
+			transform: rotate(-45deg);
 		}
 
 		&:nth-child(3) {
 			transform: rotate(-45deg);
+			display: none;
 		}
 	}
 }
@@ -79,7 +80,7 @@ a {
 		transition: transform $dur $ease, opacity $dur $dur $ease, visibility $dur $dur $ease;
 		transform: translateX(100%);
 		will-change: transform;
-		padding: 80px 20px 0;
+		padding: 94px 20px 0;
 
 		&.is-active {
 			opacity: 1;
@@ -99,10 +100,14 @@ a {
 		text-align: left;
 		grid-gap: 10px;
 	}
+
+	@include mq($xxl) {
+		grid-gap: 0;
+	}
 }
 
 .main-navigation__menu li {
-	margin-bottom: 25px;
+	margin-bottom: 15px;
 
 	@include mq($xl + 1, min) {
 		padding: 0 16px;
@@ -135,7 +140,6 @@ a {
 
 	@include mq($xl) {
 		font-size: 20px;
-		text-transform: uppercase;
 	}
 
 	@include hover {

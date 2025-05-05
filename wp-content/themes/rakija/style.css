@@ -787,12 +787,17 @@ a,
 svg,
 input,
 textarea,
-select {
+select,
+button {
   transition: 350ms ease;
 }
 
 .content-area {
   position: relative;
+}
+
+body.scroll-disable {
+  overflow: hidden;
 }
 
 /*--------------------------------------------------------------
@@ -1365,6 +1370,7 @@ img {
 @media screen and (max-width: 1199px) {
   .site-header {
     background-color: #fff;
+    padding: 17px 5px;
   }
   .site-header.hidden {
     transition: 350ms ease;
@@ -1374,41 +1380,150 @@ img {
 .site-header__cart {
   display: flex;
   align-items: center;
+  position: relative;
 }
 @media screen and (max-width: 1199px) {
   .site-header__cart {
     order: 3;
+    position: fixed;
+    bottom: 0;
+    left: 100%;
+    transform: translateX(0);
+    width: 100%;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px 0;
+    transition: 350ms ease;
+  }
+  .site-header__cart.is-active {
+    left: 50%;
+    transition: 350ms ease;
+    transform: translateX(-50%);
   }
 }
 .site-header__cart-left {
-  margin-right: 38px;
+  margin-right: 18px;
   cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  background-color: transparent;
+  transition: 350ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 100%;
+  top: 5px;
+}
+@media only screen and (min-width: 1199px) {
+  .site-header__cart-left:hover {
+    background-color: #f5f5f5;
+  }
 }
 @media screen and (max-width: 1399px) {
   .site-header__cart-left {
     margin-right: 10px;
+    top: 0;
   }
 }
-.site-header__cart-left span {
-  color: #000;
-  transition: 350ms ease;
+@media screen and (max-width: 1199px) {
+  .site-header__cart-left {
+    margin-right: 0;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 75%;
+    margin: 0 auto;
+  }
 }
-.site-header__cart-left span:hover {
-  color: #997249;
+.site-header__cart-left .search-form {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fff;
+}
+@media screen and (max-width: 1199px) {
+  .site-header__cart-left .search-form {
+    position: relative;
+    display: block !important;
+    width: 100%;
+    background-color: #f5f5f5;
+  }
+}
+.site-header__cart-left .search-form input {
+  border: 1px solid #d9d9d9;
+  padding: 5px 10px 0 30px;
+  width: 100%;
+  margin-top: 0;
+}
+@media screen and (max-width: 1199px) {
+  .site-header__cart-left .search-form input {
+    border-radius: 20px;
+  }
+}
+.site-header__cart-left .search-form input::-moz-placeholder {
+  color: #000;
+}
+.site-header__cart-left .search-form input::placeholder {
+  color: #000;
+}
+.site-header__cart-left button {
+  color: #000;
+  background-color: transparent;
+  border-color: transparent;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  z-index: 5;
+}
+@media screen and (max-width: 767px) {
+  .site-header__cart-left button {
+    font-size: 20px;
+    left: 5px;
+  }
+}
+.site-header__cart-left.active {
+  width: 160px;
+  border-radius: 15px;
+  display: flex;
+  align-items: flex-start;
+}
+@media screen and (max-width: 1199px) {
+  .site-header__cart-left.active {
+    width: 75%;
+  }
 }
 @media screen and (max-width: 1399px) {
   .site-header__cart-right .btn-icon {
-    font-size: 0;
-    padding: 0;
+    padding: 0 15px;
     border: none;
+    margin-top: 20px;
   }
   .site-header__cart-right .btn-icon span {
     font-size: 20px;
     margin-right: 0;
-    background-color: #fff;
-    color: #000;
     display: flex;
     align-items: center;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .site-header__cart-right {
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 767px) {
+  .site-header__cart-right .btn-icon span {
+    font-size: 30px;
   }
 }
 
@@ -1424,6 +1539,7 @@ img {
   .site-header__container .site-header__branding {
     order: 2;
     margin-right: auto;
+    z-index: 5;
   }
 }
 
@@ -1440,7 +1556,7 @@ img {
 
 .site-header__logo {
   display: block;
-  max-width: 150px;
+  max-width: 186px;
   width: 100%;
 }
 .site-header__logo img {
@@ -1471,7 +1587,7 @@ a:hover, a:focus, a:active {
 .main-navigation__toggle {
   position: relative;
   z-index: 1;
-  width: 24px;
+  width: 28px;
   height: 20px;
   border: none;
   background-color: transparent;
@@ -1498,8 +1614,7 @@ a:hover, a:focus, a:active {
   top: 0;
 }
 .main-navigation__toggle-stripe:nth-child(2) {
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: 0;
 }
 .main-navigation__toggle-stripe:nth-child(3) {
   top: 100%;
@@ -1507,12 +1622,14 @@ a:hover, a:focus, a:active {
 }
 .is-active .main-navigation__toggle-stripe:nth-child(1) {
   transform: rotate(45deg);
+  top: -3px;
 }
 .is-active .main-navigation__toggle-stripe:nth-child(2) {
-  display: none;
+  transform: rotate(-45deg);
 }
 .is-active .main-navigation__toggle-stripe:nth-child(3) {
   transform: rotate(-45deg);
+  display: none;
 }
 
 @media screen and (max-width: 1199px) {
@@ -1528,7 +1645,7 @@ a:hover, a:focus, a:active {
     transition: transform 350ms ease, opacity 350ms 350ms ease, visibility 350ms 350ms ease;
     transform: translateX(100%);
     will-change: transform;
-    padding: 80px 20px 0;
+    padding: 94px 20px 0;
   }
   .main-navigation__menu-wrap.is-active {
     opacity: 1;
@@ -1549,9 +1666,14 @@ a:hover, a:focus, a:active {
     grid-gap: 10px;
   }
 }
+@media screen and (max-width: 1399px) {
+  .main-navigation__menu {
+    grid-gap: 0;
+  }
+}
 
 .main-navigation__menu li {
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 @media screen and (min-width: 1200px) {
   .main-navigation__menu li {
@@ -1584,7 +1706,6 @@ a:hover, a:focus, a:active {
 @media screen and (max-width: 1199px) {
   .main-navigation__menu a {
     font-size: 20px;
-    text-transform: uppercase;
   }
 }
 @media only screen and (min-width: 1199px) {
@@ -2071,6 +2192,8 @@ a:hover, a:focus, a:active {
 @media screen and (max-width: 767px) {
   .hero__highlight {
     margin-top: 0;
+    padding-left: 35px;
+    font-size: 12px;
   }
 }
 .hero__highlight::before {
@@ -2082,6 +2205,11 @@ a:hover, a:focus, a:active {
   width: 44px;
   height: 1px;
   background-color: #997249;
+}
+@media screen and (max-width: 767px) {
+  .hero__highlight::before {
+    width: 20px;
+  }
 }
 
 .hero-image__left-main {

@@ -46,10 +46,17 @@ a,
 svg,
 input,
 textarea,
-select {
+select,
+button {
     transition: $dur $ease;
 }
 
 .content-area {
     position: relative;
+}
+
+body {
+    &.scroll-disable {
+        overflow: hidden;
+    }
 }

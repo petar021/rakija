@@ -20,6 +20,7 @@
 
 	@include mq($xl) {
 		background-color: $white;
+		padding: 17px 5px;
 
 		&.hidden {
 			transition: $dur $ease;
@@ -30,25 +31,121 @@
 	&__cart {
 		display: flex;
 		align-items: center;
+		position: relative;
 
 		@include mq($xl) {
 			order: 3;
+			position: fixed;
+			bottom: 0;
+			left: 100%;
+			transform: translateX(0);
+			width: 100%;
+			background: $gray;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			padding: 20px 0;
+			transition: $dur $ease;
+
+			&.is-active {
+				left: 50%;
+				transition: $dur $ease;
+				transform: translateX(-50%);
+			}
 		}
 
 		&-left {
-			margin-right: 38px;
+			margin-right: 18px;
 			cursor: pointer;
+			width: 30px;
+			height: 30px;
+			border-radius: 50px;
+			background-color: transparent;
+			transition: $dur $ease;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			right: 100%;
+			top: 5px;
+
+			@include hover {
+				background-color: $gray;
+			}
 
 			@include mq($xxl) {
 				margin-right: 10px;
+				top: 0;
 			}
 
-			span {
-				color: $black;
-				transition: $dur $ease;
+			@include mq($xl) {
+				margin-right: 0;
+				position: relative;
+				top: 0;
+				left: 0;
+				width: 75%;
+				margin: 0 auto;
+			}
 
-				&:hover {
-					color: $pale-brown;
+			.search-form {
+				display: none;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background: $white;
+
+				@include mq($xl) {
+					position: relative;
+					display: block !important;
+					width: 100%;
+					background-color: $gray;
+				}
+			}
+			
+			.search-form input {
+				border: 1px solid $gray-light;
+				padding: 5px 10px 0 30px;
+				width: 100%;
+				margin-top: 0;
+
+				@include mq($xl) {
+					border-radius: 20px;
+				}
+
+				&::placeholder {
+					color: $black;
+				}
+			}			
+
+			button {
+				color: $black;
+				background-color: transparent;
+				border-color: transparent;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				left: 6px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 0;
+				z-index: 5;
+
+				@include mq($md) {
+					font-size: 20px;
+					left: 5px;
+				}
+			}
+
+			&.active {
+				width: 160px;
+				border-radius: 15px;
+				display: flex;
+				align-items: flex-start;
+
+				@include mq($xl) {
+					width: 75%;
 				}
 			}
 		}
@@ -56,17 +153,27 @@
 		&-right {
 			@include mq($xxl) {
 				.btn-icon {
-					font-size: 0;
-					padding: 0;
+					padding: 0 15px;
 					border: none;
+					margin-top: 20px;
 
 					span {
 						font-size: 20px;
 						margin-right: 0;
-						background-color: $white;
-						color: $black;
 						display: flex;
 						align-items: center;
+					}
+				}
+			}
+
+			@include mq($xl) {
+				margin: 0 auto;
+			}
+
+			@include mq($md) {
+				.btn-icon {	
+					span {
+						font-size: 30px;
 					}
 				}
 			}
@@ -85,6 +192,7 @@
 		.site-header__branding {	
 			order: 2;
 			margin-right: auto;
+			z-index: 5;
 		}
 	}
 }
@@ -101,7 +209,7 @@
 
 .site-header__logo {
 	display: block;
-	max-width: 150px;
+	max-width: 186px;
 	width: 100%;
 
 	img {
