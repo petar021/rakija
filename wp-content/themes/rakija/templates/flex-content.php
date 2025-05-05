@@ -36,7 +36,7 @@ get_header();
                     <?php get_template_part('template-views/blocks/text-image/text-image'); ?>
                 
                 <?php elseif (get_row_layout() == 'basic_block') : ?>
-                    <?php get_template_part('template-views/blocks/basic-block/basic-block-about'); ?>
+                    <?php get_template_part('template-views/blocks/basic-block/basic-block'); ?>
                 
                 <?php elseif (get_row_layout() == 'contact_form') : ?>
                     <?php get_template_part('template-views/blocks/contact-form/contact-form'); ?>
@@ -49,6 +49,12 @@ get_header();
                     
                 <?php elseif (get_row_layout() == 'google_reviews') : ?>
                     <?php get_template_part('template-views/blocks/reviews/reviews'); ?>
+                
+                <?php elseif (get_row_layout() == 'three_column_categories') : ?>
+                    <?php get_template_part('template-views/blocks/three-column-cat/three-column-cat'); ?>
+                
+                <?php elseif (get_row_layout() == 'products_display') : ?>
+                    <?php get_template_part('template-views/blocks/products/products'); ?>
 
                 <?php endif; ?>
 

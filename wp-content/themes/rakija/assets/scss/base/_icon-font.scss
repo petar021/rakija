@@ -55,6 +55,9 @@
 	@if $filename == star {
 		$char: "\E00B";
 	}
+	@if $filename == trash {
+		$char: "\E00C";
+	}
 
 	@return $char;
 }
@@ -102,5 +105,8 @@
 }
 .font-star {
 	@include font(star);
+}
+.font-trash {
+	@include font(trash);
 }
 

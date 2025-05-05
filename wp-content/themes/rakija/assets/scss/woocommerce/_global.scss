@@ -1,0 +1,253 @@
+/*--------------------------------------------------------------
+# Woocommerce global elements
+--------------------------------------------------------------*/
+.woocommerce-form-coupon-toggle {
+	background-color: $white;
+	color: $black;
+}
+
+.showcoupon {
+	background-color: transparent;
+    border: 1px solid $black;
+    padding: 8px 14px;
+	border-radius: 46px;
+    color: $black;
+    transition: 350ms ease;
+	font-weight: 400 !important; //sass-lint:disable-line no-important
+
+	@include hover {
+		background-color: $black;
+		color: $white;
+	}
+}
+
+.notices {
+	margin-bottom: 15px;
+
+	.woocommerce-error {
+		display: flex;
+        width: 100%;
+        background-color: rgba($red, 0.3);
+        padding: 11px 25px;
+        border-radius: 4px;
+        flex-wrap: wrap;
+        grid-gap: 0 10px;
+		outline: none;
+		flex-direction: column;
+	}
+
+    .woocommerce-message,
+    .woocommerce-info {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		color: $black;
+		padding: 11px 25px;
+		border-radius: 4px;
+		outline: none;
+		@include clamp-font-size(14, 16);
+
+        .button {
+            order: 1;
+			flex-shrink: 0;
+			margin-left: 15px;
+
+			@include hover {
+				color: $white;
+			}
+        }
+
+		a {
+			font-weight: 600;
+			color: $black;
+		}
+	}
+
+	.woocommerce-message {
+		background-color: $pale-brown;
+		color: $white;
+	}
+
+	// @include mq($m) {
+	// 	.woocommerce-message {
+	// 		padding: 11px 12px;
+	// 	}
+	// }
+
+	@include mq($md) {
+		.woocommerce-message,
+		.woocommerce-info {
+			flex-direction: column;
+			text-align: center;
+
+			.button {
+				margin-left: 0;
+				margin-top: 10px;
+			}
+		}
+	}
+}
+
+.notices--revert {
+    .woocommerce-message {
+        flex-direction: row-reverse;
+    }
+}
+
+.woocommerce-privacy-policy-text {
+	p {
+		font-size: 14px;
+		color: $black;
+	}
+}
+
+.checkbox__text {
+	font-size: 14px;
+	color: $black;
+
+	a {
+		color: $black;
+	}
+}
+
+/* 
+ * Custom AJAX spinner on WooCommerce checkout 
+ * The class used to load the overlay is .blockUI .blockOverlay
+ * The class used to load the spinner is .woocommerce .loader:before
+ *
+ */
+
+ @keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+ .woocommerce .blockUI.blockOverlay,
+ .woocommerce .loader {
+
+	&::before {
+		border-radius: 50%;
+		border-top: 4px solid $black;
+		width: 20px;
+		height: 20px;
+		animation: spin 2s linear infinite;
+		background-image: none;
+	}
+}
+
+
+.woocommerce-breadcrumb {
+	@include clamp-font-size(14, 16);
+	color: $pale-brown;
+
+	a {
+		color: $black;
+
+		@include hover {
+			color: $pale-brown;
+		}
+	}
+}
+
+.woocommerce-result-count {
+	font-size: 14px;
+	margin: 10px 0;
+
+	@include mq($md) {
+		display: none;
+	}
+}
+
+.woocommerce-ordering {
+    @include font(chevron-down);
+    position: relative;
+
+    &::before {
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: $black;
+        font-size: 12px;
+    }
+
+	select {
+		appearance: none;
+		-webkit-appearance: none; // sass-lint:disable-line no-vendor-prefixes
+		-moz-appearance: none; // sass-lint:disable-line no-vendor-prefixes
+		background-color: $white;
+		color: $black;
+		padding: 10px 30px 10px 10px;
+		border: 1px solid $white;
+		border-radius: 4px;
+		font-size: 14px;
+		outline: none;
+		cursor: pointer;
+		width: 100%;
+	}
+	
+	select:focus {
+		border-color: $black;
+	}
+	
+	select option {
+		background-color: $white;
+		color: $black;
+	}
+
+	@include mq($md) {
+		width: 100%;
+
+		&::before {
+			right: 10px;
+			font-size: 10px;
+		}
+	
+        select {
+			padding: 10px 25px 10px 10px;
+			font-size: 13px;
+		}
+    }
+}
+
+bdi {
+	display: flex;
+	align-items: center;
+}
+
+.woocommerce-order-overview__total {
+	bdi {
+		justify-content: center;
+	}
+}
+
+
+.product-breadcrumb {
+	margin-bottom: 20px;
+}
+
+.single-product {
+	.notices {
+		.woocommerce-message {
+			a {
+				color: $pale-brown;
+				padding: 5px 10px;
+				background-color: $white;
+				border-radius: 5px;
+
+				@include hover {
+					background-color: $black;
+				}
+			}
+
+			&::before {
+				left: 5px;
+			}
+		}
+	}
+}

@@ -1,0 +1,121 @@
+.categories:not(.categories--listing) {
+    padding: 20px 0;
+
+    @include mq($md + 1, min) {
+        padding: 40px 0;
+    }
+}
+
+.categories--listing {
+    margin-bottom: 20px;
+}
+
+.categories__row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    grid-gap: 20px;
+
+    .categories--centar & {
+        justify-content: center;
+    }
+
+    // @include mq($lg + 1, min) {
+    //     margin: 0 -10px;
+    // }
+
+    @include mq($md) {
+       grid-gap: 10px;
+    }
+}
+
+.categories__title {
+    .categories--centar & {
+        text-align: center;
+    }
+}
+
+.categories__item {
+    // margin-bottom: 10px;
+    flex: 0 0 48%;
+    max-width: 48%;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, rgba($black, 0) 0%, rgba($black, 0.75) 90%);
+        pointer-events: none;
+    }
+}
+
+.categories__item a {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease-in-out; // Glađa tranzicija za celokupan item
+    border-radius: 4px;
+    padding-bottom: 125%;
+    display: block;
+    background-color: transparent;
+
+    span {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        max-width: 100%;
+        padding: 15px;
+        color: $white;
+        @include clamp-font-size(13, 16);
+        font-weight: 800;
+        text-transform: uppercase;
+        line-height: 1.3;
+        z-index: 2;
+    }
+
+    img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease-in-out; // Dodaj tranziciju za sliku
+        transform: scale(1);
+        will-change: transform;
+        backface-visibility: hidden;
+    }
+
+    .categories--listing & {
+        padding-bottom: 70%;
+    }
+
+    @include hover {
+        img {
+            transform: scale(1.03); // Zoom-in efekat na slici
+        }
+    }
+
+    @include mq($md + 1, min) {
+        span {
+            padding: 20px;
+        }
+    }
+
+    @include mq($xl + 1, min) {
+        span {
+            padding: 23px;
+        }
+    }
+}
+
+.categories__item--soon {
+    opacity: 0.4;
+    pointer-events: none;
+}

@@ -4,6 +4,7 @@ import Navigation from './_site/navigation';
 import StickyHeader from './_site/sticky-header';
 import Sliders from './_site/sliders';
 import Search from './_site/search';
+import Qty from './_site/qty-counter';
 
 document.addEventListener('DOMContentLoaded', () => {
 	LazyLoader.init();
@@ -11,4 +12,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	StickyHeader.init();
 	Sliders.init();
 	Search.init();
+	Qty.init();
 });

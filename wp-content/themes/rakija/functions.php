@@ -174,3 +174,202 @@ require get_template_directory() . '/inc/template-functions.php';
 // if ( defined( 'JETPACK__VERSION' ) ) {
 // 	require get_template_directory() . '/inc/jetpack.php';
 // }
+add_action( 'after_setup_theme', function() {
+    add_theme_support( 'woocommerce' );
+});
+
+/**
+ * Woocommerce disable css
+ */
+add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
+
+add_action( 'woocommerce_single_product_summary', 'custom_display_product_details', 6 );
+function custom_display_product_details() {
+	// Kategorije
+	$terms = get_the_terms( get_the_ID(), 'product_cat' );
+	$category_links = [];
+
+	if ( $terms && ! is_wp_error( $terms ) ) {
+		foreach ( $terms as $term ) {
+			$url = get_term_link( $term );
+			if ( ! is_wp_error( $url ) ) {
+				$category_links[] = '<a href="' . esc_url( $url ) . '">' . esc_html( $term->name ) . '</a>';
+			}
+		}
+	}
+
+	// ACF polja
+	$destilerija = get_field('destilerija');
+	$sortiment = get_field('sortiment');
+	$odlezao = get_field('period_odlezavanja');
+	$alkohol = get_field('alkohol');
+	$zapremina = get_field('zapremina');
+
+	echo '<div class="product-meta-summary">';
+		echo '<div class="product-meta-summary__top">';
+
+			if ( ! empty( $category_links ) ) {
+				echo '<div class="product-meta-summary__top"><span class="label">Kategorije:</span> ' . implode( ', ', $category_links ) . '</div>';
+			}
+
+			if ( $destilerija ) {
+				echo '<p><span class="label">Destilerija:</span> ' . esc_html( $destilerija ) . '</p>';
+			}
+		echo '</div>';
+		echo '<div class="product-meta-summary__bottom">';
+			if ( $sortiment ) {
+				echo '<p>Sortiment: <strong>' . esc_html( $sortiment ) . '</strong></p>';
+			}
+
+			if ( $odlezao ) {
+				echo '<p>Period podležavanja: <strong>' . esc_html( $odlezao ) . '</strong></p>';
+			}
+
+			if ( $alkohol ) {
+				echo '<p>Alkohol: <strong>' . esc_html( $alkohol ) . '</strong></p>';
+			}
+
+			if ( $zapremina ) {
+				echo '<p>Zapremina: <strong>' . esc_html( $zapremina ) . '</strong></p>';
+			}
+		echo '</div>';
+
+	echo '</div>';
+}
+
+
+// Hide shipping when free delivery is available
+add_filter( 'woocommerce_package_rates', 'hide_shipping_when_free_is_available', 10, 2 );
+
+function hide_shipping_when_free_is_available( $rates, $package ) {
+    // Proverite da li besplatna dostava postoji
+    $free_shipping = false;
+
+    foreach ( $rates as $rate_id => $rate ) {
+        if ( 'free_shipping' === $rate->method_id ) {
+            $free_shipping = true;
+            break;
+        }
+    }
+
+    if ( $free_shipping ) {
+        foreach ( $rates as $rate_id => $rate ) {
+            if ( 'flat_rate' === $rate->method_id ) {
+                unset( $rates[$rate_id] );
+            }
+        }
+    }
+
+    return $rates;
+}
+
+/**
+ * Cart icon counter in header
+ */
+add_filter('woocommerce_add_to_cart_fragments', 'custom_woocommerce_header_add_to_cart_fragment');
+function custom_woocommerce_header_add_to_cart_fragment($fragments) {
+    ob_start();
+    ?>
+    <span class="site-header__actions-link-sup js-cart-count"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
+    <?php
+    $fragments['.js-cart-count'] = ob_get_clean();
+
+    ob_start();
+    ?>
+    <div id="mini-cart">
+        <?php woocommerce_mini_cart(); ?>
+    </div>
+    <?php
+    $fragments['#mini-cart'] = ob_get_clean();
+
+    return $fragments;
+}
+
+
+add_action('wp_footer', 'add_custom_mini_cart');
+function add_custom_mini_cart() {
+    ?>
+    <div id="mini-cart" style="display:none;">
+        <?php woocommerce_mini_cart(); ?>
+    </div>
+    <?php
+}
+
+function enqueue_qty_counter_script() {
+    wp_enqueue_script(
+        'qty-counter-script',
+        get_template_directory_uri() . '/assets/js/_site/qty-counter.js',
+        array('jquery'),
+        _S_VERSION,
+        true
+    );
+
+	// Dodaj atribut type="module" za skriptu
+    add_filter('script_loader_tag', function ($tag, $handle, $src) {
+        if ('qty-counter-script' === $handle) {
+            $tag = '<script type="module" src="' . esc_url($src) . '"></script>';
+        }
+        return $tag;
+    }, 10, 3);
+
+    wp_localize_script('qty-counter-script', 'custom_params', array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+    ));
+}
+add_action('wp_enqueue_scripts', 'enqueue_qty_counter_script');
+
+
+
+function custom_update_cart() {
+    if (isset($_POST['form_data'])) {
+        parse_str($_POST['form_data'], $form_data);
+
+        foreach ($form_data['cart'] as $cart_key => $cart_value) {
+            WC()->cart->set_quantity($cart_key, $cart_value['qty'], true);
+        }
+        WC()->cart->calculate_totals();
+
+        // Prikupljanje celokupnog HTML sadržaja tabele korpe
+        ob_start();
+        wc_get_template('cart/cart.php');
+        $cart_html = ob_get_clean();
+
+        // Prikupljanje HTML sadržaja za ukupan iznos (totals)
+        ob_start();
+        woocommerce_cart_totals();
+        $cart_totals_html = ob_get_clean();
+
+        wp_send_json_success(array(
+            'cart_html' => $cart_html,        // HTML za tabelu korpe
+            'cart_totals' => $cart_totals_html, // HTML za ukupne cene
+            'cart_count' => WC()->cart->get_cart_contents_count(), // Ukupan broj proizvoda
+        ));
+    } else {
+        wp_send_json_error('Podaci nisu validni');
+    }
+}
+
+add_action('wp_ajax_update_cart', 'custom_update_cart');
+add_action('wp_ajax_nopriv_update_cart', 'custom_update_cart');
+
+add_action( 'woocommerce_single_product_summary', 'custom_display_product_tax_note', 11 );
+function custom_display_product_tax_note() {
+    global $product;
+
+    if ( ! $product || ! is_a( $product, 'WC_Product' ) ) {
+        $product = wc_get_product( get_the_ID() );
+    }
+
+    $price_incl_tax = wc_get_price_including_tax( $product );
+    $price_excl_tax = wc_get_price_excluding_tax( $product );
+    $tax_amount = $price_incl_tax - $price_excl_tax;
+
+    if ( $tax_amount > 0 ) {
+        echo '<p class="price-note">Cena za paket, cena uključuje PDV (20%) ' . wc_price( $tax_amount ) . '</p>';
+    }
+}
+
+
+
+
+

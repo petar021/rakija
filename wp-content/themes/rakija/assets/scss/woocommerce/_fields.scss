@@ -1,0 +1,80 @@
+/*--------------------------------------------------------------
+# Woocommerce fields
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Woocommerce Qty counter
+--------------------------------------------------------------*/
+// sass-lint:disable no-vendor-prefixes
+/* Chrome, Safari, Edge, Opera */
+.quantity__field::-webkit-outer-spin-button,
+.quantity__field::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+.quantity__field[type='number'] {
+    -moz-appearance: textfield;
+}
+// sass-lint:enable no-vendor-prefixes
+
+.quantity {
+    border-radius: 4px;
+    box-sizing: content-box;
+    display: flex;
+    position: relative;
+    width: 115px;
+
+    input[type='number'] {
+        border: 0;
+    }
+
+    @include mq($xl) {
+        margin-bottom: 30px;
+    }
+
+    @include mq($md) {
+        max-height: 35px;
+        margin: 10px 0 0;
+        width: 115px;
+
+        input[type='number'] {
+            border: 1px solid $black;
+        }
+    }
+}
+
+.quantity__field.qty.text {
+    margin: 0;
+    padding: 7px 0;
+    text-align: center;
+    color: $pale-brown;
+    background-color: $white;
+    border: 1px solid rgba($black, 0.1);
+}
+
+.quantity__minus,
+.quantity__plus {
+    border: 0;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 800;
+    min-width: 35px;
+    opacity: 0.8;
+    padding: 0;
+    background-color: transparent;
+    color: $black;
+
+    @include hover {
+        color: $pale-brown;
+    }
+}
+
+.quantity__minus {
+    border-radius: 4px 0 0 4px;
+}
+
+.quantity__plus {
+    border-radius: 0 4px 4px 0;
+}
