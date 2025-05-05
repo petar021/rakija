@@ -13,9 +13,10 @@
         margin-bottom: 50px;
         position: relative;
 
-        @include mq($md) {
-            gap: 0;
+        @include mq($ipad) {
+            gap: 15px;
             margin-bottom: 0;
+            justify-content: space-between;
         }
 
         &-cta-box {
@@ -39,14 +40,18 @@
         flex: 0 0 calc(25% - 45px);
         box-sizing: border-box;
 
-        @include mq($md) {
-            flex: 0 0 100%;
+        @include mq($ipad) {
+            flex: 0 0 48%;
             width: 100%;
             margin-bottom: 25px;
 
             &:last-of-type {
                 margin-bottom: 0;
             }
+        }
+
+        @include mq($md) {
+            flex: 0 0 45%;
         }
 
         &__top {
@@ -59,7 +64,7 @@
                 transform: scale(1);
                 border-radius: 10px;
 
-                @include mq($md) {
+                @include mq($ipad) {
                     width: 100%;
                 }
             }

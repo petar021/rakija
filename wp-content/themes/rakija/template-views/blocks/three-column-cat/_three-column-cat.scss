@@ -10,7 +10,7 @@
         display: flex;
         gap: 40px;
 
-        @include mq($md) {
+        @include mq($ipad) {
             gap: 15px;
             flex-direction: column;
         }

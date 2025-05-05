@@ -58,7 +58,9 @@
                 <div class="swiper hero-swiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide hero-image__right">
-                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/image-05.png" alt="">
+                            <div class="hero-image__right-image">
+                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/image-05.png" alt="">
+                            </div>
                             <div class="hero-image__right-info">
                                 <div class="hero-image__right-info-price">
                                     <span>3.350 RSD</span>
@@ -76,7 +78,9 @@
                             </div>
                         </div>
                         <div class="swiper-slide hero-image__right">
-                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/image-05.png" alt="">
+                            <div class="hero-image__right-image">
+                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/image-05.png" alt="">
+                            </div>
                             <div class="hero-image__right-info">
                                 <div class="hero-image__right-info-price">
                                     <span>3.350 RSD</span>
@@ -94,7 +98,9 @@
                             </div>
                         </div>
                         <div class="swiper-slide hero-image__right">
-                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/image-05.png" alt="">
+                            <div class="hero-image__right-image">
+                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/image-05.png" alt="">
+                            </div>
                             <div class="hero-image__right-info">
                                 <div class="hero-image__right-info-price">
                                     <span>3.350 RSD</span>

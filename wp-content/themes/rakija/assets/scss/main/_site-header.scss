@@ -74,11 +74,6 @@
 				background-color: $gray;
 			}
 
-			@include mq($xxl) {
-				margin-right: 10px;
-				top: 0;
-			}
-
 			@include mq($xl) {
 				margin-right: 0;
 				position: relative;
@@ -97,7 +92,7 @@
 
 				@include mq($xl) {
 					position: relative;
-					display: block !important;
+					display: block !important; //sass-lint:disable-line no-important
 					width: 100%;
 					background-color: $gray;
 				}
@@ -151,23 +146,13 @@
 		}
 
 		&-right {
-			@include mq($xxl) {
+			@include mq($xl) {
+				margin: 0 auto;
 				.btn-icon {
 					padding: 0 15px;
 					border: none;
 					margin-top: 20px;
-
-					span {
-						font-size: 20px;
-						margin-right: 0;
-						display: flex;
-						align-items: center;
-					}
 				}
-			}
-
-			@include mq($xl) {
-				margin: 0 auto;
 			}
 
 			@include mq($md) {
