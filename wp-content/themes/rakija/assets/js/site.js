@@ -5,6 +5,9 @@ import StickyHeader from './_site/sticky-header';
 import Sliders from './_site/sliders';
 import Search from './_site/search';
 import Qty from './_site/qty-counter';
+import MiniCart from './_site/mini-cart';
+import WooFiltration from './_site/woo-filtration';
+import PriceRange from './_site/price-range';
 
 document.addEventListener('DOMContentLoaded', () => {
 	LazyLoader.init();
@@ -13,4 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	Sliders.init();
 	Search.init();
 	Qty.init();
+	MiniCart.init();
+	WooFiltration.init();
+	PriceRange.init();
 });

@@ -1,0 +1,301 @@
+.products-sec__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    grid-gap: 25px;
+    max-width: 75%;
+    width: 100%;
+    position: relative;
+    padding-bottom: 100px;
+
+    .product-item {
+        border-radius: 15px;
+    }
+
+    .product-item__img {
+        max-height: 350px;
+        min-height: 350px;
+        height: 100%;
+
+        a {
+            height: 100%;
+            width: 100%;
+            display: block;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+
+            @include hover {
+                img {
+                    transform: scale(1.05);
+                }
+            }
+        }
+
+        img {
+            width: 100%;
+            object-fit: cover;
+            height: 100%;
+            position: absolute;
+            inset: 0;
+            transition: $dur $ease;
+            transform: scale(1);
+        }
+    }
+
+    .products__pagination {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+
+        .page-numbers {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba($black, 0.1);
+            background-color: $gray;
+            margin: 0 3px;
+            border-radius: 15px;
+            transition: $dur $ease;
+
+            .font-arrow-small {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .next {
+                transform: rotate(180deg);
+            }
+
+            &.current {
+                background-color: $white;
+                color: $pale-brown;
+            }
+
+            @include hover {
+                background-color: $white;
+                color: $pale-brown;
+            }
+        }
+    }
+}
+
+.custom-checkbox {
+    display: block;
+    position: relative;
+    padding-left: 23px;
+    padding-bottom: 4px;
+    margin-left: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    user-select: none;
+    width: fit-content;
+
+    input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+    .checkmark {
+        position: absolute;
+        top: 2px;
+        left: 0;
+        height: 15px;
+        width: 15px;
+        background-color: $white;
+        border: 1px solid rgba($black, 0.2);
+        border-radius: 50%;
+        transition: $dur $ease;
+
+        &::after {
+            content: '';
+            position: absolute;
+            opacity: 0;
+            visibility: hidden;
+            left: 3px;
+            top: 3px;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background-color: $pale-brown;
+            transform: scale(0);
+            transform-origin: center;
+        
+            transition: opacity $dur $ease, visibility $dur $ease, transform $dur $ease;
+        }
+    }
+
+    &:hover input ~ .checkmark {
+        border-color: rgba($black, 1);
+    }
+
+    input:checked ~ .checkmark {
+        background-color: $white;
+    }
+
+    input:checked ~ .checkmark::after {
+        opacity: 1;
+        visibility: visible;
+        width: 7px;
+        height: 7px;
+        transform: scale(1);
+    }
+}
+
+.woocommerce-shop {
+    background-color: $gray;
+
+    .products__wrapper {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    .products__filtration {
+        max-width: 24%;
+        width: 100%;
+
+        .products__filtration-cta {
+            display: none;
+
+            @include mq($md) {
+                display: block;
+            }
+
+            &.bottom {
+                @include mq($md) {
+                    display: none;
+                }
+            }
+        }
+
+        .hidden-filter {
+            display: none;
+        }
+    }
+
+    .filter-section {
+        margin-bottom: 12px;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .filter-section__title {
+            font-size: 1.125rem;
+            margin-bottom: 10px;
+        }
+    }
+
+    .show-more-btn {
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        margin: 0;
+        font-style: italic;
+        color: rgba($black, 0.5);
+        padding-left: 11px;
+
+        @include hover {
+            color: rgba($black, 1);
+        }
+    }
+
+    .price-range-filter {
+        margin-top: 2rem;
+        max-width: 220px;
+        width: 100%;
+        padding: 0;
+    
+        .price-slider-wrapper {
+            position: relative;
+            height: 6px;
+            background: #ddd;
+            border-radius: 3px;
+            margin: 0 1rem 1rem;
+        }
+    
+        .price-slider {
+            position: absolute;
+            width: 100%;
+            top: -7px;
+            background: none;
+            pointer-events: none;
+            -webkit-appearance: none;
+            border: none;
+            padding: 0;
+    
+            &::-webkit-slider-thumb {
+                pointer-events: all;
+                -webkit-appearance: none;
+                height: 16px;
+                width: 16px;
+                background: $black;
+                border-radius: 50%;
+                border: none;
+                cursor: pointer;
+                position: relative;
+                z-index: 2;
+            }
+    
+            &::-moz-range-thumb {
+                pointer-events: all;
+                height: 16px;
+                width: 16px;
+                background: $pale-brown;
+                border: none;
+                border-radius: 50%;
+                cursor: pointer;
+                position: relative;
+                z-index: 2;
+            }
+        }
+    
+        .price-slider-track,
+        .price-slider-range {
+            position: absolute;
+            height: 6px;
+            top: 0;
+            border-radius: 3px;
+        }
+    
+        .price-slider-track {
+            width: 100%;
+            background: #ddd;
+            z-index: 1;
+        }
+    
+        .price-slider-range {
+            background: $pale-brown;
+            z-index: 2;
+        }
+    
+        .price-inputs {
+            display: flex;
+            gap: 1rem;
+    
+            label {
+                display: flex;
+                flex-direction: column;
+                font-size: 14px;
+    
+                input {
+                    padding: 5px 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    width: 100px;
+                }
+            }
+        }
+    }
+}

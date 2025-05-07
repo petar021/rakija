@@ -1,0 +1,89 @@
+.search-results {
+    .search-results__list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+        grid-gap: 2rem;
+        margin-top: 2rem;
+      
+        .search-result-item {
+            background: $white;
+            border-radius: 12px;
+        
+            h3 {
+                font-size: 1.25rem;
+                margin-top: 1rem;
+                color: $black;
+                transition: $dur $ease;
+            }
+        
+            p {
+                margin-top: 0.5rem;
+                color: $gray-dark;
+                font-size: 0.95rem;
+            }
+
+            .search-result-thumbnail {
+                overflow: hidden;
+                border-radius: 20px;
+
+                img {
+                    width: 100%;
+                    object-fit: cover;
+                    transition: $dur $ease;
+                    transform: scale(1);
+                }
+            }
+
+            @include hover {
+                .search-result-thumbnail {
+                    img {
+                        transform: scale(1.05);
+                    }
+                }
+
+                h3 {
+                    color: $pale-brown;
+                }
+            }
+        }
+    }
+    
+    .pagination {
+        margin: 50px 0;
+
+        @include mq($md) {
+            margin: 25px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .page-numbers {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 5px;
+            width: 40px;
+            height: 40px;
+            padding: 10px;
+            border: 1px solid rgba($black, 0.1);
+            border-radius: 15px;
+
+            &.prev,
+            &.next {
+                width: fit-content;
+            }
+
+            @include hover {
+                background-color: $white;
+            }
+        }
+    }
+
+    .no-results {
+        margin: 50px 0;
+    }
+}

@@ -285,16 +285,6 @@ function custom_woocommerce_header_add_to_cart_fragment($fragments) {
     return $fragments;
 }
 
-
-add_action('wp_footer', 'add_custom_mini_cart');
-function add_custom_mini_cart() {
-    ?>
-    <div id="mini-cart" style="display:none;">
-        <?php woocommerce_mini_cart(); ?>
-    </div>
-    <?php
-}
-
 function enqueue_qty_counter_script() {
     wp_enqueue_script(
         'qty-counter-script',

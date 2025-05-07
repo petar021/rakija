@@ -156,7 +156,7 @@
             </div>
         </div>
         <div class="products-wrapper-cta-box">
-            <a href="javascript:;" class="btn-icon"><span class="font-eye"></span>Pogledaj sve</a>
+            <a href="http://localhost/rakija/shop/" class="btn-icon"><span class="font-eye"></span>Pogledaj sve</a>
         </div>
     </div>
 </section>

@@ -1,36 +1,45 @@
 <section class="three-column-cat">
     <div class="container">
         <div class="three-column-cat__wrapper">
-            <a href="javascript:;">
-                <div class="three-column-cat__box">
-                    <!-- <video src="<?php echo get_stylesheet_directory_uri(); ?>/assets/video/closeup-of-a-bartender-pouring-orange-liqueur-into-2023-11-27-05-12-15-utc.mp4" autoplay muted loop></video> -->
-                    <h2 class="three-column-cat__title">Rakije</h2>
-                    <div class="btn-icon">
-                        <span class="font-eye"></span>
-                        Pogledaj sve
+        
+        <?php
+        $exclude_slugs = array('destilerije', 'uncategorized');
+
+        // Dohvati samo top-level kategorije (parent == 0)
+        $product_categories = get_terms(array(
+            'taxonomy' => 'product_cat',
+            'hide_empty' => true,
+            'parent' => 0,
+        ));
+
+        if (!empty($product_categories) && !is_wp_error($product_categories)) :
+            foreach ($product_categories as $category) :
+                if (in_array($category->slug, $exclude_slugs)) {
+                    continue;
+                }
+
+                $thumbnail_id = get_term_meta($category->term_id, 'thumbnail_id', true);
+                $image_url = $thumbnail_id
+                    ? wp_get_attachment_url($thumbnail_id)
+                    : get_stylesheet_directory_uri() . '/assets/images/project/placeholder-image.webp';
+
+                $category_link = get_term_link($category);
+                ?>
+                <a href="<?php echo esc_url($category_link); ?>">
+                    <div class="three-column-cat__box">
+                        <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($category->name); ?>" />
+                        <h2 class="three-column-cat__title"><?php echo esc_html($category->name); ?></h2>
+                        <div class="btn-icon">
+                            <span class="font-eye"></span>
+                            Pogledaj sve
+                        </div>
                     </div>
-                </div>
-            </a>
-            <a href="javascript:;">
-                <div class="three-column-cat__box">
-                    <!-- <video src="<?php echo get_stylesheet_directory_uri(); ?>/assets/video/closeup-of-a-bartender-pouring-orange-liqueur-into-2023-11-27-05-12-15-utc.mp4" autoplay muted loop></video> -->
-                    <h2 class="three-column-cat__title">Likeri</h2>
-                    <div class="btn-icon">
-                        <span class="font-eye"></span>
-                        Pogledaj sve
-                    </div>
-                </div>
-            </a>
-            <a href="javascript:;">
-                <div class="three-column-cat__box">
-                    <!-- <video src="<?php echo get_stylesheet_directory_uri(); ?>/assets/video/closeup-of-a-bartender-pouring-orange-liqueur-into-2023-11-27-05-12-15-utc.mp4" autoplay muted loop></video> -->
-                    <h2 class="three-column-cat__title">Džinovi</h2>
-                    <div class="btn-icon">
-                        <span class="font-eye"></span>
-                        Pogledaj sve
-                    </div>
-                </div>
-            </a>
+                </a>
+                <?php
+            endforeach;
+        endif;
+        ?>
+
         </div>
     </div>
 </section>

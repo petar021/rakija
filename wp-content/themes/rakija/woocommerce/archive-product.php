@@ -37,35 +37,167 @@ if (woocommerce_product_loop()) : ?>
                 <span class="section-head__pretitle">Bogat izvor magnezijuma, fosfora, mangana i gvoždja</span>
                 <h1 class="section-head__title">Hrskavi hleb od 100% ovsa</h1>
             </div>
-            <div class="products-sec__container">
-                <?php
-                // Start the WooCommerce product loop
-                while (have_posts()) : the_post();
-                    $product = wc_get_product(get_the_ID());
-                    $product_image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
-                    $product_name = get_the_title();
-                    $product_price = $product->get_price_html();
-                    ?>
-                    <div class="product-item">
-                        <div class="product-item__img">
-                            <a href="<?php the_permalink(); ?>">
-                                <?php 
-                                    $product_image_id = get_post_thumbnail_id(); // Dohvati ID istaknute slike proizvoda
-                                    echo wp_get_attachment_image($product_image_id, 'product-item-img'); // Prikazuje sliku u definisanoj veličini
+            <div class="products__wrapper">
+                <div class="products__filtration">
+                    <div class="products__filtration-cta">
+                        <span class="font-filter"></span>
+                        <span>Filter</span>
+                    </div>
+                    <div class="custom-filter">
+                        <!-- Filter 1: Glavne kategorije -->
+                        <div class="filter-section" data-filter="rakije-subcategories">
+                            <h2 class="filter-section__title">Voće</h2>
+
+                            <?php
+                            $rakije_term = get_term_by('slug', 'rakije', 'product_cat');
+
+                            if ($rakije_term) :
+                                $subcategories = get_terms(array(
+                                    'taxonomy' => 'product_cat',
+                                    'hide_empty' => true,
+                                    'parent' => $rakije_term->term_id,
+                                ));
+
+                                $sub_count = 0;
+                            ?>
+
+                                <!-- Checkbox: Svi proizvodi koji pripadaju Rakije ili njenim podkategorijama -->
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" name="filter_all_rakije" checked>
+                                    <span class="checkmark"></span>
+                                    Svi proizvodi
+                                </label>
+
+                                <?php
+                                if (!empty($subcategories) && !is_wp_error($subcategories)) :
+                                    foreach ($subcategories as $subcategory) :
+                                        $sub_count++;
+                                        $hidden_class = $sub_count > 7 ? 'hidden-filter' : '';
+                                        ?>
+                                        <label class="custom-checkbox <?php echo $hidden_class; ?>">
+                                            <input type="checkbox" name="rakije_subcategory[]" value="<?php echo esc_attr($subcategory->term_id); ?>">
+                                            <span class="checkmark"></span>
+                                            <?php echo esc_html($subcategory->name); ?>
+                                        </label>
+                                    <?php endforeach;
+                                endif;
                                 ?>
-                            </a>
+
+                                <?php if ($sub_count > 7): ?>
+                                    <button class="show-more-btn" data-target="rakije-subcategories">Prikaži sve</button>
+                                <?php endif; ?>
+
+                            <?php endif; ?>
                         </div>
-                        <div class="product-item__wrap">
-                            <div class="product-item__info">
-                                <h3 class="product-item__name"><?php echo esc_html($product_name); ?></h3>
-                                <span class="product-item__price"><?php echo $product_price; ?></span>
+
+                        <!-- Filter 2: Podkategorije destilerije -->
+                        <div class="filter-section" data-filter="subcategories">
+                            <h2 class="filter-section__title">Destilerije</h2>
+
+                            <?php
+                            $destilerije = get_term_by('slug', 'destilerije', 'product_cat');
+                            $subcategories = $destilerije ? get_terms(array(
+                                'taxonomy' => 'product_cat',
+                                'hide_empty' => true,
+                                'parent' => $destilerije->term_id
+                            )) : [];
+
+                            $sub_count = 0;
+                            ?>
+
+                            <!-- Prvi checkbox: svi dostupni proizvodi -->
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="filter_all_destilerije" checked>
+                                <span class="checkmark"></span>
+                                Svi dostupni
+                            </label>
+
+                            <?php
+                            if (!empty($subcategories) && !is_wp_error($subcategories)) :
+                                foreach ($subcategories as $subcategory) :
+                                    $sub_count++;
+                                    $hidden_class = $sub_count > 7 ? 'hidden-filter' : '';
+                                    ?>
+                                    <label class="custom-checkbox <?php echo $hidden_class; ?>">
+                                        <input type="checkbox" name="sub_category[]" value="<?php echo esc_attr($subcategory->term_id); ?>">
+                                        <span class="checkmark"></span>
+                                        <?php echo esc_html($subcategory->name); ?>
+                                        (<?php echo intval($subcategory->count); ?>)
+                                    </label>
+                                <?php endforeach;
+                            endif;
+                            ?>
+
+                            <?php if ($sub_count > 7): ?>
+                                <button class="show-more-btn" data-target="subcategories">Prikaži sve</button>
+                            <?php endif; ?>
+                        </div>
+
+
+                        <div class="filter-section price-range-filter">
+                            <h2 class="filter-section__title">Cena</h2>
+                            
+                            <div class="price-slider-wrapper">
+                                <div class="price-slider-track"></div>
+                                <div class="price-slider-range"></div>
+                                <input type="range" min="0" max="10000" value="0" id="min-price" class="price-slider">
+                                <input type="range" min="0" max="10000" value="10000" id="max-price" class="price-slider">
                             </div>
-                            <div class="product-item__btn">
-                                <?php woocommerce_template_loop_add_to_cart(); ?>
+
+                            <div class="price-inputs">
+                                <label>
+                                    <input type="number" id="min-price-input" value="1000" min="0" max="10000">
+                                </label>
+                                <label>
+                                    <input type="number" id="max-price-input" value="7000" min="0" max="10000">
+                                </label>
                             </div>
+                        </div>
+
+                        <div class="products__filtration-cta bottom">
+                            <span>Primeni filter</span>
                         </div>
                     </div>
-                <?php endwhile; ?>
+                </div>
+                <div class="products-sec__container">
+                    <?php
+                    // Start the WooCommerce product loop
+                    while (have_posts()) : the_post();
+                        $product = wc_get_product(get_the_ID());
+                        $product_image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+                        $product_name = get_the_title();
+                        $product_price = $product->get_price_html();
+                        ?>
+                        <div class="product-item">
+                            <div class="product-item__img">
+                                <a href="<?php the_permalink(); ?>">
+                                    <?php 
+                                        $product_image_id = get_post_thumbnail_id(); // Dohvati ID istaknute slike proizvoda
+                                        echo wp_get_attachment_image($product_image_id, 'product-item-img'); // Prikazuje sliku u definisanoj veličini
+                                    ?>
+                                </a>
+                            </div>
+                            <div class="product-item__wrap">
+                                <div class="product-item__info">
+                                    <h3 class="product-item__name"><?php echo esc_html($product_name); ?></h3>
+                                    <span class="product-item__price"><?php echo $product_price; ?></span>
+                                </div>
+                                <div class="product-item__btn">
+                                    <?php woocommerce_template_loop_add_to_cart(); ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endwhile; ?>
+                    <div class="products__pagination">
+                        <?php
+                            echo paginate_links(array(
+                                'total'     => $wp_query->max_num_pages,
+                                'prev_text' => '<span class="font-arrow-small prev"></span>',
+                                'next_text' => '<span class="font-arrow-small next"></span>',
+                            ));
+                        ?>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

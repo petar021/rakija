@@ -34,29 +34,35 @@
 	@if $filename == cart {
 		$char: "\E004";
 	}
-	@if $filename == eye {
+	@if $filename == close {
 		$char: "\E005";
 	}
-	@if $filename == facebook {
+	@if $filename == eye {
 		$char: "\E006";
 	}
-	@if $filename == instagram {
+	@if $filename == facebook {
 		$char: "\E007";
 	}
-	@if $filename == phone {
+	@if $filename == filter {
 		$char: "\E008";
 	}
-	@if $filename == pin {
+	@if $filename == instagram {
 		$char: "\E009";
 	}
-	@if $filename == search {
+	@if $filename == phone {
 		$char: "\E00A";
 	}
-	@if $filename == star {
+	@if $filename == pin {
 		$char: "\E00B";
 	}
-	@if $filename == trash {
+	@if $filename == search {
 		$char: "\E00C";
+	}
+	@if $filename == star {
+		$char: "\E00D";
+	}
+	@if $filename == trash {
+		$char: "\E00E";
 	}
 
 	@return $char;
@@ -85,11 +91,17 @@
 .font-cart {
 	@include font(cart);
 }
+.font-close {
+	@include font(close);
+}
 .font-eye {
 	@include font(eye);
 }
 .font-facebook {
 	@include font(facebook);
+}
+.font-filter {
+	@include font(filter);
 }
 .font-instagram {
 	@include font(instagram);

@@ -1,4 +1,4 @@
-<!-- <section class="image-block">
+<section class="image-block">
     <div class="container">
         <?php 
             $image = get_sub_field('image');
@@ -32,4 +32,4 @@
             </div>
         </div>
     </div>
-</section> -->
+</section>

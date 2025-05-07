@@ -65,6 +65,10 @@
 
 .order-details__products {
     margin-bottom: 20px;
+
+    @include mq($md) {
+        padding: 15px;
+    }
 }
 
 .order-details__products-table {

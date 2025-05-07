@@ -7,47 +7,45 @@
  * @package NM_Theme
  */
 
-get_header();
-?>
+get_header(); ?>
 
-	<main id="primary" class="site-main">
+ <main class="search-results">
+	 <div class="container">
+		 <h1 class="search-title section-title">
+			 Rezultati pretrage za: "<?php echo get_search_query(); ?>"
+		 </h1>
+ 
+		 <?php if (have_posts()) : ?>
+			 <div class="search-results__list">
+				 <?php while (have_posts()) : the_post(); ?>
+					<article class="search-result-item">
+						<a href="<?php the_permalink(); ?>">
+							<div class="search-result-thumbnail">
+								<?php if (has_post_thumbnail()) : ?>
+									<?php the_post_thumbnail('medium'); ?>
+								<?php else : ?>
+									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/project/placeholder-image.webp" alt="Fallback slika" />
+								<?php endif; ?>
+							</div>
+							<h3><?php the_title(); ?></h3>
+							<p><?php echo get_the_excerpt(); ?></p>
+						</a>
+					</article>
 
-		<?php if ( have_posts() ) : ?>
-
-			<header class="page-header">
-				<h1 class="page-title">
-					<?php
-					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'nm_theme' ), '<span>' . get_search_query() . '</span>' );
-					?>
-				</h1>
-			</header><!-- .page-header -->
-
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
-
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', 'search' );
-
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-		?>
-
-	</main><!-- #main -->
-
-<?php
-get_sidebar();
-get_footer();
+				 <?php endwhile; ?>
+			 </div>
+ 
+			 <div class="pagination">
+				 <?php the_posts_pagination(); ?>
+			 </div>
+		 <?php else : ?>
+			 <div class="no-results">
+				 <h2>Nažalost, nema rezultata za tvoju pretragu.</h2>
+				 <p>Pokušaj ponovo sa drugim pojmom.</p>
+			 </div>
+		 <?php endif; ?>
+	 </div>
+ </main>
+ 
+ <?php get_footer(); ?>
+ 

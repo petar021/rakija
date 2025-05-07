@@ -24,9 +24,11 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 }
 ?>
 
+<h2 class="section-title">Detalji za naplatu</h2>
+
 <div class="checkout__main">
     <form name="checkout" method="post" class="checkout__form light-form" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
-        <div class="checkout__form-container">    
+        <div class="checkout__form-container">
             <div class="checkout__form-wrap">
                 <?php if ( $checkout->get_checkout_fields() ) : ?>
 
@@ -41,6 +43,22 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                     <?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
 
                 <?php endif; ?>
+                <?php if ( wc_coupons_enabled() ) : ?>
+    <div class="coupon-section">
+        <h3><?php esc_html_e( 'Promo kod', 'woocommerce' ); ?></h3>
+        <form class="coupon-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
+            <div class="coupon__wrap">
+                <div class="coupon">
+                    <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Unesite promo kod', 'woocommerce' ); ?>" />
+                    <button type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e( 'Pošalji', 'woocommerce' ); ?>">
+                        <?php esc_html_e( 'Unesi', 'woocommerce' ); ?>
+                    </button>
+                    <?php do_action( 'woocommerce_cart_coupon' ); ?>
+                </div>
+            </div>
+        </form>
+    </div>
+<?php endif; ?>
             </div>
 
             <div class="checkout__order-details">

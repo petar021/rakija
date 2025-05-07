@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit; ?>
         
   
 <!-- </div> -->
-
+<h2 class="section-title">Korpa</h2>
 <div class="cart cart-page">
     <!-- <div class="container"> -->
         <div class="cart__wrap">
@@ -27,7 +27,6 @@ defined( 'ABSPATH' ) || exit; ?>
                 <table class="cart__table" cellspacing="0">
                     <thead>
                         <tr>
-                            <th class="cart__header-subtotal"></th>
                             <th class="cart__header-thumbnail" colspan="2"><?php esc_html_e( 'Product', 'woocommerce' ); ?></th>
                             <th class="cart__header-subtotal"><?php esc_html_e( 'Total', 'woocommerce' ); ?></th>
                         </tr>
@@ -46,26 +45,6 @@ defined( 'ABSPATH' ) || exit; ?>
                                 $product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
                                 ?>
                                 <tr class="cart__item <?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
-
-                                    <td>
-                                        <div class="cart__product-remove">
-                                            <?php
-                                                echo apply_filters(
-                                                    'woocommerce_cart_item_remove_link',
-                                                    sprintf(
-                                                        '<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">
-                                                            <span class="icon font-trash"></span>
-                                                        </a>', 
-                                                        esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
-                                                        esc_attr( sprintf( __( 'Remove %s from cart', 'woocommerce' ), wp_strip_all_tags( $product_name ) ) ),
-                                                        esc_attr( $product_id ),
-                                                        esc_attr( $_product->get_sku() )
-                                                    ),
-                                                    $cart_item_key
-                                                );
-                                            ?>
-                                        </div>
-                                    </td>
 
                                     <td class="cart__thumbnail">
                                         <?php
@@ -97,7 +76,9 @@ defined( 'ABSPATH' ) || exit; ?>
                                             }
                                             ?>
                                         </div>
+                                    </td>
 
+                                    <td class="cart-qty">
                                         <div class="cart__product-quantity">
                                             <?php
                                             $product_quantity = woocommerce_quantity_input(
@@ -113,6 +94,26 @@ defined( 'ABSPATH' ) || exit; ?>
                                             );
 
                                             echo apply_filters( 'woocommerce_cart_item_quantity', $product_quantity, $cart_item_key, $cart_item );
+                                            ?>
+                                        </div>
+                                    </td>
+
+                                    <td class="cart__remove">
+                                        <div class="cart__product-remove">
+                                            <?php
+                                                echo apply_filters(
+                                                    'woocommerce_cart_item_remove_link',
+                                                    sprintf(
+                                                        '<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">
+                                                            <span class="icon font-trash"></span>
+                                                        </a>', 
+                                                        esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
+                                                        esc_attr( sprintf( __( 'Remove %s from cart', 'woocommerce' ), wp_strip_all_tags( $product_name ) ) ),
+                                                        esc_attr( $product_id ),
+                                                        esc_attr( $_product->get_sku() )
+                                                    ),
+                                                    $cart_item_key
+                                                );
                                             ?>
                                         </div>
                                     </td>
@@ -138,24 +139,6 @@ defined( 'ABSPATH' ) || exit; ?>
             <?php do_action( 'woocommerce_before_cart_collaterals' ); ?>
 
             <div class="cart__collaterals">
-    
-                <!-- Prebačena kupon sekcija ovde -->
-                <?php if ( wc_coupons_enabled() ) { ?>
-                <div class="coupon-section">
-                    <h3><?php esc_html_e( 'Promo kod', 'woocommerce' ); ?></h3>
-                    <form class="coupon-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
-                        <div class="coupon__wrap">
-                            <div class="coupon">
-                                <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Unesite promo kod', 'woocommerce' ); ?>" />
-                                <button type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e( 'Pošalji', 'woocommerce' ); ?>">
-                                    <?php esc_html_e( 'Unesi', 'woocommerce' ); ?>
-                                </button>
-                                <?php do_action( 'woocommerce_cart_coupon' ); ?>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <?php } ?>
 
                 <!-- Ostatak sadržaja (ukupna cena, dugme za plaćanje) -->
                 <?php do_action( 'woocommerce_cart_collaterals' ); ?>

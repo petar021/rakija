@@ -18,7 +18,24 @@
 defined( 'ABSPATH' ) || exit;
 
 ?>
-<div class="cart__totals <?php echo ( WC()->customer->has_calculated_shipping() ) ? 'calculated_shipping' : ''; ?>">
+<?php if ( wc_coupons_enabled() ) : ?>
+    <div class="coupon-section">
+        <h3><?php esc_html_e( 'Promo kod', 'woocommerce' ); ?></h3>
+        <form class="coupon-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
+            <div class="coupon__wrap">
+                <div class="coupon">
+                    <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Unesite promo kod', 'woocommerce' ); ?>" />
+                    <button type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e( 'Pošalji', 'woocommerce' ); ?>">
+                        <?php esc_html_e( 'Unesi', 'woocommerce' ); ?>
+                    </button>
+                    <?php do_action( 'woocommerce_cart_coupon' ); ?>
+                </div>
+            </div>
+        </form>
+    </div>
+<?php endif; ?>
+
+<div class="<?php echo ( WC()->customer->has_calculated_shipping() ) ? 'calculated_shipping' : ' '; ?>cart__totals">
 
 	<?php do_action( 'woocommerce_before_cart_totals' ); ?>
 

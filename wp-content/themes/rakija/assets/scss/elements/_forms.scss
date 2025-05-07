@@ -54,6 +54,11 @@ textarea {
 		color: $red;
 		font-style: italic;
 	}
+
+	&::placeholder {
+		font-style: italic;
+		color: $black;
+	}
 }
 
 textarea {
