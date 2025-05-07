@@ -5,43 +5,66 @@ const WooFiltration = {
             btn.addEventListener("click", function () {
                 const target = btn.getAttribute("data-target");
                 const section = document.querySelector(`.filter-section[data-filter="${target}"]`);
-                const hiddenItems = section.querySelectorAll(".hidden-filter");
+                let wrapper = section.querySelector(".animated-filter-wrapper");
 
-                // Kreiraj wrapper
-                const wrapper = document.createElement("div");
-                wrapper.classList.add("animated-filter-wrapper");
+                if (!wrapper) {
+                    // Prvi klik – otvori
+                    const hiddenItems = section.querySelectorAll(".hidden-filter");
 
-                hiddenItems.forEach(el => {
-                    el.classList.remove("hidden-filter");
-                    wrapper.appendChild(el);
-                });
+                    wrapper = document.createElement("div");
+                    wrapper.classList.add("animated-filter-wrapper");
 
-                // Ubaci wrapper ispod zadnjeg vidljivog elementa
-                const lastVisible = section.querySelector("label:not(.hidden-filter):last-of-type");
-                if (lastVisible && lastVisible.parentNode) {
-                    lastVisible.parentNode.insertBefore(wrapper, lastVisible.nextSibling);
+                    hiddenItems.forEach(el => {
+                        el.classList.remove("hidden-filter");
+                        wrapper.appendChild(el);
+                    });
+
+                    // Ubaci ispod poslednjeg vidljivog elementa
+                    const lastVisible = section.querySelector("label:not(.hidden-filter):last-of-type");
+                    if (lastVisible && lastVisible.parentNode) {
+                        lastVisible.parentNode.insertBefore(wrapper, lastVisible.nextSibling);
+                    } else {
+                        section.appendChild(wrapper);
+                    }
+
+                    // Animacija otvaranja
+                    wrapper.style.height = "0px";
+                    wrapper.style.overflow = "hidden";
+                    requestAnimationFrame(() => {
+                        const fullHeight = wrapper.scrollHeight + "px";
+                        wrapper.style.transition = "height 0.5s ease";
+                        wrapper.style.height = fullHeight;
+
+                        wrapper.addEventListener("transitionend", () => {
+                            wrapper.style.height = "auto";
+                            wrapper.style.overflow = "visible";
+                            wrapper.style.transition = "none";
+                        }, { once: true });
+                    });
+
+                    btn.textContent = "Prikaži manje";
                 } else {
-                    section.appendChild(wrapper);
+                    // Sledeći klik – zatvori
+                    const currentHeight = wrapper.scrollHeight + "px";
+                    wrapper.style.height = currentHeight;
+                    requestAnimationFrame(() => {
+                        wrapper.style.transition = "height 0.5s ease";
+                        wrapper.style.height = "0px";
+                        wrapper.style.overflow = "hidden";
+
+                        wrapper.addEventListener("transitionend", () => {
+                            // Vrati elemente u sekciju i sakrij ih
+                            const items = Array.from(wrapper.children);
+                            items.forEach(el => {
+                                el.classList.add("hidden-filter");
+                                section.insertBefore(el, wrapper);
+                            });
+                            wrapper.remove();
+                        }, { once: true });
+                    });
+
+                    btn.textContent = "Prikaži sve";
                 }
-
-                // Animacija visine
-                wrapper.style.height = "0px";
-                wrapper.style.overflow = "hidden";
-
-                requestAnimationFrame(() => {
-                    const fullHeight = wrapper.scrollHeight + "px";
-                    wrapper.style.transition = "height 0.5s ease";
-                    wrapper.style.height = fullHeight;
-
-                    // Nakon tranzicije, očisti stilove
-                    wrapper.addEventListener("transitionend", () => {
-                        wrapper.style.height = "auto";
-                        wrapper.style.overflow = "visible";
-                        wrapper.style.transition = "none";
-                    }, { once: true });
-                });
-
-                btn.remove(); // Ukloni dugme
             });
         });
     }
