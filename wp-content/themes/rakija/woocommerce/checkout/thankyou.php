@@ -21,6 +21,20 @@ defined( 'ABSPATH' ) || exit;
 ?>
 
 <div class="order-details">
+	<div class="site-print-logo">
+		<?php
+			$header_logo = get_field('header_logo', 'option');
+			if (!empty($header_logo)) : ?>
+				<img 
+					id="logo"
+					class="site-header__logo-img"
+					src="<?php echo esc_url($header_logo['url']); ?>" 
+					alt="<?php echo esc_attr(get_bloginfo('name') . ' Logo'); ?>" 
+					title="<?php echo esc_attr(get_bloginfo('name')); ?>"
+				>
+		<?php endif; ?>
+	</div>
+
 	<?php
 	if ( $order ) :
 

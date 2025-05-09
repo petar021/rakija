@@ -60,3 +60,11 @@ body {
         overflow: hidden;
     }
 }
+
+.single {
+    .container-small {
+        @include mq($md) {
+            padding: 0;
+        }
+    }
+}

@@ -106,6 +106,14 @@ global $product;
 			</div>
 		</div> -->
 
+		<section class="basic-block">
+			<div class="container">
+				<div class="entry-content">
+					<?php echo the_field("content");	?>
+				</div>
+			</div>
+		</section>
+
 		<?php
 		/**
 		 * Hook: woocommerce_after_single_product_summary.

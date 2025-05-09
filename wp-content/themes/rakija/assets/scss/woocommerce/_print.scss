@@ -1,0 +1,128 @@
+@media print {
+    // Sakrij sve što nije deo sadržaja narudžbine
+    header,
+    footer,
+    nav,
+    .site-header,
+    .site-footer,
+    .woocommerce-breadcrumb,
+    .widget,
+    .sidebar,
+    .woocommerce-message,
+    .woocommerce-notices-wrapper,
+    .woocommerce-thankyou-order-received,
+    .woocommerce-thankyou-order-details .woocommerce-button,
+    .woocommerce-thankyou-order-details .button {
+        display: none !important; //sass-lint:disable-line no-important
+    }
+  
+    // Sakrij sve dugmiće
+    .btn,
+    button,
+    a.button,
+    .button {
+        display: none !important; // sass-lint:disable-line no-important
+    }
+  
+    // Generalno očisti padding/margin da uštedi prostor
+    body,
+    .site,
+    .entry-content,
+    .woocommerce {
+        background: $white !important; // sass-lint:disable-line no-important
+        color: $black !important; // sass-lint:disable-line no-important
+        box-shadow: none !important; // sass-lint:disable-line no-important
+        padding: 0;
+        margin: 0;
+        font-size: 12pt;
+    }
+  
+    // Stilizuj sadržaj narudžbine
+    .woocommerce-order {
+        padding: 1rem;
+        border: none;
+    }
+  
+    .woocommerce-order-overview,
+    .woocommerce-order-details,
+    .woocommerce-customer-details {
+        border-top: 1px solid $gray-dark;
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+    }
+  
+    h2,
+    h3,
+    h4 {
+        color: $black;
+        margin: 0.5rem 0;
+        page-break-after: avoid;
+    }
+  
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+
+        th, td {
+            border: 1px solid $gray-dark;
+            padding: 0.5rem;
+            text-align: left;
+            height: 60px;
+        }
+    }
+  
+    // Izbegni lomljenje važnih sekcija
+    .woocommerce-order,
+    .woocommerce-order-details,
+    .woocommerce-customer-details {
+        page-break-inside: avoid;
+    }
+  
+    // Linkove pretvori u tekst (ili sakrij ako su nebitni)
+    a[href]::after {
+        content: '';
+    }
+
+    .site-print-logo {
+        display: block !important; // sass-lint:disable-line no-important
+        text-align: center;
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+      
+        img {
+            max-width: 200px;
+            height: auto;
+            margin: 0 auto;
+        }
+    }
+
+    .order-details__totals-title, 
+    .order-details__products-table .order-details__header-subtotal {
+        padding: 0 0.5rem;
+    }
+
+    .order-details__total {
+        border: none;
+        border-right: 1px solid $black;
+
+        .woocommerce-Price-amount {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+// Sakrij logotip u običnom prikazu
+@media screen {
+    .site-print-logo {
+        display: none;
+
+        img {
+            max-width: 200px;
+            height: auto;
+            margin: 0 auto;
+        }
+    }
+}

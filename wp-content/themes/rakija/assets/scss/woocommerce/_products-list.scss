@@ -2,8 +2,6 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
     grid-gap: 25px;
-    max-width: 75%;
-    width: 100%;
     position: relative;
     padding-bottom: 100px;
 
@@ -13,6 +11,16 @@
 
     .product-item {
         border-radius: 15px;
+
+        &__info {
+            a {
+                color: $black;
+
+                @include hover {
+                    color: $pale-brown;
+                }
+            }
+        }
     }
 
     .product-item__img {
@@ -43,50 +51,6 @@
             inset: 0;
             transition: $dur $ease;
             transform: scale(1);
-        }
-    }
-
-    .products__pagination {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        position: absolute;
-        left: 50%;
-        bottom: 0;
-        transform: translateX(-50%);
-
-        .page-numbers {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba($black, 0.1);
-            background-color: $gray;
-            margin: 0 3px;
-            border-radius: 15px;
-            transition: $dur $ease;
-
-            .font-arrow-small {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .next {
-                transform: rotate(180deg);
-            }
-
-            &.current {
-                background-color: $white;
-                color: $pale-brown;
-            }
-
-            @include hover {
-                background-color: $white;
-                color: $pale-brown;
-            }
         }
     }
 }
@@ -167,12 +131,108 @@
         @include mq($md) {
             flex-direction: column;
         }
+
+        &-left {
+            max-width: 24%;
+            width: 100%;
+
+            @include mq($md) {
+                max-width: 100%;
+            }
+        }
+
+        &-right {
+            max-width: 75%;
+            width: 100%;
+
+            @include mq($md) {
+                max-width: 100%;
+            }
+
+            .products-sec__top {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                @include mq($md) {
+                    flex-direction: column;
+                }
+
+                span {
+                    margin: 20px 0;
+
+                    @include mq($md) {
+                        width: 100%;
+                        margin: 0 0 15px;
+                    }
+                }
+
+                .woocommerce-ordering {
+                    max-width: 270px;
+                    width: 100%;
+
+                    @include mq($md) {
+                        max-width: 100%;
+                        margin: 0 0 15px;
+                    }
+
+                    span {
+                        margin: 0;
+                    }
+                }
+
+                .select2-selection--single {
+                    transition: $dur $ease;
+                }
+
+                .select2-container--default .select2-selection--single .select2-selection__arrow {
+                    top: 23px;
+                    height: auto;
+                    right: 23px;
+
+                    @include mq($md) {
+                        position: relative;
+                        top: 0;
+                        right: 0;
+                        text-align: right;
+
+                        b {
+                            left: auto;
+                            right: 0;
+                        }
+                    }
+                }
+
+                .select2-container--open {
+                    .select2-selection--single {
+                        border-bottom-left-radius: 0 !important; // sass-lint:disable-line no-important
+                        border-bottom-right-radius: 0 !important; // sass-lint:disable-line no-important
+                    }
+                }
+                
+                .select2-container .select2-selection--single {
+                    height: auto;
+                    padding: 8px;
+                    border-radius: 15px;
+
+                    @include mq($md) {
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                }
+
+                .select2-container .select2-selection--single .select2-selection__rendered {
+                    padding: 0 15px;
+
+                    @include mq($md) {
+                        padding: 0;
+                    }
+                }
+            }
+        }
     }
 
     .products__filtration {
-        max-width: 24%;
-        width: 100%;
-
         @include mq($md) {
             max-width: 100%;
 
@@ -193,7 +253,6 @@
             display: none;
 
             @include mq($md) {
-                display: block;
                 padding: 15px;
                 margin-bottom: 25px;
                 border-radius: 15px;
@@ -313,7 +372,7 @@
     
         .price-inputs {
             display: flex;
-            gap: 1rem;
+            grid-gap: 1rem;
     
             label {
                 display: flex;
@@ -325,6 +384,69 @@
                     border: 1px solid #ccc;
                     border-radius: 4px;
                     width: 100px;
+
+                    @include mq($lg) {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+    .woocommerce-pagination {
+        display: none;
+    }
+
+    .products-sec {
+        margin-bottom: 50px;
+    }
+
+    .products__pagination {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        .page-numbers {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba($black, 0.1);
+            background-color: $gray;
+            margin: 0 3px;
+            border-radius: 15px;
+            transition: $dur $ease;
+
+            .font-arrow-small {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .next {
+                transform: rotate(180deg);
+            }
+
+            &.current {
+                background-color: $white;
+                color: $pale-brown;
+            }
+
+            @include hover {
+                background-color: $white;
+                color: $pale-brown;
+            }
+
+            @include mq($md) {
+                width: 30px;
+                height: 30px;
+
+                .next,
+                .prev {
+                    font-size: 14px;
+                    line-height: 14px;
                 }
             }
         }

@@ -1,23 +1,25 @@
 <?php get_header(); ?>
 
 <?php
-// ACF Flex Content ovde
-if (have_rows('content_blocks', 'product_cat_' . $term->term_id)) :
-    while (have_rows('content_blocks', 'product_cat_' . $term->term_id)) : the_row();
+    $term = get_queried_object(); // <-- OBAVEZNO
 
-        if (get_row_layout() == 'basic_block') :
-            get_template_part('template-views/blocks/basic-block/basic-block');
+    if ($term && have_rows('content_blocks', 'product_cat_' . $term->term_id)) :
+        while (have_rows('content_blocks', 'product_cat_' . $term->term_id)) : the_row();
 
-        elseif (get_row_layout() == 'banner_title') :
-            get_template_part('template-views/blocks/banner-title/banner-title');
+            if (get_row_layout() == 'basic_block') :
+                get_template_part('template-views/blocks/basic-block/basic-block');
 
-        elseif (get_row_layout() == 'subcategory_display') :
-            get_template_part('template-views/blocks/brands/brands');
+            elseif (get_row_layout() == 'banner_title') :
+                get_template_part('template-views/blocks/banner-title/banner-title');
 
-        endif;
-        
-    endwhile;
-endif;
+            elseif (get_row_layout() == 'subcategory_display') :
+                get_template_part('template-views/blocks/brands/brands');
+
+            endif;
+
+        endwhile;
+    endif;
 ?>
+
 
 <?php get_footer(); ?>

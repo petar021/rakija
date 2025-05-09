@@ -6,15 +6,16 @@
  */
 ?>
 
-<div class="basic-block">
+<section class="basic-block">
 	<div class="container-small">
 		<div class="entry-content">
 			<?php 
 				$content = get_sub_field('content');
 
 				if (!empty($content)) : ?>
+				
 				<?php echo $content; ?>
 			<?php endif; ?>
 		</div>
 	</div>
-</div><!-- .basic-block -->
+</section><!-- .basic-block -->

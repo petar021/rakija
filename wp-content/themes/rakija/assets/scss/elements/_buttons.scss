@@ -14,7 +14,7 @@ input[type='submit'] {
 	border-radius: 18px;
 	border: none;
 
-	@include mq($md) {
+	@include mq($ipad) {
 		margin: 0 auto;
 		display: block;
 	}

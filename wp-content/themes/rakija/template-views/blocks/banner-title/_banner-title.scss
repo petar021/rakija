@@ -45,6 +45,10 @@
                 height: 1px;
                 background-color: $pale-brown;
                 margin-right: 14px;
+
+                @include mq($md) {
+                    width: 25px;
+                }
             }
         }
     }

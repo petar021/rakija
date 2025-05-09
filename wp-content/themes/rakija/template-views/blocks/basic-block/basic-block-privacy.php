@@ -6,7 +6,7 @@
  */
 ?>
 
-<div class="basic-block">
+<section class="basic-block">
 	<div class="container-small">
 		<h1 class="basic-block-title">Opšti uslovi korišćenja</h1>
 		<div class="entry-content">
@@ -262,4 +262,4 @@
 			<p>„Prilikom unošenja podataka o platnoj kartici, poverljive informacija se prenose putem javne mreže u zaštićenoj (kriptovanoj) formi upotrebom SSL protokola i PKI sistema, kao trenutno najsavremenije kriptografske tehnologije.</p>
 		</div>
 	</div>
-</div><!-- .basic-block -->
+</section><!-- .basic-block -->

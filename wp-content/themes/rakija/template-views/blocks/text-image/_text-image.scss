@@ -25,6 +25,10 @@
             margin-bottom: 50px;
             flex-direction: column;
             gap: 15px;
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
         }
 
         &:nth-child(even) {

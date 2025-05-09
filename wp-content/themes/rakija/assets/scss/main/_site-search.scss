@@ -1,4 +1,6 @@
 .search-results {
+    background-color: $gray;
+
     .search-results__list {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
@@ -71,14 +73,23 @@
             padding: 10px;
             border: 1px solid rgba($black, 0.1);
             border-radius: 15px;
+            transition: $dur $ease;
+
+            &.current {
+                background-color: $white;
+                color: $pale-brown;
+            }
 
             &.prev,
             &.next {
                 width: fit-content;
             }
+        }
 
+        a.page-numbers {
             @include hover {
                 background-color: $white;
+                color: $pale-brown;
             }
         }
     }
