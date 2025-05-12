@@ -106,13 +106,16 @@ global $product;
 			</div>
 		</div> -->
 
-		<section class="basic-block">
-			<div class="container">
-				<div class="entry-content">
-					<?php echo the_field("content");	?>
+		<?php if (get_field("content")) : ?>
+			<section class="basic-block">
+				<div class="container-small">
+					<div class="entry-content">
+						<?php the_field("content"); ?>
+					</div>
 				</div>
-			</div>
-		</section>
+			</section>
+		<?php endif; ?>
+
 
 		<?php
 		/**

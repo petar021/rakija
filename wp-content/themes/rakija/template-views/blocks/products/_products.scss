@@ -180,3 +180,27 @@
         border-radius: 35px;
     }
 }
+
+.page-template-destilerije-single {
+    .banner-title {
+        background-color: $gray;
+    }
+    
+    .woocommerce-ordering {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-bottom: 50px;
+
+        label {
+            padding-bottom: 0;
+            margin-bottom: 0;
+            margin-right: 15px;
+        }
+
+        .select2-container {
+            max-width: 220px;
+            width: 100%;
+        }
+    }
+}

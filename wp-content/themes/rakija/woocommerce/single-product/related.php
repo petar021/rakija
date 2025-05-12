@@ -49,6 +49,7 @@ if ( $related_products ) : ?>
                         </div>
                         <div class="product-item__btn">
                             <a class="btn" href="<?php echo esc_url( $related_product->add_to_cart_url() ); ?>" data-product_id="<?php echo esc_attr( $related_product_id ); ?>" class="add_to_cart_button"><?php esc_html_e( 'Dodaj u korpu', 'woocommerce' ); ?></a>
+                            <span class="font-cart"></span>
                         </div>
                     </div>
                 </div>

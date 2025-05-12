@@ -79,27 +79,27 @@
                         </div>
                         <div class="swiper-slide hero-image__right">
                             <div class="hero-image__right-image">
-                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/image-05.png" alt="">
+                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/image-03-slide.png" alt="">
                             </div>
                             <div class="hero-image__right-info">
                                 <div class="hero-image__right-info-price">
-                                    <span>3.350 RSD</span>
+                                    <span>1.700 RSD</span>
                                 </div>
                                 <div class="hero-image__right-info-distillery">
-                                    <span>Zlatni Tok</span>
+                                    <span>Zlatna Kap</span>
                                 </div>
                                 <div class="hero-image__right-info-product-name">
-                                    <h3>Alba šljiva prepečenica</h3>
+                                    <h3>Rakija od domaće šljive Barrique</h3>
                                 </div>
                                 <div class="hero-image__right-info-product-size">
-                                    <span>700ml</span>
+                                    <span>1000ml</span>
                                 </div>
                                 <a href="javascript:;" class="add-to-cart-btn"><span class="font-cart"></span></a>
                             </div>
                         </div>
                         <div class="swiper-slide hero-image__right">
                             <div class="hero-image__right-image">
-                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/image-05.png" alt="">
+                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/image-02-slide.png" alt="">
                             </div>
                             <div class="hero-image__right-info">
                                 <div class="hero-image__right-info-price">

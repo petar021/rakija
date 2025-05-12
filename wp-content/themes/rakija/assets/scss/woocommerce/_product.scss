@@ -523,3 +523,18 @@
 .modal-prev:hover, .modal-next:hover {
 	background: rgba(255, 255, 255, 0.6);
 }
+
+.single {
+	.basic-block {
+		padding: 0 0 25px;
+		background-color: $gray;
+	}
+}
+
+.product-item__wrap {
+	.product-item__btn {
+		.btn {	
+			background-color: transparent;
+		}
+	}
+}

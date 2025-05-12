@@ -67,6 +67,29 @@ const WooFiltration = {
                 }
             });
         });
+
+        // Open filtration popup
+        const filterButton = document.querySelector('.products__filtration-cta');
+        const customFilter = document.querySelector('.custom-filter');
+        const body = document.body;
+
+        if (filterButton && customFilter) {
+            filterButton.addEventListener('click', function () {
+                customFilter.classList.add('active');
+                body.classList.add('scroll-disable');
+            });
+        }
+
+        // Close filtration popup
+        const filterButtonOpened = document.querySelector('.custom-filter');
+        const customFilterClose = document.querySelector('.custom-filter__close');
+
+        if (filterButtonOpened && customFilterClose) {
+            customFilterClose.addEventListener('click', function () {
+                filterButtonOpened.classList.remove('active');
+                body.classList.remove('scroll-disable');
+            });
+        }
     }
 };
 

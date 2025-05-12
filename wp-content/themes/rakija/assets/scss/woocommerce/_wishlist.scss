@@ -1,0 +1,30 @@
+.product-item__img {
+    .yith-add-to-wishlist-button-block {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        z-index: 10;
+        width: 30px;
+        height: 30px;
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            grid-gap: 0;
+            border-radius: 0;
+
+            svg {
+                transition: $dur $ease;
+
+                @include hover {
+                    fill: $black;
+                }
+            }
+        }
+    }
+}
+
+.shop_table.cart {
+    display: table;
+}

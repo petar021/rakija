@@ -24,10 +24,6 @@ $products_query = new WP_Query( $args );
 if ( $products_query->have_posts() ) : ?>
     <div class="products-sec">
         <!-- <div class="container"> -->
-            <div class="section-head">
-                <span class="section-head__pretitle">Bogat izvor magnezijuma, fosfora, mangana i gvožđa</span>
-                <h1 class="section-head__title">Hrskavi hleb od 100% ovsa</h1>
-            </div>
             <div class="products-sec__container">
                 <?php
                 while ( $products_query->have_posts() ) : $products_query->the_post();
@@ -52,6 +48,7 @@ if ( $products_query->have_posts() ) : ?>
                             </div>
                             <div class="product-item__btn">
                                 <?php woocommerce_template_loop_add_to_cart(); ?>
+                                <span class="font-cart"></span>
                             </div>
                         </div>
                     </div>

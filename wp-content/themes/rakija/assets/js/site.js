@@ -8,6 +8,7 @@ import Qty from './_site/qty-counter';
 import MiniCart from './_site/mini-cart';
 import WooFiltration from './_site/woo-filtration';
 import PriceRange from './_site/price-range';
+// import Wishlist from './_site/wishlist';
 
 document.addEventListener('DOMContentLoaded', () => {
 	LazyLoader.init();
@@ -19,4 +20,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	MiniCart.init();
 	WooFiltration.init();
 	PriceRange.init();
+	// Wishlist.init();
 });

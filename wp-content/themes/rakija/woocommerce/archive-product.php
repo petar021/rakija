@@ -33,10 +33,6 @@ do_action('woocommerce_archive_description');
 if (woocommerce_product_loop()) : ?>
     <div class="products-sec">
         <div class="container">
-            <div class="section-head">
-                <span class="section-head__pretitle">Bogat izvor magnezijuma, fosfora, mangana i gvoždja</span>
-                <h1 class="section-head__title">Hrskavi hleb od 100% ovsa</h1>
-            </div>
             <div class="products__wrapper">
                 <div class="products__wrapper-left">
                     <div class="products__filtration">
@@ -45,6 +41,10 @@ if (woocommerce_product_loop()) : ?>
                             <span>Filter</span>
                         </div>
                         <div class="custom-filter">
+                            <div class="custom-filter__close"> 
+                                <span></span>
+                                <span></span>
+                            </div>
                             <!-- Filter 1: Glavne kategorije -->
                             <div class="filter-section" data-filter="rakije-subcategories">
                                 <h2 class="filter-section__title">Voće</h2>
@@ -134,7 +134,6 @@ if (woocommerce_product_loop()) : ?>
                                 <?php endif; ?>
                             </div>
 
-
                             <div class="filter-section price-range-filter">
                                 <h2 class="filter-section__title">Cena</h2>
                                 
@@ -202,13 +201,61 @@ if (woocommerce_product_loop()) : ?>
                                 </div>
                                 <div class="product-item__wrap">
                                     <div class="product-item__info">
-                                        <a href="<?php the_permalink(); ?>">
-                                            <h3 class="product-item__name"><?php echo esc_html($product_name); ?></h3>
-                                        </a>
+                                        <!-- Cena proizvoda -->
                                         <span class="product-item__price"><?php echo $product_price; ?></span>
+
+                                        <!-- Kategorija proizvoda -->
+                                        <?php
+                                        $categories = get_the_terms( get_the_ID(), 'product_cat' );
+                                        $chosen_category = '';
+
+                                        if ( $categories && ! is_wp_error( $categories ) ) {
+                                            foreach ( $categories as $category ) {
+                                                if ( $category->slug === 'destilerije' || term_is_ancestor_of( get_term_by( 'slug', 'destilerije', 'product_cat' ), $category, 'product_cat' ) ) {
+                                                    $chosen_category = $category->name;
+                                                    break;
+                                                }
+                                            }
+
+                                            if ( ! $chosen_category ) {
+                                                // Ako nije destilerija ni child, uzmi prvu dostupnu
+                                                $chosen_category = $categories[0]->name;
+                                            }
+                                        }
+
+                                        if ( $chosen_category ) : ?>
+                                            <div class="product-item__category">
+                                                <span>
+                                                    <?php echo esc_html( $chosen_category ); ?>
+                                                </span>
+                                            </div>
+                                        <?php endif; ?>
+
+                                        <!-- Ime proizvoda -->
+                                        <a href="<?php the_permalink(); ?>">
+                                            <h3 class="product-item__name"><?php echo esc_html( $product_name ); ?></h3>
+                                        </a>
+
+                                        <!-- Atributi proizvoda -->
+                                        <?php
+                                        $product = wc_get_product( get_the_ID() );
+                                        $attributes = $product->get_attributes();
+
+                                        $product_tags = get_the_terms( get_the_ID(), 'product_tag' );
+
+                                        if ( $product_tags && ! is_wp_error( $product_tags ) ) : ?>
+                                            <ul class="product-item__tags">
+                                                <?php foreach ( $product_tags as $tag ) : ?>
+                                                    <li><?php echo esc_html( $tag->name ); ?></li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        <?php endif; ?>
+
                                     </div>
+
                                     <div class="product-item__btn">
                                         <?php woocommerce_template_loop_add_to_cart(); ?>
+                                        <span class="font-cart"></span>
                                     </div>
                                 </div>
                             </div>
