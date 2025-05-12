@@ -192,6 +192,7 @@ if (woocommerce_product_loop()) : ?>
                             ?>
                             <div class="product-item">
                                 <div class="product-item__img">
+                                    <?php echo do_shortcode('[yith_wcwl_add_to_wishlist]') ?>
                                     <a href="<?php the_permalink(); ?>">
                                         <?php 
                                             $product_image_id = get_post_thumbnail_id(); // Dohvati ID istaknute slike proizvoda
