@@ -47,10 +47,15 @@
         overflow: hidden;
         padding-bottom: 30px;
 
+        @include mq($lg) {
+            max-width: 316px;
+        }
+
         @include mq($md) {
             transform: translate(0, 0);
             margin-top: 15px;
             overflow: visible;
+            max-width: 516px;
         }
 
         .swiper {
@@ -300,6 +305,10 @@
     line-height: 1.05;
     font-style: normal;
     margin-bottom: 5px;
+
+    @include mq($lg) {
+        max-width: 70%;
+    }
 
     @include mq($md) {
         font-size: 14px;

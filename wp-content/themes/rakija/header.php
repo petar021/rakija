@@ -79,7 +79,7 @@
 						</form>
 					</div>
 					<div class="site-header__cart-right">
-						<a href="http://localhost/rakija/cart/" class="btn-icon"><span class="font-cart"></span> Korpa</a>
+						<a href="javascript:;" class="btn-icon"><span class="font-cart"></span> Korpa</a>
 					</div>
 				</div>
 			</div>

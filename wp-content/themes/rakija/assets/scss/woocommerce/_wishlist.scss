@@ -28,3 +28,60 @@
 .shop_table.cart {
     display: table;
 }
+
+.woocommerce.yith-wcwl-form {
+    thead {
+        display: none;
+    }
+
+    tbody {
+        tr {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
+    .product-add-to-cart {
+        display: flex;
+        align-items: center;
+
+        a {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+
+            &.remove_from_wishlist {
+                font-size: 0;
+
+                &::after {
+                    content: '\E00E';
+                    font-family: 'fonticons';
+                    font-size: 20px;
+                }
+            }
+
+            &.ajax_add_to_cart {
+                font-size: 0;
+                
+                &::after {
+                    content: '\E004';
+                    font-family: 'fonticons';
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+
+    td {
+        &.product-thumbnail {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

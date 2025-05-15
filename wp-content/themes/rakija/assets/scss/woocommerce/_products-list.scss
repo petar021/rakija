@@ -251,6 +251,7 @@
 
         @include mq($md) {
             flex-direction: column;
+            padding-top: 25px;
         }
 
         &-left {
@@ -359,23 +360,24 @@
 
             .custom-filter {
                 position: fixed;
-                top: 25px;
+                top: 0;
                 left: -300%;
-                max-width: calc(100% - 50px);
-                width: 100%;
+                max-width: 100%;
+                width: 100dvw;
                 background-color: $pale-brown;
                 z-index: 1000;
                 opacity: 0;
                 visibility: hidden;
                 padding: 25px;
                 transition: $dur $ease;
-                max-height: calc(100% - 50px);
+                max-height: 100%;
+                height: 100dvh;
                 overflow-y: auto;
 
                 &.active {
                     opacity: 1;
                     visibility: visible;
-                    left: 25px;
+                    left: 0;
                     transition: $dur $ease;
 
                     .products__filtration-cta.bottom {

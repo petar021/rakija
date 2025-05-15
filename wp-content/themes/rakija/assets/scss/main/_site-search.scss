@@ -95,6 +95,25 @@
     }
 
     .no-results {
-        margin: 50px 0;
+        background-color: $gray;
+        padding: 50px 0;
+
+        @include mq($md) {
+            padding: 25px 0;
+        }
+    }
+}
+
+.search-no-results {
+    .site-header {
+        background-color: $gray;
+    }
+
+    .search-results {
+        padding-top: 100px;
+
+        @include mq($md) {
+            padding-top: 25px;
+        }
     }
 }
