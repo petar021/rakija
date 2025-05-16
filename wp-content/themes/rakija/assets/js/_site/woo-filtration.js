@@ -71,12 +71,14 @@ const WooFiltration = {
         // Open filtration popup
         const filterButton = document.querySelector('.products__filtration-cta');
         const customFilter = document.querySelector('.custom-filter');
+        const overlay = document.querySelector('.overlay');
         const body = document.body;
 
         if (filterButton && customFilter) {
             filterButton.addEventListener('click', function () {
                 customFilter.classList.add('active');
                 body.classList.add('scroll-disable');
+                overlay.classList.add('open');
             });
         }
 
@@ -88,6 +90,7 @@ const WooFiltration = {
             customFilterClose.addEventListener('click', function () {
                 filterButtonOpened.classList.remove('active');
                 body.classList.remove('scroll-disable');
+                overlay.classList.remove('open');
             });
         }
     }

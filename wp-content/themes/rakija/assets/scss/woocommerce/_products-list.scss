@@ -1,9 +1,10 @@
 .products-sec__container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
     grid-gap: 25px;
     position: relative;
     padding-bottom: 100px;
+    margin-top: 20px;
 
     @include mq($md) {
         max-width: 100%;
@@ -241,8 +242,13 @@
     }
 }
 
+.tax-product_cat,
 .woocommerce-shop {
     background-color: $gray;
+
+    .banner-title {
+        background-color: $gray;
+    }
 
     .products__wrapper {
         display: flex;
@@ -303,10 +309,6 @@
                     }
                 }
 
-                .select2-selection--single {
-                    transition: $dur $ease;
-                }
-
                 .select2-container--default .select2-selection--single .select2-selection__arrow {
                     top: 23px;
                     height: auto;
@@ -358,44 +360,77 @@
         @include mq($md) {
             max-width: 100%;
 
-            .custom-filter {
+            .overlay {
                 position: fixed;
                 top: 0;
-                left: -300%;
-                max-width: 100%;
+                left: -100%;
                 width: 100dvw;
-                background-color: $pale-brown;
+                height: 100dvh;
+                background-color: rgba($black, 0.5);
+                z-index: 1000;
+                transition: $dur $ease;
+
+                &.open {
+                    left: 0;
+                }
+            }
+
+            .custom-filter {
+                position: fixed;
+                left: -300%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                max-width: calc(100% - 30px);
+                max-height: calc(100% - 30px);
+                width: 100dvw;
+                background-color: $gray;
                 z-index: 1000;
                 opacity: 0;
                 visibility: hidden;
-                padding: 25px;
                 transition: $dur $ease;
-                max-height: 100%;
                 height: 100dvh;
                 overflow-y: auto;
+                padding: 60px 15px 25px;
+                border-radius: 20px;
+
+                &::after {
+                    content: '';
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100vw;
+                    height: 100vh;
+                    background-color: rgba(0, 0, 0, 0.6);
+                    z-index: 0;
+                    display: none;
+                }
 
                 &.active {
                     opacity: 1;
                     visibility: visible;
-                    left: 0;
+                    left: 50%;
                     transition: $dur $ease;
 
                     .products__filtration-cta.bottom {
+                        background-color: $black;
+                        color: $white;
+                        width: fit-content;
                         display: block;
+                        margin: 0 auto;
                     }
                 }
 
                 &__close {
-                    position: absolute;
+                    position: fixed;
                     right: 15px;
                     top: 15px;
-                    width: 40px;
-                    height: 40px;
+                    width: 30px;
+                    height: 30px;
 
                     span {
                         width: 100%;
-                        height: 1px;
-                        background-color: $white;
+                        height: 2px;
+                        background-color: $black;
                         transition: $dur $ease;
                         position: absolute;
                         top: 50%;
@@ -405,6 +440,16 @@
                         &:last-of-type {
                             transform: translate(-50%, -50%) rotate(-45deg);
                         }
+                    }
+
+                    &::before {
+                        content: 'Filter';
+                        position: fixed;
+                        left: 15px;
+                        top: 20px;
+                        font-family: $font-highlight;
+                        text-transform: uppercase;
+                        font-weight: 600;
                     }
                 }
             }
@@ -472,6 +517,7 @@
 
         @include mq($md) {
             max-width: 100%;
+            margin-top: 0;
         }
     
         .price-slider-wrapper {
@@ -552,6 +598,7 @@
         .price-inputs {
             display: flex;
             grid-gap: 1rem;
+            justify-content: space-between;
     
             label {
                 display: flex;

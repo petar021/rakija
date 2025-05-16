@@ -40,6 +40,7 @@ if (woocommerce_product_loop()) : ?>
                             <span class="font-filter"></span>
                             <span>Filter</span>
                         </div>
+                        <div class="overlay"></div>
                         <div class="custom-filter">
                             <div class="custom-filter__close"> 
                                 <span></span>
@@ -162,7 +163,14 @@ if (woocommerce_product_loop()) : ?>
                 </div>
                 <div class="products__wrapper-right">
                     <div class="products-sec__top">
-                        <span>440 proizvoda</span>
+                        <?php
+                            global $wp_query;
+
+                            $total_products = $wp_query->found_posts;
+
+                            echo '<span>' . $total_products . ' proizvoda</span>';
+                        ?>
+
                         <form class="woocommerce-ordering" method="get">
                             <select class="js-example-basic-single" name="state">
                                 <option value="A">Najpopularnije</option>

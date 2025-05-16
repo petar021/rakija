@@ -17,6 +17,10 @@
             svg {
                 transition: $dur $ease;
 
+                .yith-wcwl-add-to-wishlist-button__label {
+                    display: none;
+                }
+
                 @include hover {
                     fill: $black;
                 }

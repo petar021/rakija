@@ -60,16 +60,29 @@ body {
         overflow: hidden;
     }
 
-    &.archive.scroll-disable {
-        &::after {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-color: rgba($black, 0.5);
-            z-index: 999;
-            display: none;
-        }
-    }
+    // &.archive {
+    //     .site {   
+    //         &::after {
+    //             content: '';
+    //             position: fixed;
+    //             left: -200%;
+    //             top: 0;
+    //             width: 100%;
+    //             height: 100%;
+    //             background-color: rgba($black, 0.75);
+    //             z-index: 999;
+    //             transition: $dur $ease;
+    //         }
+    //     }
+
+    //     &.scroll-disable {
+    //         .site {
+    //             &::after {
+    //                 left: 0;
+    //             }
+    //         }
+    //     }
+    // }
 }
 
 .single {
