@@ -8,7 +8,7 @@
         margin-top: 2rem;
       
         .search-result-item {
-            background: $white;
+            background: $gray;
             border-radius: 12px;
         
             h3 {
@@ -33,6 +33,7 @@
                     object-fit: cover;
                     transition: $dur $ease;
                     transform: scale(1);
+                    max-height: 350px;
                 }
             }
 
@@ -83,6 +84,22 @@
             &.prev,
             &.next {
                 width: fit-content;
+
+                .font-arrow-small {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    @include mq($md) {
+                        font-size: 14px;
+                    }
+                }
+            }
+
+            &.next {
+                .font-arrow-small {
+                    transform: rotate(180deg);
+                }
             }
         }
 

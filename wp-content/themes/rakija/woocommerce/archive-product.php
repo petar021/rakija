@@ -9,8 +9,19 @@ defined('ABSPATH') || exit;
 
 get_header('shop');
 
-// Povlačenje trenutne taxonomije (kategorije)
+// ✅ Preusmeravanje na custom template ako je podkategorija iz "destilerije"
 $term = get_queried_object();
+
+if ( is_tax('product_cat') && $term instanceof WP_Term ) {
+    $parent = get_term($term->parent, 'product_cat');
+
+    if ( $parent && $parent->slug === 'destilerije' ) {
+        get_template_part('woocommerce/custom-templates/archive-subcat');
+        return;
+    }
+}
+
+// ✅ Sada ide postojeći deo sa ACF-om i filtrima:
 ?>
 
 <?php if ($term && have_rows('content', $term)) : ?>

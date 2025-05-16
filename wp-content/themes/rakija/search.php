@@ -35,9 +35,16 @@ get_header(); ?>
 				 <?php endwhile; ?>
 			 </div>
  
-			 <div class="pagination">
-				 <?php the_posts_pagination(); ?>
-			 </div>
+			<div class="pagination">
+				<?php
+				the_posts_pagination(array(
+					'prev_text' => '<span class="font-arrow-small"></span>',  // Ikonica za prethodnu stranicu
+					'next_text' => '<span class="font-arrow-small"></span>', // Ikonica za sledeću stranicu
+					'screen_reader_text' => 'Navigacija stranica' // Opcionalno: za pristupačnost
+				));
+				?>
+			</div>
+
 		 <?php else : ?>
 			 <div class="no-results">
 				 <h2>Nažalost, nema rezultata za tvoju pretragu.</h2>

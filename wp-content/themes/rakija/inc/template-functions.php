@@ -160,3 +160,11 @@ function handle_filter_products() {
 
   wp_die();
 }
+
+// Search page limit per page
+function nm_search_results_per_page( $query ) {
+	if ( $query->is_search() && $query->is_main_query() && !is_admin() ) {
+		$query->set( 'posts_per_page', 12 );
+	}
+}
+add_action( 'pre_get_posts', 'nm_search_results_per_page' );
