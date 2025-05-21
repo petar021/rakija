@@ -31,6 +31,12 @@
 
 .shop_table.cart {
     display: table;
+
+    .wishlist-empty {
+        @include mq($md) {
+            margin-top: 25px;
+        }
+    }
 }
 
 .woocommerce.yith-wcwl-form {
@@ -43,6 +49,10 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+
+            .product-price {
+                margin-left: auto;
+            }
         }
     }
 
@@ -85,6 +95,66 @@
 
             img {
                 margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.woocommerce {
+    table.shop_table.wishlist_table tr {
+        td {
+            font-family: $font-second;
+
+            a {
+                text-decoration: none;
+                color: $black;
+                font-size: 1rem;
+
+                @include hover {
+                    color: $pale-brown !important; // sass-lint:disable-line no-important
+                }
+            }
+
+            &.product-price {
+                .woocommerce-Price-amount {
+                    font-size: 25px;
+                    font-family: $font-second;
+                    color: $black;
+
+                    .woocommerce-Price-currencySymbol {
+                        font-size: 14px;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+
+            &.product-add-to-cart {
+                padding-right: 0;
+
+                a {
+                    margin-bottom: 0 !important; // sass-lint:disable-line no-important
+
+                    &.remove_from_wishlist {
+                        padding-right: 0 !important; // sass-lint:disable-line no-important
+                    }
+                }
+            }
+
+            &.product-thumbnail {
+                a {
+                    overflow: hidden;
+
+                    img {
+                        transition: $dur $ease;
+                        transform: scale(1);
+                    }
+
+                    @include hover {
+                        img {
+                            transform: scale(1.05);
+                        }
+                    }
+                }
             }
         }
     }

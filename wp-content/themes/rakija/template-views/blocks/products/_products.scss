@@ -58,6 +58,31 @@
             overflow: hidden;
             transition: $dur $ease;
             border-radius: 10px;
+            position: relative;
+
+            .yith-add-to-wishlist-button-block {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                z-index: 5;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0;
+                cursor: pointer;
+
+                a {
+                    gap: 0;
+
+                    @include hover {
+                        svg path {
+                            color: $black;
+                            fill: $black;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
 
             img {
                 transition: $dur $ease;
@@ -137,6 +162,7 @@
 
                 h3 {
                     width: fit-content;
+                    padding-right: 50px;
                 }
 
                 @include hover {
@@ -147,7 +173,7 @@
             .add-to-cart-btn {
                 position: absolute;
                 bottom: 20px;
-                right: 15px;
+                right: 0;
                 border: 2px solid rgba($pale-brown, 0.3);
                 border-radius: 18px;
                 display: flex;
@@ -184,23 +210,5 @@
 .page-template-destilerije-single {
     .banner-title {
         background-color: $gray;
-    }
-    
-    .woocommerce-ordering {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        margin-bottom: 50px;
-
-        label {
-            padding-bottom: 0;
-            margin-bottom: 0;
-            margin-right: 15px;
-        }
-
-        .select2-container {
-            max-width: 220px;
-            width: 100%;
-        }
     }
 }

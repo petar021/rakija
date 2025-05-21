@@ -64,29 +64,32 @@ defined( 'ABSPATH' ) || exit;
 	<?php endforeach; ?>
 
 	<?php if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
-		<div class="checkout__totals-item">
-			<?php do_action( 'woocommerce_review_order_before_shipping' ); ?>
+	<div class="checkout__totals-item">
+		<?php do_action( 'woocommerce_review_order_before_shipping' ); ?>
 
-			<!-- Grupisanje ikonice i teksta "Dostava" u jedan div -->
-			<div class="shipping-label">
-				<img src="<?php echo get_template_directory_uri(); ?>/assets/svg/truck.svg" alt="Dostava" width="20" height="20">
-				<span>Dostava</span>
-			</div>
+		<!-- Grupisanje ikonice i teksta "Dostava" u jedan div -->
+		<div class="shipping-label">
+			<img src="<?php echo get_template_directory_uri(); ?>/assets/svg/truck.svg" alt="Dostava" width="20" height="20">
+			<span>Dostava</span>
+		</div>
 
-			<!-- Drugi div samo za cenu dostave -->
-			<div class="shipping-price">
-				<?php 
-					$shipping_packages = WC()->shipping->get_packages();
-					$shipping_method = WC()->session->get('chosen_shipping_methods')[0]; // Dobija aktivnu metodu dostave
-					$shipping_rate = $shipping_packages[0]['rates'][$shipping_method];
+		<!-- Drugi div samo za cenu dostave -->
+		<div class="shipping-price">
+			<?php 
+				$shipping_packages = WC()->shipping->get_packages();
+				$chosen_methods = WC()->session->get('chosen_shipping_methods');
+				$chosen_method = $chosen_methods[0] ?? '';
+				$shipping_rate = $shipping_packages[0]['rates'][$chosen_method] ?? null;
 
-					if ( isset($shipping_rate) ) {
-						echo wc_price($shipping_rate->cost); // Prikazuje samo cenu dostave
-					}
-				?>
-			</div>
+				if ( $shipping_rate ) {
+					echo wc_price( $shipping_rate->cost + $shipping_rate->get_shipping_tax() );
+				} else {
+					echo esc_html__( 'Biće izračunato', 'woocommerce' );
+				}
+			?>
+		</div>
 
-			<?php do_action( 'woocommerce_review_order_after_shipping' ); ?>
+		<?php do_action( 'woocommerce_review_order_after_shipping' ); ?>
 		</div>
 	<?php endif; ?>
 

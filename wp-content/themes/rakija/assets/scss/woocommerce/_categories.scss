@@ -119,3 +119,29 @@
     opacity: 0.4;
     pointer-events: none;
 }
+
+.custom-category-wrapper {
+    .products {
+        padding-top: 0;
+        
+        &.columns-4 {
+            display: flex;
+            flex-wrap: wrap;
+            grid-gap: 60px;
+            margin-bottom: 50px;
+            position: relative;
+
+            .product-item {
+                flex: 0 0 calc(25% - 45px);
+                box-sizing: border-box;
+            }
+
+            .product-box__top {
+                img {
+                    width: auto;
+                    height: 350px;
+                }
+            }
+        }
+    }
+}

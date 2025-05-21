@@ -55,6 +55,9 @@ get_header();
                 
                 <?php elseif (get_row_layout() == 'products_display') : ?>
                     <?php get_template_part('template-views/blocks/products/products'); ?>
+
+                <?php elseif (get_row_layout() == 'wishlist_block') : ?>
+                    <?php get_template_part('template-views/blocks/wishlist/wishlist'); ?>
                 
                 <?php elseif (get_row_layout() == 'category_display') : ?>
                     <?php get_template_part('template-views/blocks/three-column-cat/three-column-cat'); ?>

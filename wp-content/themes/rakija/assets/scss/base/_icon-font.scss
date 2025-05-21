@@ -64,6 +64,9 @@
 	@if $filename == trash {
 		$char: "\E00E";
 	}
+	@if $filename == truck {
+		$char: "\E00F";
+	}
 
 	@return $char;
 }
@@ -120,5 +123,8 @@
 }
 .font-trash {
 	@include font(trash);
+}
+.font-truck {
+	@include font(truck);
 }
 

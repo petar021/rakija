@@ -1,15 +1,15 @@
 <?php get_header(); ?>
 
-<?php
+    <?php
     defined('ABSPATH') || exit;
 
     $term = get_queried_object();
 
     // ✅ Ako je podkategorija destilerije, koristi custom template
-    if ( $term instanceof WP_Term ) {
-        $parent = get_term($term->parent, 'product_cat');
+    if ( $term instanceof WP_Term && property_exists( $term, 'parent' ) ) {
+        $parent = get_term( $term->parent, 'product_cat' );
 
-        if ( $parent && $parent->slug === 'destilerije' ) {
+        if ( $parent && ! is_wp_error( $parent ) && $parent->slug === 'destilerije' ) {
             get_template_part('woocommerce/custom-templates/archive-subcat');
             return;
         }

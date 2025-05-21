@@ -2,7 +2,6 @@
 
 const QtyCounter = {
     init: function () {
-        console.log('QtyCounter initialized');
 
         // Klik za povećanje ili smanjenje količine
         document.body.addEventListener('click', function (event) {

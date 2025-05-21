@@ -537,36 +537,37 @@
             -webkit-appearance: none;
             border: none;
             padding: 0;
-    
+          
             &::-webkit-slider-thumb {
-                pointer-events: all;
-                -webkit-appearance: none;
-                height: 16px;
-                width: 16px;
-                background: $black;
-                border-radius: 50%;
-                border: none;
-                cursor: pointer;
-                position: relative;
-                z-index: 2;
+              pointer-events: all;
+              -webkit-appearance: none;
+              height: 16px;
+              width: 16px;
+              background: $black;
+              border-radius: 50%;
+              border: none;
+              cursor: pointer;
+              position: relative;
+              z-index: 2;
             }
-    
+          
             &::-moz-range-thumb {
-                pointer-events: all;
-                height: 16px;
-                width: 16px;
-                background: $pale-brown;
-                border: none;
-                border-radius: 50%;
-                cursor: pointer;
-                position: relative;
-                z-index: 2;
-
-                @include mq($md) {
-                    background-color: $pale-brown;
-                }
+              pointer-events: all;
+              height: 16px;
+              width: 16px;
+              background: $pale-brown;
+              border: none;
+              border-radius: 50%;
+              cursor: pointer;
+              position: relative;
+              z-index: 2;
+          
+              @include mq($md) {
+                background-color: $pale-brown;
+              }
             }
-        }
+          }
+          
     
         .price-slider-track,
         .price-slider-range {

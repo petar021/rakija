@@ -165,6 +165,10 @@
 .woocommerce-ordering {
     @include font(chevron-down);
     position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	margin-bottom: 50px;
 
     &::before {
         position: absolute;
@@ -198,6 +202,17 @@
 	select option {
 		background-color: $white;
 		color: $black;
+	}
+
+	label {
+		padding-bottom: 0;
+		margin-bottom: 0;
+		margin-right: 15px;
+	}
+
+	.select2-container {
+		max-width: 220px;
+		width: 100%;
 	}
 
 	@include mq($md) {
