@@ -9,19 +9,8 @@ defined('ABSPATH') || exit;
 
 get_header('shop');
 
-// ✅ Preusmeravanje na custom template ako je podkategorija iz "destilerije"
+// Povlačenje trenutne taxonomije (kategorije)
 $term = get_queried_object();
-
-if ( is_tax('product_cat') && $term instanceof WP_Term ) {
-    $parent = get_term($term->parent, 'product_cat');
-
-    if ( $parent && $parent->slug === 'destilerije' ) {
-        get_template_part('woocommerce/custom-templates/archive-subcat');
-        return;
-    }
-}
-
-// ✅ Sada ide postojeći deo sa ACF-om i filtrima:
 ?>
 
 <?php if ($term && have_rows('content', $term)) : ?>
@@ -51,7 +40,6 @@ if (woocommerce_product_loop()) : ?>
                             <span class="font-filter"></span>
                             <span>Filter</span>
                         </div>
-                        <div class="overlay"></div>
                         <div class="custom-filter">
                             <div class="custom-filter__close"> 
                                 <span></span>
@@ -174,14 +162,7 @@ if (woocommerce_product_loop()) : ?>
                 </div>
                 <div class="products__wrapper-right">
                     <div class="products-sec__top">
-                        <?php
-                            global $wp_query;
-
-                            $total_products = $wp_query->found_posts;
-
-                            echo '<span>' . $total_products . ' proizvoda</span>';
-                        ?>
-
+                        <span>440 proizvoda</span>
                         <form class="woocommerce-ordering" method="get">
                             <select class="js-example-basic-single" name="state">
                                 <option value="A">Najpopularnije</option>

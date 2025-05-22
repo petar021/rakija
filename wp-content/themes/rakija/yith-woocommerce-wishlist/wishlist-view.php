@@ -1,7 +1,4 @@
-<h1>wishlist 02</h1>
 <?php
-echo '<div style="background:red;color:white;">Custom wishlist template loaded</div>';
-
 /**
  * Wishlist page template - Standard Layout
  *
@@ -66,6 +63,8 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 			</th>
 		<?php endif; ?>
 
+		<th class="product-thumbnail"></th>
+
 		<?php if ( $show_remove_product ) : ?>
 			<?php ++$column_count; ?>
 			<th class="product-remove">
@@ -86,8 +85,6 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 				</span>
 			</th>
 		<?php endif; ?>
-
-		<th class="product-thumbnail"></th>
 
 		<th class="product-name">
 			<span class="nobr">
@@ -225,22 +222,7 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 			 */
 			global $product;
 
-			$product_id = $item->get_product_id();
-			$product = wc_get_product( $product_id );
-
-			$terms = get_the_terms( $product->get_id(), 'product_cat' );
-
-			echo '<pre>';
-			var_dump( $product );
-			echo '</pre>';			
-
-			if ( $terms && ! is_wp_error( $terms ) ) {
-				echo '<div class="product-categories">';
-				foreach ( $terms as $term ) {
-					echo '<span class="product-category">' . esc_html( $term->name ) . '</span> ';
-				}
-				echo '</div>';
-			}
+			$product = $item->get_product();
 
 			if ( $product && $product->exists() ) :
 				?>
@@ -250,25 +232,6 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 							<input type="checkbox" value="yes" name="items[<?php echo esc_attr( $item->get_product_id() ); ?>][cb]"/>
 						</td>
 					<?php endif ?>
-
-					<?php if ( $show_remove_product ) : ?>
-						<td class="product-remove">
-							<div>
-								<?php
-								/**
-								 * APPLY_FILTERS: yith_wcwl_remove_product_wishlist_message_title
-								 *
-								 * Filter the title of the icon to remove the product from the wishlist.
-								 *
-								 * @param string $title Icon title
-								 *
-								 * @return string
-								 */
-								?>
-								<a href="<?php echo esc_url( $item->get_remove_url() ); ?>" class="remove remove_from_wishlist" title="<?php echo esc_html( apply_filters( 'yith_wcwl_remove_product_wishlist_message_title', __( 'Remove this product', 'yith-woocommerce-wishlist' ) ) ); ?>">&times;</a>
-							</div>
-						</td>
-					<?php endif; ?>
 
 					<td class="product-thumbnail">
 						<?php
@@ -341,44 +304,6 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 						?>
 					</td>
 
-					<?php if ( $show_price || $show_price_variations ) : ?>
-						<td class="product-price">
-							<?php
-							/**
-							 * DO_ACTION: yith_wcwl_table_before_product_price
-							 *
-							 * Allows to render some content or fire some action before the product price in the wishlist table.
-							 *
-							 * @param YITH_WCWL_Wishlist_Item $item     Wishlist item object
-							 * @param YITH_WCWL_Wishlist      $wishlist Wishlist object
-							 */
-							do_action( 'yith_wcwl_table_before_product_price', $item, $wishlist );
-							?>
-
-							<?php
-							if ( $show_price ) {
-								echo wp_kses_post( $item->get_formatted_product_price() );
-							}
-
-							if ( $show_price_variations ) {
-								echo wp_kses_post( $item->get_price_variation() );
-							}
-							?>
-
-							<?php
-							/**
-							 * DO_ACTION: yith_wcwl_table_after_product_price
-							 *
-							 * Allows to render some content or fire some action after the product price in the wishlist table.
-							 *
-							 * @param YITH_WCWL_Wishlist_Item $item     Wishlist item object
-							 * @param YITH_WCWL_Wishlist      $wishlist Wishlist object
-							 */
-							do_action( 'yith_wcwl_table_after_product_price', $item, $wishlist );
-							?>
-						</td>
-					<?php endif ?>
-
 					<?php if ( $show_quantity ) : ?>
 						<td class="product-quantity">
 							<?php
@@ -410,6 +335,25 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 							 */
 							do_action( 'yith_wcwl_table_after_product_quantity', $item, $wishlist );
 							?>
+						</td>
+					<?php endif; ?>
+
+					<?php if ( $show_remove_product ) : ?>
+						<td class="product-remove">
+							<div>
+								<?php
+								/**
+								 * APPLY_FILTERS: yith_wcwl_remove_product_wishlist_message_title
+								 *
+								 * Filter the title of the icon to remove the product from the wishlist.
+								 *
+								 * @param string $title Icon title
+								 *
+								 * @return string
+								 */
+								?>
+								<a href="<?php echo esc_url( $item->get_remove_url() ); ?>" class="remove remove_from_wishlist" title="<?php echo esc_html( apply_filters( 'yith_wcwl_remove_product_wishlist_message_title', __( 'Remove this product', 'yith-woocommerce-wishlist' ) ) ); ?>">&times;</a>
+							</div>
 						</td>
 					<?php endif; ?>
 
@@ -472,6 +416,44 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 							 * @param YITH_WCWL_Wishlist      $wishlist Wishlist object
 							 */
 							do_action( 'yith_wcwl_table_after_product_stock', $item, $wishlist );
+							?>
+						</td>
+					<?php endif ?>
+
+					<?php if ( $show_price || $show_price_variations ) : ?>
+						<td class="product-price">
+							<?php
+							/**
+							 * DO_ACTION: yith_wcwl_table_before_product_price
+							 *
+							 * Allows to render some content or fire some action before the product price in the wishlist table.
+							 *
+							 * @param YITH_WCWL_Wishlist_Item $item     Wishlist item object
+							 * @param YITH_WCWL_Wishlist      $wishlist Wishlist object
+							 */
+							do_action( 'yith_wcwl_table_before_product_price', $item, $wishlist );
+							?>
+
+							<?php
+							if ( $show_price ) {
+								echo wp_kses_post( $item->get_formatted_product_price() );
+							}
+
+							if ( $show_price_variations ) {
+								echo wp_kses_post( $item->get_price_variation() );
+							}
+							?>
+
+							<?php
+							/**
+							 * DO_ACTION: yith_wcwl_table_after_product_price
+							 *
+							 * Allows to render some content or fire some action after the product price in the wishlist table.
+							 *
+							 * @param YITH_WCWL_Wishlist_Item $item     Wishlist item object
+							 * @param YITH_WCWL_Wishlist      $wishlist Wishlist object
+							 */
+							do_action( 'yith_wcwl_table_after_product_price', $item, $wishlist );
 							?>
 						</td>
 					<?php endif ?>

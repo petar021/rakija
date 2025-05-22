@@ -18,4 +18,3 @@
         <?php endif; ?>
     </div>
 </section><!-- .basic-block -->
-

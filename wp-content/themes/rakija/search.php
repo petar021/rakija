@@ -33,7 +33,7 @@ get_header(); ?>
 					</article>
 
 				 <?php endwhile; ?>
-			 </div>
+			</div>
  
 			<div class="pagination">
 				<?php
@@ -44,7 +44,6 @@ get_header(); ?>
 				));
 				?>
 			</div>
-
 		 <?php else : ?>
 			 <div class="no-results">
 				 <h2>Nažalost, nema rezultata za tvoju pretragu.</h2>

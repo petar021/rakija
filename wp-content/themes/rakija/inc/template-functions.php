@@ -100,71 +100,9 @@ add_filter('loop_shop_per_page', function($cols) {
 }, 20);
 
 // AJAX Filtration on Woo Category Page
-function enqueue_filter_scripts() {
-    wp_enqueue_script('my-filter', get_template_directory_uri() . '/assets/js/site.js', ['jquery'], null, true);
-    wp_localize_script('my-filter', 'ajaxurl', admin_url('admin-ajax.php'));
-}
-add_action('wp_enqueue_scripts', 'enqueue_filter_scripts');
+// function enqueue_filter_scripts() {
+//     wp_enqueue_script('my-filter', get_template_directory_uri() . '/assets/js/site.js', ['jquery'], null, true);
+//     wp_localize_script('my-filter', 'ajaxurl', admin_url('admin-ajax.php'));
+// }
+// add_action('wp_enqueue_scripts', 'enqueue_filter_scripts');
 
-add_action('wp_ajax_filter_products', 'handle_filter_products');
-add_action('wp_ajax_nopriv_filter_products', 'handle_filter_products');
-
-function handle_filter_products() {
-  $categories = $_POST['categories'] ?? [];
-  $subcategories = $_POST['subcategories'] ?? [];
-  $max_price = floatval($_POST['max_price'] ?? 999999);
-
-  $tax_query = ['relation' => 'AND'];
-
-  if (!empty($categories)) {
-    $tax_query[] = [
-      'taxonomy' => 'product_cat',
-      'field'    => 'slug',
-      'terms'    => $categories,
-      'include_children' => true,
-    ];
-  }
-
-  if (!empty($subcategories)) {
-    $tax_query[] = [
-      'taxonomy' => 'product_cat',
-      'field'    => 'slug',
-      'terms'    => $subcategories,
-      'include_children' => true,
-    ];
-  }
-
-  $args = [
-    'post_type' => 'product',
-    'posts_per_page' => -1,
-    'tax_query' => $tax_query,
-    'meta_query' => [
-      [
-        'key'     => '_price',
-        'value'   => $max_price,
-        'compare' => '<=',
-        'type'    => 'NUMERIC'
-      ]
-    ]
-  ];
-
-  $query = new WP_Query($args);
-
-  if ($query->have_posts()) :
-    while ($query->have_posts()) : $query->the_post();
-      wc_get_template_part('content', 'product');
-    endwhile;
-  else :
-    echo '<p>Nema pronađenih proizvoda.</p>';
-  endif;
-
-  wp_die();
-}
-
-// Search page limit per page
-function nm_search_results_per_page( $query ) {
-	if ( $query->is_search() && $query->is_main_query() && !is_admin() ) {
-		$query->set( 'posts_per_page', 12 );
-	}
-}
-add_action( 'pre_get_posts', 'nm_search_results_per_page' );
