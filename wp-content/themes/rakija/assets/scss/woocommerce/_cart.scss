@@ -42,6 +42,11 @@
         padding-right: 0;
         margin-bottom: 20px;
         overflow-x: auto;
+        width: 100%;
+
+        table {
+            min-width: 150%;
+        }
 	}
 }
 
@@ -85,7 +90,7 @@
 
 .cart__totals {
     // background-color: $snow;
-    padding: 30px 15px;
+    padding: 30px 20px;
     border-radius: 10px;
     background-color: $white;
     margin-top: 30px;
@@ -290,7 +295,6 @@
 
     span {
         @include clamp-font-size(14, 16);
-        font-weight: bold;
     }
 
      
@@ -321,14 +325,21 @@
     &:last-of-type {
         border-bottom: none;
         margin-bottom: 15px;
+
+        span {
+            &:last-of-type {
+                font-size: 1.5rem;
+            }
+        }
     }
 
     span {
-        @include clamp-font-size(14, 16);
+        @include clamp-font-size(14, 20);
         color: $black;
 
         &:last-of-type {
             font-weight: 900;
+            font-family: $font-second;
         }
     }
 
@@ -337,13 +348,45 @@
             color: $pale-brown;
         }
     }
+
+    .includes_tax {
+        display: none;
+    }
+}
+
+.shop_table {
+    .cart__totals-item {
+        padding-right: 15px;
+    }
+
+    .checkout__totals-item,
+    .shipping-label {
+        display: flex;
+        align-items: center;
+        grid-gap: 5px;
+
+        span {
+            font-weight: 500;
+        }
+    }
+
+    .shipping-price {
+        font-family: $font-second;
+
+        .woocommerce-Price-amount {
+            @include clamp-font-size(14, 20);
+        }
+    }
+
+    .checkout__totals-item {
+        background-color: rgba($pale-brown, 0.6);
+    }
 }
 
 .cart__order-total {
     span {
         @include clamp-font-size(18, 20);
-        font-weight: bold;
-        text-transform: uppercase;
+        font-weight: 500;
     }
 }
 
@@ -608,12 +651,6 @@
             line-height: 1.2;
         }
     }
-}
-
-.shipping-label {
-    display: flex;
-    align-items: center;
-    grid-gap: 5px;
 }
 
 // shipping info

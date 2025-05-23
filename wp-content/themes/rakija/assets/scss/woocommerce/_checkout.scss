@@ -159,15 +159,22 @@ abbr[title] {
 
 .checkout__totals {
     margin: 20px 0;
+
+    .checkout__totals-item {
+        &:nth-child(2) {
+            background-color: rgba($pale-brown, 0.6);
+        }
+    }
 }
 
 .checkout__totals-item {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    padding: 10px 0;
+    align-items: center;
+    padding: 10px 15px;
     color: $black;
     border-bottom: 1px solid $white;
+    border-radius: 15px;
 
     &:last-of-type {
         border-bottom: none;

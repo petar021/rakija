@@ -422,6 +422,16 @@
                         display: block;
                         margin: 0 auto;
                     }
+
+                    &::before {
+                        content: 'Filter';
+                        position: fixed;
+                        left: 15px;
+                        top: 20px;
+                        font-family: $font-highlight;
+                        text-transform: uppercase;
+                        font-weight: 600;
+                    }
                 }
 
                 &__close {
@@ -443,16 +453,6 @@
 
                         &:last-of-type {
                             transform: translate(-50%, -50%) rotate(-45deg);
-                        }
-
-                        &::before {
-                            content: 'Filter';
-                            position: fixed;
-                            left: 15px;
-                            top: 20px;
-                            font-family: $font-highlight;
-                            text-transform: uppercase;
-                            font-weight: 600;
                         }
                     }
                 }

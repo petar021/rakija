@@ -1,0 +1,47 @@
+.woocommerce-wishlist {
+    background-color: $gray;
+    
+    .banner-title {
+        background-color: $gray;
+    }
+}
+
+.basic-block {
+    &.wishlist {
+        background-color: $gray;
+
+        .wishlist-fragment {
+            background-color: $white;
+            border-radius: 15px;
+
+            @include mq($md) {
+                border-radius: 0;
+            }
+        }
+
+        .wishlist-items-wrapper {
+            tr {
+                border-bottom: 1px solid $gray;
+                margin: 0 15px;
+
+                &:first-of-type {
+                    td {
+                        &:first-of-type {
+                            border-top-left-radius: 15px;
+                        }
+                    }
+                }
+
+                &:last-of-type {
+                    border-bottom: none;
+
+                    td {
+                        &:first-of-type {
+                            border-bottom-left-radius: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
