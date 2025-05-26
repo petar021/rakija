@@ -80,7 +80,7 @@
 					</div>
 					<div class="site-header__cart-right">
 						<a href="http://localhost/rakija/cart/" class="btn-icon"><span class="font-cart"></span> Korpa</a>
-						<span class="cart-count"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
+						<span class="cart-count site-header__actions-link-sup js-cart-count"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
 					</div>
 				</div>
 			</div>
