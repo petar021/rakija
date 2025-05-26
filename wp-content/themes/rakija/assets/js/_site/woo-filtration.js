@@ -1,6 +1,26 @@
 'use strict';
 const WooFiltration = {
-    init: function() {
+    init: function () {
+        // Sakrij višak .custom-radio ako ih ima više od 8
+        document.querySelectorAll(".filter-section").forEach(function (section) {
+            const labels = Array.from(section.querySelectorAll("label.custom-radio.custom-checkbox"));
+            
+            if (labels.length > 8) {
+                const visible = labels.slice(0, 8);
+                const hidden = labels.slice(8);
+
+                hidden.forEach(label => label.classList.add("hidden-filter"));
+
+                // Dodaj dugme "Prikaži sve"
+                const showMoreBtn = document.createElement("span");
+                showMoreBtn.className = "show-more-btn";
+                showMoreBtn.setAttribute("data-target", section.dataset.filter);
+                showMoreBtn.textContent = "Prikaži sve";
+                section.appendChild(showMoreBtn);
+            }
+        });
+
+        // Dugme za prikaz više
         document.querySelectorAll(".show-more-btn").forEach(function (btn) {
             btn.addEventListener("click", function () {
                 const target = btn.getAttribute("data-target");
@@ -8,7 +28,6 @@ const WooFiltration = {
                 let wrapper = section.querySelector(".animated-filter-wrapper");
 
                 if (!wrapper) {
-                    // Prvi klik – otvori
                     const hiddenItems = section.querySelectorAll(".hidden-filter");
 
                     wrapper = document.createElement("div");
@@ -19,7 +38,6 @@ const WooFiltration = {
                         wrapper.appendChild(el);
                     });
 
-                    // Ubaci ispod poslednjeg vidljivog elementa
                     const lastVisible = section.querySelector("label:not(.hidden-filter):last-of-type");
                     if (lastVisible && lastVisible.parentNode) {
                         lastVisible.parentNode.insertBefore(wrapper, lastVisible.nextSibling);
@@ -27,7 +45,6 @@ const WooFiltration = {
                         section.appendChild(wrapper);
                     }
 
-                    // Animacija otvaranja
                     wrapper.style.height = "0px";
                     wrapper.style.overflow = "hidden";
                     requestAnimationFrame(() => {
@@ -44,7 +61,6 @@ const WooFiltration = {
 
                     btn.textContent = "Prikaži manje";
                 } else {
-                    // Sledeći klik – zatvori
                     const currentHeight = wrapper.scrollHeight + "px";
                     wrapper.style.height = currentHeight;
                     requestAnimationFrame(() => {
@@ -53,7 +69,6 @@ const WooFiltration = {
                         wrapper.style.overflow = "hidden";
 
                         wrapper.addEventListener("transitionend", () => {
-                            // Vrati elemente u sekciju i sakrij ih
                             const items = Array.from(wrapper.children);
                             items.forEach(el => {
                                 el.classList.add("hidden-filter");
@@ -68,7 +83,7 @@ const WooFiltration = {
             });
         });
 
-        // Open filtration popup
+        // Otvori filtraciju (popup)
         const filterButton = document.querySelector('.products__filtration-cta');
         const customFilter = document.querySelector('.custom-filter');
         const body = document.body;
@@ -76,18 +91,18 @@ const WooFiltration = {
         if (filterButton && customFilter) {
             filterButton.addEventListener('click', function () {
                 customFilter.classList.add('active');
-                body.classList.add('scroll-disable');
+                body.classList.add('scroll-disable', 'overlay');
             });
         }
 
-        // Close filtration popup
+        // Zatvori filtraciju (popup)
         const filterButtonOpened = document.querySelector('.custom-filter');
         const customFilterClose = document.querySelector('.custom-filter__close');
 
         if (filterButtonOpened && customFilterClose) {
             customFilterClose.addEventListener('click', function () {
                 filterButtonOpened.classList.remove('active');
-                body.classList.remove('scroll-disable');
+                body.classList.remove('scroll-disable', 'overlay');
             });
         }
     }

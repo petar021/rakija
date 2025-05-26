@@ -60,14 +60,14 @@ body {
         overflow: hidden;
     }
 
-    &.archive.scroll-disable {
-        // &::after {
-        //     content: '';
-        //     position: fixed;
-        //     inset: 0;
-        //     background-color: rgba($black, 0.5);
-        //     z-index: 999;
-        // }
+    &.overlay.scroll-disable {
+        &::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-color: rgba($black, 0.5);
+            z-index: 999;
+        }
     }
 }
 
@@ -76,5 +76,56 @@ body {
         @include mq($md) {
             padding: 0;
         }
+    }
+}
+
+.custom-radio {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1.4;
+    user-select: none;
+
+    input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .checkmark {
+        position: absolute;
+        top: 3px;
+        left: 0;
+        height: 18px;
+        width: 18px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        // transition: all 0.2s ease;
+    }
+
+    // input:checked ~ .checkmark {
+    //     border-color: #000;
+    //     background-color: #000;
+    // }
+
+    .checkmark::after {
+        content: '';
+        position: absolute;
+        display: none;
+        top: 4px;
+        left: 4px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #795548;
+    }
+
+    input:checked ~ .checkmark::after {
+        display: block;
     }
 }

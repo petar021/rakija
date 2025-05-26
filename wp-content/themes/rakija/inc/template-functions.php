@@ -98,11 +98,3 @@ function remove_nbsp_from_label( $translated_text, $text, $domain ) {
 add_filter('loop_shop_per_page', function($cols) {
     return 18;
 }, 20);
-
-// AJAX Filtration on Woo Category Page
-// function enqueue_filter_scripts() {
-//     wp_enqueue_script('my-filter', get_template_directory_uri() . '/assets/js/site.js', ['jquery'], null, true);
-//     wp_localize_script('my-filter', 'ajaxurl', admin_url('admin-ajax.php'));
-// }
-// add_action('wp_enqueue_scripts', 'enqueue_filter_scripts');
-

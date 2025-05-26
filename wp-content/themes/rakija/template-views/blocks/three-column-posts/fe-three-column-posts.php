@@ -6,7 +6,7 @@
             <div class="three-column-posts__box">
                 <div class="three-column-posts__box-top">
                     <a href="javascript:;">
-                        <img width="300" height="174" src="https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left.jpg" class="attachment-medium size-medium wp-post-image" alt="" decoding="async" fetchpriority="high" srcset="https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left.jpg 300w, https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left-600x347.jpg 600w, https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left-768x445.jpg 768w, https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left.jpg 831w" sizes="(max-width: 300px) 100vw, 300px">
+                        <img width="300" height="174" src="https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left-300x174.jpg" class="attachment-medium size-medium wp-post-image" alt="" decoding="async" fetchpriority="high" srcset="https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left-300x174.jpg 300w, https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left-600x347.jpg 600w, https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left-768x445.jpg 768w, https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left.jpg 831w" sizes="(max-width: 300px) 100vw, 300px">
                     </a>
                 </div>
                 <div class="three-column-posts__box-bottom">
@@ -20,7 +20,7 @@
             <div class="three-column-posts__box">
                 <div class="three-column-posts__box-top">
                     <a href="javascript:;">
-                        <img width="300" height="174" src="https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left.jpg" class="attachment-medium size-medium wp-post-image" alt="" decoding="async" srcset="https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left.jpg 300w, https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left-600x347.jpg 600w, https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left-768x445.jpg 768w, https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left.jpg 831w" sizes="(max-width: 300px) 100vw, 300px">
+                        <img width="300" height="174" src="https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left-300x174.jpg" class="attachment-medium size-medium wp-post-image" alt="" decoding="async" srcset="https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left-300x174.jpg 300w, https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left-600x347.jpg 600w, https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left-768x445.jpg 768w, https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left.jpg 831w" sizes="(max-width: 300px) 100vw, 300px">
                     </a>
                 </div>
                 <div class="three-column-posts__box-bottom">
@@ -34,7 +34,7 @@
             <div class="three-column-posts__box">
                 <div class="three-column-posts__box-top">
                     <a href="javascript:;">
-                        <img width="300" height="174" src="https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left.jpg" class="attachment-medium size-medium wp-post-image" alt="" decoding="async" srcset="https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left.jpg 300w, https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left-600x347.jpg 600w, https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left-768x445.jpg 768w, https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left.jpg 831w" sizes="(max-width: 300px) 100vw, 300px">
+                        <img width="300" height="174" src="https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left-300x174.jpg" class="attachment-medium size-medium wp-post-image" alt="" decoding="async" srcset="https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left-300x174.jpg 300w, https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left-600x347.jpg 600w, https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left-768x445.jpg 768w, https://rakija.baseline.rs/wp-content/uploads/2025/04/hero-image-left.jpg 831w" sizes="(max-width: 300px) 100vw, 300px">
                     </a>
                 </div>
                 <div class="three-column-posts__box-bottom">

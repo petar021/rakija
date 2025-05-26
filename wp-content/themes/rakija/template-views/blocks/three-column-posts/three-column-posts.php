@@ -39,7 +39,7 @@
                     <div class="three-column-posts__box-top">
                         <a href="<?php the_permalink(); ?>">
                             <?php if (has_post_thumbnail()) : ?>
-                                <?php the_post_thumbnail('full'); ?>
+                                <?php the_post_thumbnail('medium'); ?>
                             <?php else : ?>
                                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/placeholder.jpg" alt="">
                             <?php endif; ?>

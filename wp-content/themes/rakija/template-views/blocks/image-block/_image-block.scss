@@ -16,7 +16,7 @@
         height: 460px;
         padding: 0 65px;
 
-        @include mq($lg) {
+        @include mq($md) {
             flex-direction: column;
             padding: 25px 0;
         }

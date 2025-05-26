@@ -2,15 +2,16 @@
     <div class="container">
         <div class="brands-grid">
             <?php
-                // Dohvati trenutnu kategoriju
-                $term = get_queried_object();
-
-                // Dohvati sve podkategorije
-                $subcategories = get_terms(array(
-                    'taxonomy' => 'product_cat',
-                    'hide_empty' => false,
-                    'parent' => $term->term_id
-                ));
+                // Dohvati kategoriju "Destilerije" po slugu (ili koristi naziv ako je sigurnije)
+                $destilerije_term = get_term_by('slug', 'destilerije', 'product_cat');
+                
+                if ($destilerije_term) :
+                    // Dohvati sve podkategorije kategorije "Destilerije"
+                    $subcategories = get_terms(array(
+                        'taxonomy' => 'product_cat',
+                        'hide_empty' => false,
+                        'parent' => $destilerije_term->term_id
+                    ));
             ?>
             
             <?php if (!empty($subcategories)) : ?>
@@ -26,6 +27,8 @@
                         <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($subcategory->name); ?>">
                     </a>
                 <?php endforeach; ?>
+            <?php endif; ?>
+            
             <?php endif; ?>
         </div>
     </div>

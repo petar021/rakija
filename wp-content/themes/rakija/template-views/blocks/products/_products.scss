@@ -37,7 +37,7 @@
     }
 
     .product-box {
-        flex: 0 0 calc(25% - 45px);
+        flex: 0 0 calc(32% - 35px);
         box-sizing: border-box;
 
         @include mq($ipad) {
@@ -163,6 +163,10 @@
                 h3 {
                     width: fit-content;
                     padding-right: 50px;
+
+                    @include mq($md) {
+                        padding-right: 30px;
+                    }
                 }
 
                 @include hover {

@@ -79,7 +79,8 @@
 						</form>
 					</div>
 					<div class="site-header__cart-right">
-						<a href="javascript:;" class="btn-icon"><span class="font-cart"></span> Korpa</a>
+						<a href="http://localhost/rakija/cart/" class="btn-icon"><span class="font-cart"></span> Korpa</a>
+						<span class="cart-count"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
 					</div>
 				</div>
 			</div>

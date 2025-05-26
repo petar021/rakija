@@ -64,7 +64,7 @@ defined( 'ABSPATH' ) || exit;
 	<?php endforeach; ?>
 
 	<?php if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
-		<div class="checkout__totals-item">
+		<div class="checkout__totals-item-shipping">
 			<?php do_action( 'woocommerce_review_order_before_shipping' ); ?>
 
 			<!-- Grupisanje ikonice i teksta "Dostava" u jedan div -->

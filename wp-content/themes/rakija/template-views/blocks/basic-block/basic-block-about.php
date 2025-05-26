@@ -6,7 +6,7 @@
  */
 ?>
 
-<section class="basic-block">
+<div class="basic-block">
 	<div class="container-small">
 		<div class="entry-content">
 			<?php 
@@ -17,4 +17,4 @@
 			<?php endif; ?>
 		</div>
 	</div>
-</section><!-- .basic-block -->
+</div><!-- .basic-block -->

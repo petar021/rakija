@@ -103,12 +103,12 @@
             gap: 20px;
             justify-content: space-between;
 
-            @include mq($ipad) {
+            @include mq($md) {
                 flex-direction: column;
             }
 
             .contact-form-inner-left {
-                @include mq($ipad) {
+                @include mq($md) {
                     width: 100%;
                 }
 
@@ -116,14 +116,14 @@
                 textarea {
                     display: none;
 
-                    @include mq($ipad) {
+                    @include mq($md) {
                         display: block;
                     }
                 }
             }
 
             .contact-form-inner-right {
-                @include mq($ipad) {
+                @include mq($md) {
                     display: none;
                 }
             }

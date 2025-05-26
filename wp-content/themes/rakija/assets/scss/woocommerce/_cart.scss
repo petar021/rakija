@@ -36,17 +36,12 @@
     flex: 0 0 65%;
     padding-right: 60px;
 
-    @include mq($ipad) {
+    @include mq($md) {
 		max-width: 100%;
         flex: 0 0 100%;
         padding-right: 0;
         margin-bottom: 20px;
         overflow-x: auto;
-        width: 100%;
-
-        table {
-            min-width: 150%;
-        }
 	}
 }
 
@@ -54,7 +49,7 @@
     max-width: 35%;
     flex: 0 0 35%;
 
-    @include mq($ipad) {
+    @include mq($md) {
 		max-width: 100%;
         flex: 0 0 100%;
 	}
@@ -90,7 +85,7 @@
 
 .cart__totals {
     // background-color: $snow;
-    padding: 30px 20px;
+    padding: 30px 15px;
     border-radius: 10px;
     background-color: $white;
     margin-top: 30px;
@@ -295,6 +290,7 @@
 
     span {
         @include clamp-font-size(14, 16);
+        font-weight: bold;
     }
 
      
@@ -325,21 +321,14 @@
     &:last-of-type {
         border-bottom: none;
         margin-bottom: 15px;
-
-        span {
-            &:last-of-type {
-                font-size: 1.5rem;
-            }
-        }
     }
 
     span {
-        @include clamp-font-size(14, 20);
+        @include clamp-font-size(14, 16);
         color: $black;
 
         &:last-of-type {
             font-weight: 900;
-            font-family: $font-second;
         }
     }
 
@@ -349,44 +338,17 @@
         }
     }
 
-    .includes_tax {
-        display: none;
-    }
-}
-
-.shop_table {
-    .cart__totals-item {
-        padding-right: 15px;
-    }
-
-    .checkout__totals-item,
-    .shipping-label {
-        display: flex;
-        align-items: center;
-        grid-gap: 5px;
-
+    &.coupon-test-kupon {
         span {
             font-weight: 500;
         }
-    }
-
-    .shipping-price {
-        font-family: $font-second;
-
-        .woocommerce-Price-amount {
-            @include clamp-font-size(14, 20);
-        }
-    }
-
-    .checkout__totals-item {
-        background-color: rgba($pale-brown, 0.6);
-    }
+    } 
 }
 
 .cart__order-total {
     span {
         @include clamp-font-size(18, 20);
-        font-weight: 500;
+        font-weight: bold;
     }
 }
 
@@ -651,6 +613,52 @@
             line-height: 1.2;
         }
     }
+
+    .checkout__totals-item {
+        background-color: rgba($pale-brown, 0.6);
+        padding: 10px 15px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        
+        .shipping-label {
+            span {
+                font-weight: 500;
+                font-family: $font-main;
+            }
+        }
+
+        .shipping-price {
+            font-family: $font-second;
+        }
+    }
+
+    .cart__totals-item {
+        span {
+            &:first-of-type {
+                font-weight: 500;
+            }
+
+            &:last-of-type {
+                font-weight: 600;
+                font-family: $font-second;
+            }
+        }
+    }
+
+    .includes_tax {
+        display: none;
+    }
+
+    .cart__totals-title {
+        display: none;
+    }
+}
+
+.shipping-label {
+    display: flex;
+    align-items: center;
+    grid-gap: 5px;
 }
 
 // shipping info

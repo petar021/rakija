@@ -159,22 +159,14 @@ abbr[title] {
 
 .checkout__totals {
     margin: 20px 0;
-
-    .checkout__totals-item {
-        &:nth-child(2) {
-            background-color: rgba($pale-brown, 0.6);
-        }
-    }
 }
 
 .checkout__totals-item {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 10px 15px;
+    align-items: baseline;
+    padding: 10px 0;
     color: $black;
-    border-bottom: 1px solid $white;
-    border-radius: 15px;
 
     &:last-of-type {
         border-bottom: none;
@@ -190,10 +182,6 @@ abbr[title] {
         &:last-of-type {
             font-weight: bold;
         }
-    }
-
-    .includes_tax {
-        display: none;
     }
 }
 
@@ -351,6 +339,120 @@ abbr[title] {
 
 .woocommerce-checkout {
     background-color: $gray;
+
+    .checkout__product-name {
+        font-family: $font-second;
+
+        .product-quantity {
+            font-size: 13px;
+
+            &::after {
+                content: 'kom';
+                font-family: $font-highlight;
+            }
+        }
+    }
+
+    .checkout__totals-item {
+        padding: 0 15px;
+        margin-bottom: 15px;
+        
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+
+        span {
+            &:first-of-type {
+                font-weight: 400;
+            }
+
+            &:last-of-type {
+                font-family: $font-second;
+                font-weight: 600;
+            }
+        }
+
+        .includes_tax {
+            display: none;
+        }
+
+        .woocommerce-remove-coupon {
+            @include hover {
+                color: $pale-brown;
+            }
+        }
+    }
+
+    .checkout__totals-item-shipping {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: rgba($pale-brown, 0.6);
+        padding: 10px 15px;
+        border-radius: 15px;
+        margin-bottom: 15px;
+
+        span {
+            &:last-of-type {
+                font-family: $font-second;
+                font-weight: 600;
+            }
+        }
+    }
+
+    .checkout__totals {
+        background-color: $white;
+        padding: 15px;
+        margin: 75px 0 0;
+        position: relative;
+        border-radius: 10px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+
+        &::before {
+            content: 'Vaša narudžbina';
+            position: absolute;
+            top: -40px;
+            left: 0;
+            font-family: $font-main;
+            font-weight: 600;
+            font-size: 20px;
+        }
+    }
+
+    .woocommerce-checkout-payment {
+        .checkout__payment-methods {
+            li {
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                padding: 15px 30px;
+                display: flex;
+                align-items: center;
+
+                input {
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 50%;
+                    background-color: $white;
+                    border: 1px solid rgba($black, 0.2);
+                    position: relative;
+                    display: inline !important; //sass-lint:disable-line no-important
+                    margin-right: 15px;
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        left: 3px;
+                        top: 3px;
+                        width: 7px;
+                        height: 7px;
+                        background-color: $pale-brown;
+                        border-radius: 50%; 
+                    }
+                }
+            }
+        }
+    }
 }
 
 .woocommerce-checkout-payment {

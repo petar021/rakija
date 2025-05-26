@@ -47,15 +47,10 @@
         overflow: hidden;
         padding-bottom: 30px;
 
-        @include mq($lg) {
-            max-width: 316px;
-        }
-
         @include mq($md) {
             transform: translate(0, 0);
             margin-top: 15px;
             overflow: visible;
-            max-width: 516px;
         }
 
         .swiper {
@@ -195,8 +190,6 @@
         margin: 35px auto 0;
         position: relative;
         z-index: 5;
-        top: 0;
-        transition: $dur $ease;
 
         @include mq($md) {
             margin: 0 auto;
@@ -204,7 +197,7 @@
         }
     }
 
-    &-image {        
+    &-image {
         @include mq($md) {
             position: relative;
             max-width: 65%;
@@ -221,14 +214,6 @@
                 height: 250px;
                 width: 100%;
                 right: 0;
-            }
-        }
-
-        a {
-            @include hover {
-                img {
-                    top: -10px;
-                }
             }
         }
     }
@@ -315,10 +300,6 @@
     line-height: 1.05;
     font-style: normal;
     margin-bottom: 5px;
-
-    @include mq($lg) {
-        max-width: 70%;
-    }
 
     @include mq($md) {
         font-size: 14px;

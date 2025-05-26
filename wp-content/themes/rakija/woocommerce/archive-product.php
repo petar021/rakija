@@ -33,6 +33,10 @@ do_action('woocommerce_archive_description');
 if (woocommerce_product_loop()) : ?>
     <div class="products-sec">
         <div class="container">
+            <div class="section-head">
+                <span class="section-head__pretitle">Bogat izvor magnezijuma, fosfora, mangana i gvoždja</span>
+                <h1 class="section-head__title">Hrskavi hleb od 100% ovsa</h1>
+            </div>
             <div class="products__wrapper">
                 <div class="products__wrapper-left">
                     <div class="products__filtration">

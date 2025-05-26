@@ -1,5 +1,5 @@
 .select2-container {
-    min-width: 270px;
+    min-width: 290px;
     border-radius: 10px;
     
     @include mq($md) {
@@ -15,7 +15,6 @@
     background-color: $pale-brown !important; // sass-lint:disable-line no-important
 }
 
-.custom-category-wrapper,
 .products {
     .select2-container .select2-selection--single {
         height: auto;
