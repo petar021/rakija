@@ -3,10 +3,24 @@
 let debounceTimeout;
 const debounceDelay = 600;
 
+// ✅ Bezbedno parsiranje cene
 const getSafePriceValue = (value, fallback) => {
 	return value && !isNaN(value) ? value : fallback;
 };
 
+// ✅ Dodavanje <span class="checkmark"> u prvi label svake filter sekcije
+const addCheckmarkToFirstLabel = () => {
+	document.querySelectorAll(".filter-section").forEach(section => {
+		const firstLabel = section.querySelector("label");
+		if (firstLabel && !firstLabel.querySelector(".checkmark")) {
+			const span = document.createElement("span");
+			span.className = "checkmark";
+			firstLabel.appendChild(span);
+		}
+	});
+};
+
+// ✅ Funkcija za submit filtera — koristi se na desktopu
 const submitForm = () => {
 	const filterForm = document.querySelector("#product-filter-form");
 	const productsContainer = document.querySelector("#filtered-products");
@@ -23,13 +37,9 @@ const submitForm = () => {
 
 	const url = new URL(window.location.href);
 	const params = new URLSearchParams(new FormData(filterForm));
+	params.delete("paged"); // očisti paginaciju
 
-	// Očisti sve prethodne vrednosti paginacije (nije više relevantna)
-	params.delete("paged");
-
-	// Promeni URL bez reloada
 	history.replaceState(null, '', `${url.pathname}?${params}`);
-
 	productsContainer.classList.add("loading");
 
 	fetch(`${url.pathname}?${params}&ajax_filter=1`)
@@ -41,7 +51,9 @@ const submitForm = () => {
 
 			if (newContent) {
 				productsContainer.innerHTML = newContent.innerHTML;
-				bindFilterEvents(); // Ponovo binduj evente
+				if (window.innerWidth >= 767) {
+					bindFilterEvents(); // samo na desktopu ponovo binduj
+				}
 			} else {
 				console.warn("⚠️ AJAX nije vratio #filtered-products div!");
 			}
@@ -50,7 +62,20 @@ const submitForm = () => {
 		});
 };
 
+// ✅ Filtracija samo klikom na dugme na mobilnim uređajima
+const submitMobileForm = () => {
+	submitForm();
+
+	// ✅ Zatvori mobilni filter panel
+	document.querySelectorAll(".custom-filter").forEach(el => el.classList.remove("active"));
+	document.body.classList.remove("scroll-disable", "overlay");
+};
+
+// ✅ Desktop filtracija — binduje evente
 const bindFilterEvents = () => {
+	const isMobile = window.innerWidth < 767;
+	if (isMobile) return; // ⛔️ Ne binduj evente na mobilnim uređajima
+
 	const inputs = document.querySelectorAll("#product-filter-form input[type=radio]");
 	const numberInputs = document.querySelectorAll("#product-filter-form input[type=number]");
 
@@ -70,19 +95,50 @@ const bindFilterEvents = () => {
 	});
 };
 
+// ✅ Učitaj filtere iz URL-a (za reload i popstate/back)
+const updateFiltersFromURL = () => {
+	const url = new URL(window.location.href);
+	const params = new URLSearchParams(url.search);
+	const filterForm = document.querySelector("#product-filter-form");
+	if (!filterForm) return;
+
+	for (const [key, value] of params.entries()) {
+		const input = filterForm.querySelector(`[name="${key}"][value="${value}"]`);
+		if (input) input.checked = true;
+
+		const numberInput = filterForm.querySelector(`[name="${key}"]`);
+		if (numberInput && numberInput.type === "number") numberInput.value = value;
+	}
+};
+
+// ✅ Glavni objekat
 const Filters = {
 	init: function () {
 		const filterForm = document.querySelector("#product-filter-form");
-		const applyBtn = document.querySelector(".products__filtration-cta");
-		const isMobile = window.innerWidth <= 1024;
+		const applyBtnMobile = document.querySelector(".products__filtration-cta.bottom");
+		const isMobile = window.innerWidth < 767;
 
-		if (!filterForm) return;
+		updateFiltersFromURL();
+		addCheckmarkToFirstLabel();
 
-		if (applyBtn && isMobile) {
-			applyBtn.addEventListener("click", submitForm);
+		if (isMobile) {
+			if (applyBtnMobile) {
+				applyBtnMobile.addEventListener("click", submitMobileForm);
+			}
 		} else {
-			bindFilterEvents();
+			if (filterForm) {
+				bindFilterEvents();
+			}
 		}
+
+		window.addEventListener("popstate", () => {
+			updateFiltersFromURL();
+			if (window.innerWidth < 767) {
+				submitMobileForm();
+			} else {
+				submitForm();
+			}
+		});
 	}
 };
 
