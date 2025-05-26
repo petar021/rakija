@@ -23,6 +23,8 @@ const WooFiltration = {
         // Dugme za prikaz više
         document.querySelectorAll(".show-more-btn").forEach(function (btn) {
             btn.addEventListener("click", function () {
+                btn.classList.toggle("active"); // <--- OVO DODATO
+                
                 const target = btn.getAttribute("data-target");
                 const section = document.querySelector(`.filter-section[data-filter="${target}"]`);
                 let wrapper = section.querySelector(".animated-filter-wrapper");
@@ -60,6 +62,7 @@ const WooFiltration = {
                     });
 
                     btn.textContent = "Prikaži manje";
+                    
                 } else {
                     const currentHeight = wrapper.scrollHeight + "px";
                     wrapper.style.height = currentHeight;

@@ -502,9 +502,54 @@
         margin: 0;
         font-style: italic;
         color: rgba($black, 0.5);
-        padding-left: 11px;
         cursor: pointer;
         transition: $dur $ease;
+        position: relative;
+        padding-left: 35px;
+
+        @include mq($md) {
+            padding-left: 20px;
+        }
+
+        &::after {
+            content: '\E00d';
+            font-family: 'fonticons';
+            position: absolute;
+            left: 12px;
+            top: -5px;
+            transition: $dur $ease;
+            font-style: normal;
+            opacity: 1;
+
+            @include mq($md) {
+                left: 0;
+            }
+        }
+
+        &::before {
+            opacity: 0;
+        }
+
+        &.active {
+            &::after {
+                content: '\E00a';
+                font-family: 'fonticons';
+                position: absolute;
+                left: 12px;
+                top: -5px;
+                transition: $dur $ease;
+                font-style: normal;
+                opacity: 1;
+
+                @include mq($md) {
+                    left: 0;
+                }
+            }
+
+            &::before {
+                opacity: 0;
+            }
+        }
 
         @include hover {
             color: rgba($black, 1);
@@ -684,7 +729,7 @@
             flex-direction: column;
 
             .product-box {
-                flex: 0 0 48%;
+                flex: 0 0 47%;
             }
         }
     }
@@ -696,8 +741,13 @@
     border-radius: 10px;
     min-height: 300px;
 
+    @include mq($md) {
+        min-height: auto;
+    }
+
     &.loading {
         transition: $dur $ease;
+        border-radius: 10px;
         
         &::after {
             content: '';
@@ -718,10 +768,38 @@
 
         &::before {
             content: '';
-            background-color: rgba($black, 0.5);
+            background-color: rgba($gray, 0.5);
             position: absolute;
             inset: 0;
             z-index: 100;
+            border-radius: 10px;
+        }
+    }
+
+    .pagination-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+    .page-numbers {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 5px;
+        width: 40px;
+        height: 40px;
+        padding: 10px;
+        border: 1px solid rgba($black, 0.1);
+        border-radius: 15px;
+
+        &.prev,
+        &.next {
+            width: fit-content;
+        }
+
+        @include hover {
+            background-color: $white;
         }
     }
 }
@@ -774,4 +852,3 @@
     -2em 2em 0 0, -3em 0 0 0, -2em -2em 0 0.2em;
   }
 }
-  

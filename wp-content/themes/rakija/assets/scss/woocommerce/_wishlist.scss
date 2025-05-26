@@ -39,6 +39,26 @@
         justify-content: flex-start;
         grid-gap: 0;
 
+        &.mobile {
+            overflow-x: auto;
+            align-items: flex-start;
+
+            li {
+                padding: 15px 0;
+                min-width: 475px;
+            }
+
+            li::before {
+                display: none;
+            }
+
+            .product-thumbnail {
+                img {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
         li {
             width: 100%;
             margin-bottom: 0;

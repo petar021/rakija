@@ -46,6 +46,19 @@
 			justify-content: center;
 			color: $white;
 			font-size: 12px;
+
+			@include mq($xl) {
+				top: 10px;
+				width: 15px;
+				height: 15px;
+				right: 0;
+			}
+
+			@include mq($md) {
+				width: 20px;
+				height: 20px;
+				right: -5px;
+			}
 		}
 
 		@include mq($xl) {
@@ -162,6 +175,8 @@
 		&-right {
 			@include mq($xl) {
 				margin: 0 auto;
+				position: relative;
+
 				.btn-icon {
 					padding: 0 15px;
 					border: none;

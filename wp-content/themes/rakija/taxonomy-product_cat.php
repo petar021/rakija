@@ -213,7 +213,7 @@ get_header();
 
                 <div class="products__wrapper-right">
                     <div class="products-sec__top">
-                        <span class="products-number">440 proizvoda</span>
+                        <span class="products-number"></span>
                         <form class="woocommerce-ordering" method="get">
                             <select class="js-example-basic-single" name="state">
                                 <option value="A">Najpopularnije</option>

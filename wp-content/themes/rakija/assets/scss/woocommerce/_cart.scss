@@ -58,6 +58,11 @@
 .cart__table {
     width: 100%;
 
+    @include mq($md) {
+        min-width: 450px;
+        overflow-x: hidden;
+    }
+
     thead {
         tr {
             position: relative;
@@ -236,6 +241,7 @@
     @include mq($sm) {
         padding-right: 10px;
         width: 84px;
+        padding-left: 10px;
 	}
 }
 

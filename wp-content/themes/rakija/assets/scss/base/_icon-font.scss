@@ -49,20 +49,29 @@
 	@if $filename == instagram {
 		$char: "\E009";
 	}
-	@if $filename == phone {
+	@if $filename == minus-solid {
 		$char: "\E00A";
 	}
-	@if $filename == pin {
+	@if $filename == phone {
 		$char: "\E00B";
 	}
-	@if $filename == search {
+	@if $filename == pin {
 		$char: "\E00C";
 	}
-	@if $filename == star {
+	@if $filename == plus-solid {
 		$char: "\E00D";
 	}
-	@if $filename == trash {
+	@if $filename == search {
 		$char: "\E00E";
+	}
+	@if $filename == star {
+		$char: "\E00F";
+	}
+	@if $filename == trash {
+		$char: "\E010";
+	}
+	@if $filename == truck {
+		$char: "\E011";
 	}
 
 	@return $char;
@@ -106,11 +115,17 @@
 .font-instagram {
 	@include font(instagram);
 }
+.font-minus-solid {
+	@include font(minus-solid);
+}
 .font-phone {
 	@include font(phone);
 }
 .font-pin {
 	@include font(pin);
+}
+.font-plus-solid {
+	@include font(plus-solid);
 }
 .font-search {
 	@include font(search);
@@ -120,5 +135,8 @@
 }
 .font-trash {
 	@include font(trash);
+}
+.font-truck {
+	@include font(truck);
 }
 

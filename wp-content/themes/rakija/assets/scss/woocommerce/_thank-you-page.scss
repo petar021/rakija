@@ -19,6 +19,10 @@
     padding: 10px 0 12px;
     background-color: $black;
     color: $white;
+
+    @include mq($md) {
+        padding: 15px;
+    }
 }
 
 .order-details__products-info {

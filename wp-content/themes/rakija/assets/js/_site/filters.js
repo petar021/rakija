@@ -3,6 +3,21 @@
 let debounceTimeout;
 const debounceDelay = 600;
 
+const updateProductCount = () => {
+	const wrapper = document.querySelector("#filtered-products .products-wrapper");
+	const countEl = document.querySelector(".products-number");
+	if (!wrapper || !countEl) return;
+
+	const products = wrapper.querySelectorAll(".product-box");
+	const totalCount = products.length;
+
+	if (totalCount === 1) {
+		countEl.textContent = "1 proizvod";
+	} else {
+		countEl.textContent = `${totalCount} proizvoda`;
+	}
+};
+
 // ✅ Bezbedno parsiranje cene
 const getSafePriceValue = (value, fallback) => {
 	return value && !isNaN(value) ? value : fallback;
@@ -51,6 +66,8 @@ const submitForm = () => {
 
 			if (newContent) {
 				productsContainer.innerHTML = newContent.innerHTML;
+				updateProductCount();
+
 				if (window.innerWidth >= 767) {
 					bindFilterEvents(); // samo na desktopu ponovo binduj
 				}
@@ -139,6 +156,9 @@ const Filters = {
 				submitForm();
 			}
 		});
+
+		updateProductCount();
+
 	}
 };
 
