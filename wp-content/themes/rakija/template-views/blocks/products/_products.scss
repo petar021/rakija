@@ -37,7 +37,7 @@
     }
 
     .product-box {
-        flex: 0 0 calc(32% - 35px);
+        flex: 0 0 calc(24% - 35px);
         box-sizing: border-box;
 
         @include mq($ipad) {
@@ -111,6 +111,10 @@
             position: relative;
             display: flex;
             flex-direction: column;
+
+            .added_to_cart.wc-forward {
+                display: none;
+            }
 
             @include mq($md) {
                 padding: 20px 0;

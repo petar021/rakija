@@ -59,7 +59,7 @@ function render_products_grid($term_id) {
 
     $args = [
         'post_type'      => 'product',
-        'posts_per_page' => -1,
+        'posts_per_page' => 6,
         'post_status'    => 'publish',
         'tax_query'      => $tax_query,
         'meta_query'     => $meta_query,
@@ -93,9 +93,22 @@ function render_products_grid($term_id) {
                         <h3 class="product-title"><?php the_title(); ?></h3>
                     </a>
                     <span class="product-tax"><?php echo esc_html($zapremina ?: ''); ?></span>
-                    <a href="?add-to-cart=<?php echo esc_attr(get_the_ID()); ?>" class="add-to-cart-btn ajax_add_to_cart" data-product_id="<?php echo esc_attr(get_the_ID()); ?>">
-                        <span class="font-cart"></span>
-                    </a>
+                    <?php
+                        $product = wc_get_product( get_the_ID() );
+
+                        if ( $product ) :
+                        ?>
+                            <a href="<?php echo esc_url( $product->add_to_cart_url() ); ?>"
+                            data-quantity="1"
+                            class="add-to-cart-btn ajax_add_to_cart add_to_cart_button product_type_<?php echo esc_attr( $product->get_type() ); ?>"
+                            data-product_id="<?php echo esc_attr( $product->get_id() ); ?>"
+                            data-product_sku="<?php echo esc_attr( $product->get_sku() ); ?>"
+                            aria-label="<?php echo esc_attr( $product->add_to_cart_description() ); ?>"
+                            rel="nofollow">
+                            <span class="font-cart"></span>
+                        </a>
+                    <?php endif; ?>
+
                 </div>
             </div>
             <?php
@@ -216,10 +229,10 @@ get_header();
                         <span class="products-number"></span>
                         <form class="woocommerce-ordering" method="get">
                             <select class="js-example-basic-single" name="state">
-                                <option value="A">Najpopularnije</option>
-                                <option value="B">Najnovije</option>
-                                <option value="C">Cena: rastuće</option>
-                                <option value="D">Cena: opadajuće</option>
+                                <option value="date_desc">Najnovije</option>
+                                <option value="popularity">Najpopularnije</option>
+                                <option value="price_asc">Cena rastuće</option>
+                                <option value="price_desc">Cena opadajuće</option>
                             </select>
                             <script>
                                 // In your Javascript (external .js resource or <script> tag)

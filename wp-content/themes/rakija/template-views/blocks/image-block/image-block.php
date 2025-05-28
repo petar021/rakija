@@ -1,9 +1,14 @@
 <section class="image-block">
     <div class="container">
-        <?php 
-            $image = get_sub_field('image');
+        <?php
+            $image = get_sub_field('image'); // desktop
+            $image_mobile = get_sub_field('image_mobile'); // mobile
         ?>
-        <div class="image-block__wrapper" style="background-image: url('<?php echo esc_url($image['url']); ?>');">
+        <div class="image-block__wrapper">
+            <div class="image-block__img-box">
+                <img src="<?php echo esc_url($image['url']); ?>" class="desktop" alt="">
+                <img src="<?php echo esc_url($image_mobile['url']); ?>" class="mobile" alt="">
+            </div>
             <div class="image-block__content">
                 <div class="image-block__content-left">
                     <?php 

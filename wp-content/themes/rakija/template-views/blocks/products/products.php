@@ -206,20 +206,36 @@
                                 <span class="price"><?php echo number_format($price, 0, ',', '.'); ?></span>
                                 <span class="value">rsd</span>
                             </div>
+
                             <?php if (!empty($categories)) : ?>
                                 <span class="product-cat"><?php echo implode(', ', $categories); ?></span>
                             <?php endif; ?>
+
                             <a href="<?php echo get_permalink($product_id); ?>" class="product-title-link">
                                 <h3 class="product-title"><?php echo esc_html(get_the_title($product_id)); ?></h3>
                             </a>
+
                             <?php if (!empty($attributes)) : ?>
                                 <span class="product-tax"><?php echo implode(', ', $attributes); ?></span>
                             <?php endif; ?>
-                            <a href="?add-to-cart=<?php echo esc_attr($product_id); ?>" class="add-to-cart-btn">
-                                <span class="font-cart"></span>
-                            </a>
+
+                            <?php
+                            $product = wc_get_product($product_id);
+                            if ($product) :
+                            ?>
+                                <a href="<?php echo esc_url($product->add_to_cart_url()); ?>"
+                                    data-quantity="1"
+                                    class="add-to-cart-btn ajax_add_to_cart add_to_cart_button product_type_<?php echo esc_attr($product->get_type()); ?>"
+                                    data-product_id="<?php echo esc_attr($product->get_id()); ?>"
+                                    data-product_sku="<?php echo esc_attr($product->get_sku()); ?>"
+                                    aria-label="<?php echo esc_attr($product->add_to_cart_description()); ?>"
+                                    rel="nofollow">
+                                    <span class="font-cart"></span>
+                                </a>
+                            <?php endif; ?>
                         </div>
                     </div>
+
                 <?php
                         endforeach;
                     endif;

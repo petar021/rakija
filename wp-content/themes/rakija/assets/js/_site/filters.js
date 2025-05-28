@@ -6,15 +6,28 @@ const debounceDelay = 600;
 const updateProductCount = () => {
 	const wrapper = document.querySelector("#filtered-products .products-wrapper");
 	const countEl = document.querySelector(".products-number");
+	const productState = document.querySelector('.products-sec__top');
 	if (!wrapper || !countEl) return;
 
+	// Provera da li postoji poruka "nema proizvoda"
+	const noProductsMsg = wrapper.querySelector("p");
+
+	// Ako nema proizvoda (ni jedan .product-box ili postoji p element sa porukom)
 	const products = wrapper.querySelectorAll(".product-box");
 	const totalCount = products.length;
 
-	if (totalCount === 1) {
+	if (totalCount === 0 || noProductsMsg) {
+		countEl.textContent = "";
+		productState.classList.add('active');
+		console.log("< 0");
+	} else if (totalCount === 1) {
 		countEl.textContent = "1 proizvod";
+		productState.classList.remove('active');
+		console.log("= 1");
 	} else {
 		countEl.textContent = `${totalCount} proizvoda`;
+		productState.classList.remove('active');
+		console.log("> 1");
 	}
 };
 

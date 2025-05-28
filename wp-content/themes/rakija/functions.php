@@ -271,7 +271,7 @@ add_filter('woocommerce_add_to_cart_fragments', 'custom_woocommerce_header_add_t
 function custom_woocommerce_header_add_to_cart_fragment($fragments) {
     ob_start();
     ?>
-    <span class="site-header__actions-link-sup js-cart-count"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
+    <span class="cart-count site-header__actions-link-sup js-cart-count"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
     <?php
     $fragments['.js-cart-count'] = ob_get_clean();
 

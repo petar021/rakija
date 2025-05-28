@@ -14,6 +14,16 @@ const MiniCart = {
                 miniCart.style.display = 'none';
             }
         });
+
+        document.addEventListener('keydown', function(event) {
+            // Proveri da li je pritisnut ESC (kod 27 ili event.key === 'Escape')
+            if (event.key === 'Escape' || event.keyCode === 27) {
+                const miniCart = document.getElementById('mini-cart');
+                if (miniCart) {
+                    miniCart.style.display = 'none';
+                }
+            }
+        });
     }
 };
 export default MiniCart;

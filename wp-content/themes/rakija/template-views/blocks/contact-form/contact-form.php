@@ -22,6 +22,7 @@
 </section>
 <section class="contact-form-block">
     <div class="container">
+
         <div class="contact-form-wrapper">
             <div class="contact-form-left">
                 <div class="contact-form-left-top">
@@ -55,7 +56,7 @@
                 <?php $map = get_sub_field('map'); ?>
                 <?php $map_image = get_sub_field('map_image'); ?>
                 <?php if ($map && $map_image ): ?>
-                    <a href="<?php echo esc_url($map); ?>" target="_blank" class="location">
+                    <a href="#" target="_blank" id="show-route" class="location">
                         <img src="<?php echo esc_url($map_image['url']); ?>" alt="<?php echo esc_attr($map_image['alt']); ?>">
                     </a>
                 <?php endif; ?>

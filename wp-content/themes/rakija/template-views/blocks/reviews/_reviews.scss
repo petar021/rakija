@@ -8,6 +8,14 @@
 
     @include mq($md) {
         padding: 25px 0;
+
+        .container {
+            padding: 0;
+        }
+
+        .section-title {
+            padding: 0 15px;
+        }
     }
 
     .font-star {
@@ -18,6 +26,14 @@
     .swiper-slide {
         margin-right: 0 !important;
         cursor: grab;
+
+        @include mq($md) {
+            // margin: 0 15px !important;
+
+            .single-review {
+                padding: 0 15px;
+            }
+        }
 
         p {
             font-family: $font-highlight;

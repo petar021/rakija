@@ -76,8 +76,9 @@
             transition: $dur $ease;
 
             @include hover {
-                background-color: $pale-brown;
-                border-color: rgba($pale-brown, 1);
+                .btn {
+                    background-color: $pale-brown;
+                }
 
                 .font-cart {
                     color: $white;
@@ -102,6 +103,10 @@
                 transform: translate(-50%, -50%);
                 pointer-events: none;
                 transition: $dur $ease;
+            }
+
+            .btn {
+                background-color: $gray;
             }
         }
 
@@ -777,10 +782,10 @@
     }
 
     .pagination-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
     .page-numbers {
         display: flex;
@@ -801,6 +806,10 @@
         @include hover {
             background-color: $white;
         }
+    }
+
+    .product-box {
+        flex: 0 0 calc(32% - 35px);
     }
 }
 
