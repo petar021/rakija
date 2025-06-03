@@ -72,6 +72,12 @@
                 display: flex;
                 justify-content: space-between;
 
+                @include mq($lt) {
+                    padding: 15px 35px;
+                    justify-content: center;
+                    align-items: center;
+                }
+
                 @include mq($xl) {
                     flex-direction: column;
                     padding: 15px;
@@ -106,8 +112,12 @@
             @include mq($md) {
                 flex-direction: column;
             }
-
+            
             .contact-form-inner-left {
+                @include mq($ipad) {
+                    width: calc(50% - 15px);
+                }
+
                 @include mq($md) {
                     width: 100%;
                 }
@@ -123,6 +133,10 @@
             }
 
             .contact-form-inner-right {
+                @include mq($ipad) {
+                    width: calc(50% - 15px);
+                }
+                
                 @include mq($md) {
                     display: none;
                 }

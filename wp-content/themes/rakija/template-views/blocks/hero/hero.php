@@ -74,7 +74,7 @@
                                 <div class="hero-image__right-info-product-size">
                                     <span>700ml</span>
                                 </div>
-                                <a href="javascript:;" class="add-to-cart-btn"><span class="font-cart"></span></a>
+                                <a href="javascript:;" class="add-to-cart-btn"><span class="font-cart-plus"></span></a>
                             </div>
                         </div>
                         <div class="swiper-slide hero-image__right">
@@ -94,7 +94,7 @@
                                 <div class="hero-image__right-info-product-size">
                                     <span>1000ml</span>
                                 </div>
-                                <a href="javascript:;" class="add-to-cart-btn"><span class="font-cart"></span></a>
+                                <a href="javascript:;" class="add-to-cart-btn"><span class="font-cart-plus"></span></a>
                             </div>
                         </div>
                         <div class="swiper-slide hero-image__right">
@@ -114,7 +114,7 @@
                                 <div class="hero-image__right-info-product-size">
                                     <span>700ml</span>
                                 </div>
-                                <a href="javascript:;" class="add-to-cart-btn"><span class="font-cart"></span></a>
+                                <a href="javascript:;" class="add-to-cart-btn"><span class="font-cart-plus"></span></a>
                             </div>
                         </div>
                     </div>

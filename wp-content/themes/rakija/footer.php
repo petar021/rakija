@@ -11,8 +11,7 @@
 
 ?>
 
-	</div><!-- #content -->
-
+	</div><!-- #content -->				
 	<footer id="colophon" class="site-footer">
 		<div class="site-footer__top">
 			<div class="container">
@@ -73,50 +72,51 @@
 						</div>
 					</div>
 					<div class="site-footer__top-right">
-						<ul>
-							<li>
-								<a href="javascript:;">Rakija</a>
-							</li>
-							<li>
-								<a href="javascript:;">Liker</a>
-							</li>
-							<li>
-								<a href="javascript:;">Džin</a>
-							</li>
-							<li>
-								<a href="javascript:;">Destilerije</a>
-							</li>
-						</ul>
-						<ul>
-							<li>
-								<a href="javascript:;">O nama</a>
-							</li>
-							<li>
-								<a href="javascript:;">Blog</a>
-							</li>
-							<li>
-								<a href="javascript:;">Kontakt</a>
-							</li>
-						</ul>
-						<ul>
-							<li>
-								<a href="javascript:;">Informacije o isporuci</a>
-							</li>
-							<li>
-								<a href="javascript:;">Politika privatnosti</a>
-							</li>
-							<li>
-								<a href="javascript:;">Opšti uslovi korišćenja</a>
-							</li>
-						</ul>
+						<?php if (have_rows('footer_navigation', 'option')) : ?>
+							<?php while (have_rows('footer_navigation', 'option')) : the_row(); ?>
+								<ul>
+									<?php if (have_rows('navigation')) : ?>
+										<?php while (have_rows('navigation')) : the_row(); ?>
+											<?php
+											$link = get_sub_field('link');
+											if ($link):
+												$url = $link['url'];
+												$title = $link['title'];
+												$target = $link['target'] ?: '_self';
+											?>
+												<li>
+													<a href="<?php echo esc_url($url); ?>" target="<?php echo esc_attr($target); ?>">
+														<?php echo esc_html($title); ?>
+													</a>
+												</li>
+											<?php endif; ?>
+										<?php endwhile; ?>
+									<?php endif; ?>
+								</ul>
+							<?php endwhile; ?>
+						<?php endif; ?>
+
+						<?php
+							$social_title = get_field('social_title', 'option');
+							$facebook = get_field('facebook', 'option');
+							$instagram = get_field('instagram', 'option');
+						?>
+
 						<div class="social-box">
-							<h5>Pratite nas</h5>
-							<a href="https://www.facebook.com/rakijahouse1" target="_blank">
-								<span class="font-facebook"></span>
-							</a>
-							<a href="https://www.instagram.com/rakija_house/" target="_blank">
-								<span class="font-instagram"></span>
-							</a>
+							<?php if ($social_title): ?>
+								<h5><?php echo esc_html($social_title); ?></h5>
+							<?php endif; ?>
+							<?php if ($facebook): ?>
+								<a href="<?php echo esc_url($facebook['url']); ?>" target="<?php echo esc_attr($facebook['target'] ?: '_self'); ?>">
+									<span class="font-facebook"></span>
+								</a>
+							<?php endif; ?>
+
+							<?php if ($instagram): ?>
+								<a href="<?php echo esc_url($instagram['url']); ?>" target="<?php echo esc_attr($instagram['target'] ?: '_self'); ?>">
+									<span class="font-instagram"></span>
+								</a>
+							<?php endif; ?>
 						</div>
 					</div>
 				</div>

@@ -6,12 +6,33 @@
         padding: 25px 0;
     }
 
+    > .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .section-title {
+            width: 100%;
+        }
+
+        .woocommerce-ordering {
+            max-width: 400px;
+            width: 100%;
+            margin-bottom: 30px;
+
+            .js-example-basic-single {
+                max-width: 200px;
+            }
+        }
+    }
+
     &-wrapper {
         display: flex;
         flex-wrap: wrap;
         gap: 60px;
         margin-bottom: 50px;
         position: relative;
+        width: 100%;
 
         @include mq($ipad) {
             gap: 15px;
@@ -21,6 +42,7 @@
 
         &-cta-box {
             position: relative;
+            width: 100%;
 
             &::after {
                 content: '';
@@ -97,6 +119,7 @@
                 border-radius: 10px;
                 height: 100%;
                 width: auto;
+                margin: 0 auto;
             }
 
             @include hover {
@@ -145,6 +168,7 @@
                 position: relative;
                 font-family: $font-highlight;
                 font-size: 0.813rem;
+                padding-right: 30px;
 
                 &::before {
                     content: '';
@@ -202,13 +226,15 @@
                 justify-content: center;
                 width: 44px;
                 height: 44px;
+                background-color: $gray;
+                color: $black;
 
                 @include mq($md) {
                     width: 34px;
                     height: 34px;
                     border-radius: 10px;
 
-                    .font-cart {
+                    .font-cart-plus {
                         display: flex;
                         align-items: center;
                         justify-content: center;

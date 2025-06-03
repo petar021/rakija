@@ -90,8 +90,9 @@ defined( 'ABSPATH' ) || exit;
 				</ul>
 
 			<?php endif; ?>
-
-			<?php do_action( 'woocommerce_thankyou_' . $order->get_payment_method(), $order->get_id() ); ?>
+			<div class="thank-you-bottom-content">
+				<?php do_action( 'woocommerce_thankyou_' . $order->get_payment_method(), $order->get_id() ); ?>
+			</div>
 		</div>
 		<div class="order-details__products-info">
 			<?php do_action( 'woocommerce_thankyou', $order->get_id() ); ?>

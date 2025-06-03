@@ -58,11 +58,6 @@
 .cart__table {
     width: 100%;
 
-    @include mq($md) {
-        min-width: 450px;
-        overflow-x: hidden;
-    }
-
     thead {
         tr {
             position: relative;
@@ -195,17 +190,28 @@
     }
 }
 
+.cart-qty {
+    @include mq($md) {
+        position: absolute;
+        right: 15px;
+        padding: 0;
+        bottom: 0;
+    }
+}
+
 .cart__subtotal,
 .cart__remove {
     padding: 20px;
 }
 
-// .cart__remove {
-//     position: absolute;
-//     top: 50%;
-//     right: 125px;
-//     transform: translateY(-50%);
-// }
+.cart__remove {
+    @include mq($md) {
+        top: 0;
+        right: 15px;
+        padding: 0;
+        position: absolute;
+    }
+}
 
 .cart__thumbnail {
     width: 120px;
@@ -276,7 +282,12 @@
 
     .quantity {
         margin: 0;
-    }
+
+        @include mq($md) {
+            justify-content: flex-end;
+            gap: 5px;
+        }
+    }   
 }
 
 .cart__product-remove {
@@ -294,11 +305,14 @@
 .cart__subtotal {
     text-align: right;
 
-    span {
-        @include clamp-font-size(14, 16);
-        font-weight: bold;
+    @include mq($md) {
+        font-size: 20px;
     }
 
+    span {
+        @include clamp-font-size(16, 16);
+        font-weight: bold;
+    }
      
     bdi {
         color: $black;
@@ -590,6 +604,13 @@
 .woocommerce-cart {
     background-color: $gray;
 
+    .cart-empty.woocommerce-info {
+        min-height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     .restore-item {
         @include hover {
             color: $white;
@@ -657,6 +678,10 @@
     }
 
     .cart__totals-title {
+        display: none;
+    }
+
+    .products-sec {
         display: none;
     }
 }

@@ -66,6 +66,40 @@
             }
         }
     }
+
+    .woocommerce-form__label.woocommerce-form__label-for-checkbox.checkbox {
+        .checkbox__checkmark.font-checkmark {
+            background-color: $gray;
+            top: 0;
+            border: 1px solid $black;
+            border-radius: 0;
+            transition: $dur $ease;
+
+            &::before {
+                transition: $dur $ease;
+            }
+        }
+    }
+
+    .checkbox__text {
+        a {
+            color: $pale-brown;
+            text-decoration: underline;
+
+            @include hover {
+                color: $black;
+            }
+        }
+    }
+
+    .checkbox input:checked ~ .checkbox__checkmark {
+            &::before {
+                width: 10px;
+                height: 10px;
+                left: 3px;
+                background-color: $black;
+            }
+        }
 }
 
 .checkout__title {
@@ -195,7 +229,14 @@ abbr[title] {
     }
 }
 
-.checkout__payment-methods,
+.checkout__payment-methods {
+    display: none;
+}
+
+.woocommerce-checkout-payment {
+    margin-top: 20px;
+}
+
 .checkout__terms,
 .checkout__privacy {
     margin-bottom: 20px;
@@ -228,6 +269,14 @@ abbr[title] {
 .checkout__order-checkout-btn {
     max-width: fit-content;
     margin-right: auto;
+
+    &::before {
+        content: '*Plaćanje se vrši pouzećem';
+        display: block;
+        color: $pale-brown;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
 
     @include mq($md) {
         max-width: 100%;

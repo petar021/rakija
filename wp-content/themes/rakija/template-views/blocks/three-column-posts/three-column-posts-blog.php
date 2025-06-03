@@ -32,7 +32,7 @@ if ($query->have_posts()) : ?>
                             <?php if (has_post_thumbnail()) : ?>
                                 <?php the_post_thumbnail('medium_large'); ?>
                             <?php else : ?>
-                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/placeholder-image.webp" alt="<?php the_title(); ?>">
+                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/placeholder-image.jpg" alt="<?php the_title(); ?>">
                             <?php endif; ?>
                         </a>
                     </div>

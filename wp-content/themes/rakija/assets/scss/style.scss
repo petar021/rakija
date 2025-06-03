@@ -51,6 +51,7 @@ Theme Name: NM Theme
 @import 'elements/media';
 @import 'elements/hamburger';
 @import 'elements/breadcrumb';
+@import 'elements/accept-block';
 
 /*--------------------------------------------------------------
 # Main
@@ -86,3 +87,4 @@ Theme Name: NM Theme
 @import 'woocommerce/categories';
 @import 'woocommerce/print';
 @import 'woocommerce/wishlist';
+@import 'woocommerce/woo-products';

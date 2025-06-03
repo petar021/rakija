@@ -139,7 +139,6 @@
 	}
 }
 
-
 .woocommerce-breadcrumb {
 	@include clamp-font-size(14, 16);
 	color: $pale-brown;
@@ -155,7 +154,8 @@
 
 .woocommerce-result-count {
 	font-size: 14px;
-	margin: 10px 0;
+	margin: 0;
+	font-family: $font-highlight;
 
 	@include mq($md) {
 		display: none;
@@ -226,7 +226,6 @@ bdi {
 	}
 }
 
-
 .product-breadcrumb {
 	margin-bottom: 20px;
 }
@@ -250,4 +249,10 @@ bdi {
 			}
 		}
 	}
+}
+
+.woocommerce-page {
+    .section-title {
+        margin-top: 50px;
+    }
 }

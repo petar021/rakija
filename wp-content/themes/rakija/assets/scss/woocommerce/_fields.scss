@@ -35,7 +35,7 @@
     }
 
     @include mq($md) {
-        max-height: 35px;
+        max-height: 30px;
         margin: 10px 0 0;
         width: 115px;
 
@@ -52,6 +52,10 @@
     color: $pale-brown;
     background-color: $white;
     border: 1px solid rgba($black, 0.1);
+
+    @include mq($md) {
+        max-width: 40px;
+    }
 }
 
 .quantity__minus,
@@ -68,6 +72,10 @@
 
     @include hover {
         color: $pale-brown;
+    }
+
+    @include mq($md) {
+        min-width: fit-content;
     }
 }
 

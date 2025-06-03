@@ -24,7 +24,7 @@ get_header(); ?>
 							<?php if (has_post_thumbnail()) : ?>
 								<?php the_post_thumbnail('medium'); ?>
 							<?php else : ?>
-								<img src="<?php echo get_template_directory_uri(); ?>/assets/images/project/placeholder-image.webp" alt="Fallback slika" />
+								<img src="<?php echo get_template_directory_uri(); ?>/assets/images/project/placeholder-image.jpg" alt="Fallback slika" />
 							<?php endif; ?>
 						</div>
 						<h3><?php the_title(); ?></h3>

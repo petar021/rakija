@@ -377,3 +377,106 @@ add_filter('template_include', function($template) {
     }
     return $template;
 });
+
+
+function register_shop_sidebar() {
+    register_sidebar([
+        'name' => __('Shop Sidebar', 'your-theme'),
+        'id' => 'shop-sidebar',
+        'before_widget' => '<div class="widget %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+    ]);
+}
+add_action('widgets_init', 'register_shop_sidebar');
+
+add_filter( 'loop_shop_per_page', function( $cols ) {
+    return 18;
+}, 20 );
+
+
+add_action('wp_ajax_filter_products', 'handle_filter_products');
+add_action('wp_ajax_nopriv_filter_products', 'handle_filter_products');
+
+function handle_filter_products() {
+  // Preuzmi filtere iz POST zahteva
+  $filters = isset($_POST['filters']) ? $_POST['filters'] : [];
+  $paged = isset($_POST['page']) ? intval($_POST['page']) : 1;
+
+  $args = [
+    'post_type' => 'product',
+    'posts_per_page' => 6,
+    'paged' => $paged,
+  ];
+
+  $tax_query = [];
+
+  // Primer filtera za podkategorije
+  if (!empty($filters['subcategory'])) {
+    $tax_query[] = [
+      'taxonomy' => 'product_cat',
+      'field' => 'slug',
+      'terms' => sanitize_text_field($filters['subcategory']),
+    ];
+  }
+
+  // Dodaj ostale filtere, npr. za destilerije ako je taksonomija 'destilerija'
+  if (!empty($filters['destilerija'])) {
+    $tax_query[] = [
+      'taxonomy' => 'destilerija',
+      'field' => 'slug',
+      'terms' => sanitize_text_field($filters['destilerija']),
+    ];
+  }
+
+  if ($tax_query) {
+    $args['tax_query'] = $tax_query;
+  }
+
+  $query = new WP_Query($args);
+
+  ob_start();
+
+  if ($query->have_posts()) {
+    woocommerce_product_loop_start();
+
+    while ($query->have_posts()) {
+      $query->the_post();
+      wc_get_template_part('content', 'product');
+    }
+
+    woocommerce_product_loop_end();
+
+    // Prikaz paginacije
+    echo paginate_links([
+      'base' => '%_%',
+      'format' => '?paged=%#%',
+      'current' => $paged,
+      'total' => $query->max_num_pages,
+      'prev_text' => __('« Previous'),
+      'next_text' => __('Next »'),
+      'type' => 'list',
+    ]);
+  } else {
+    echo '<p>Nema proizvoda za odabrane filtere.</p>';
+  }
+
+  wp_reset_postdata();
+
+  $html = ob_get_clean();
+
+  wp_send_json_success(['html' => $html]);
+}
+
+function enqueue_filter_scripts() {
+  wp_enqueue_script('custom-filter', get_template_directory_uri() . '/js/custom-filter.js', ['jquery'], '1.0', true);
+
+  wp_localize_script('custom-filter', 'wc_ajax_url', [
+    'ajax_url' => admin_url('admin-ajax.php'),
+  ]);
+}
+add_action('wp_enqueue_scripts', 'enqueue_filter_scripts');
+
+
+// WooCommerce translate

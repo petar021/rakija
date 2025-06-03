@@ -50,8 +50,13 @@
     }
 
     &__right {
+        @include mq($lg) {
+            margin-left: 15px;
+        }
+
         @include mq($md) {
             margin-top: 15px;
+            margin-left: 0;
         }
         
         p {
@@ -61,7 +66,7 @@
             max-width: 75%;
             width: 100%;
 
-            @include mq($md) {
+            @include mq($lg) {
                 max-width: 100%;
             }
         }

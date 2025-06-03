@@ -177,3 +177,34 @@
 .order-details__footer {
     text-align: center;
 }
+
+.thank-you-bottom-content p {
+    font-size: 0;
+    position: relative;
+
+    &::after {
+        content: 'Plaćanje gotovinom prilikom preuzimanja';
+        font-size: 16px;
+    }
+}
+.order-details__item:last-of-type .order-details__total-price {
+    font-size: 0;
+    position: relative;
+
+    &::after {
+        content: 'Plaćanje gotovinom';
+        font-size: 16px;
+    }
+}
+
+.woocommerce-order-overview__payment-method.method {
+    strong {
+        font-size: 0;
+        position: relative;
+
+        &::after {
+            content: 'Plaćanje gotovinom';
+            font-size: 16px;
+        }
+    }
+}

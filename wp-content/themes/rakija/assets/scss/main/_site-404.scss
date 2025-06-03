@@ -8,7 +8,7 @@
 	min-height: 100vh;
 	overflow: hidden;
 
-	@include mq($md) {
+	@include mq($lg) {
 		flex-direction: column;
 		padding: 0 15px 50px;
 		min-height: auto;
@@ -17,7 +17,7 @@
 	.error-right {
 		max-width: 640px;
 
-		@include mq($md) {
+		@include mq($lg) {
 			text-align: center;
 		}
 

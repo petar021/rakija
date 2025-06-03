@@ -18,9 +18,10 @@
     padding-top: 83px;
     margin-bottom: 30px;
 
-    @include mq($lg) {
+    @include mq($xl) {
         flex-direction: column;
         gap: 25px;
+        align-items: flex-start;
     }
 
     .hero__right {
@@ -33,7 +34,7 @@
     display: flex;
     margin-top: 64px;
 
-    @include mq($md) {
+    @include mq($lg) {
         flex-direction: column;
     }
 
@@ -47,10 +48,19 @@
         overflow: hidden;
         padding-bottom: 30px;
 
+        @include mq($xl) {
+            max-width: 400px;
+        }
+
+        @include mq($lg) {
+            margin-left: auto;
+        }
+
         @include mq($md) {
             transform: translate(0, 0);
             margin-top: 15px;
             overflow: visible;
+            max-width: 100%;
         }
 
         .swiper {
@@ -102,11 +112,23 @@
             }
         }
     }
+
+    .hero__left {
+        max-width: calc(100% - 516px);
+
+        @include mq($xl) {
+            max-width: calc(100% - 400px);
+        }
+
+        @include mq($lg) {
+            max-width: 100%;
+        }
+    }
 }
 
 .hero__title {
     font-family: $font-section-title;
-    font-size: 139px;
+    @include clamp-font-size(44, 139);
     text-transform: uppercase;
     line-height: 0.65;
 
@@ -256,6 +278,7 @@
         left: 0;
         width: 100%;
         padding-left: 15px;
+        z-index: 10;
     }
 }
 

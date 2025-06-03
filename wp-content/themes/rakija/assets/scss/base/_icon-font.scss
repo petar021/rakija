@@ -31,47 +31,53 @@
 	@if $filename == at {
 		$char: "\E003";
 	}
-	@if $filename == cart {
+	@if $filename == cart-basic {
 		$char: "\E004";
 	}
-	@if $filename == close {
+	@if $filename == cart-plus {
 		$char: "\E005";
 	}
-	@if $filename == eye {
+	@if $filename == cart {
 		$char: "\E006";
 	}
-	@if $filename == facebook {
+	@if $filename == close {
 		$char: "\E007";
 	}
-	@if $filename == filter {
+	@if $filename == eye {
 		$char: "\E008";
 	}
-	@if $filename == instagram {
+	@if $filename == facebook {
 		$char: "\E009";
 	}
-	@if $filename == minus-solid {
+	@if $filename == filter {
 		$char: "\E00A";
 	}
-	@if $filename == phone {
+	@if $filename == instagram {
 		$char: "\E00B";
 	}
-	@if $filename == pin {
+	@if $filename == minus-solid {
 		$char: "\E00C";
 	}
-	@if $filename == plus-solid {
+	@if $filename == phone {
 		$char: "\E00D";
 	}
-	@if $filename == search {
+	@if $filename == pin {
 		$char: "\E00E";
 	}
-	@if $filename == star {
+	@if $filename == plus-solid {
 		$char: "\E00F";
 	}
-	@if $filename == trash {
+	@if $filename == search {
 		$char: "\E010";
 	}
-	@if $filename == truck {
+	@if $filename == star {
 		$char: "\E011";
+	}
+	@if $filename == trash {
+		$char: "\E012";
+	}
+	@if $filename == truck {
+		$char: "\E013";
 	}
 
 	@return $char;
@@ -96,6 +102,12 @@
 }
 .font-at {
 	@include font(at);
+}
+.font-cart-basic {
+	@include font(cart-basic);
+}
+.font-cart-plus {
+	@include font(cart-plus);
 }
 .font-cart {
 	@include font(cart);

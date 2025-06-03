@@ -43,6 +43,14 @@ pre {
 	color: $black;
 	text-transform: uppercase;
 	line-height: 6rem;
+
+	@include mq($xxxl) {
+		line-height: 5rem;
+	}
+
+	@include mq($xl) {
+		line-height: 4rem;
+	}
 }
 
 /*--------------------------------------------------------------

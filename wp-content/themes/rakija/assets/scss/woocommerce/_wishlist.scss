@@ -140,7 +140,7 @@
                 font-size: 0;
 
                 &::after {
-                    content: '\E00E';
+                    content: '\E012';
                     font-family: 'fonticons';
                     font-size: 20px;
                 }
@@ -150,7 +150,7 @@
                 font-size: 0;
                 
                 &::after {
-                    content: '\E004';
+                    content: '\E005';
                     font-family: 'fonticons';
                     font-size: 20px;
                 }
@@ -193,6 +193,11 @@
             }
 
             &.product-price {
+                del {
+                    text-decoration: none;
+                }
+                
+                del .woocommerce-Price-amount,
                 .woocommerce-Price-amount {
                     font-size: 25px;
                     font-family: $font-second;
@@ -202,6 +207,10 @@
                         font-size: 14px;
                         text-transform: uppercase;
                     }
+                }
+
+                ins {
+                    display: none;
                 }
             }
 

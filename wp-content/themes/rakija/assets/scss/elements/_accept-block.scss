@@ -1,0 +1,163 @@
+.accept-block {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: $black;
+    width: 100dvw;
+    height: 100dvh;
+    z-index: 99999999999999;
+    overflow: hidden;
+    color: $white;
+
+	&__center {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		height: 100%;
+		position: relative;
+		top: 0;
+		opacity: 1;
+		visibility: visible;
+		transition: top $dur $ease, opacity $dur $ease, visibility $dur $ease;
+
+		&.is-hidden {
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+
+	&__center-second {
+		position: absolute;
+		top: -100%;
+		left: 0;
+		width: 100%;
+		opacity: 0;
+		visibility: hidden;
+		transition: top $dur $ease, opacity $dur $ease, visibility $dur $ease;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+
+		img {
+			max-width: 200px;
+		}
+
+		&.is-visible {
+			top: 0;
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+    h2 {
+        @include clamp-font-size(32, 75);
+        font-family: $font-second;
+        margin: 50px 0;
+        text-align: center;
+    }
+
+    .accept-block__cta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @include mq($md) {
+            flex-direction: column;
+        }
+
+        a {
+            border: 1px solid $white;
+            border-radius: 15px;
+            padding: 10px 25px;
+            text-align: center;
+            color: $white;
+            font-size: 1rem;
+            font-family: $font-main;
+            background-color: $black;
+            margin: 0 15px;
+
+            @include mq($md) {
+                width: 100%;
+                margin: 0 0 30px;
+            }
+
+            @include hover {
+                background-color: $white;
+                color: $black;
+            }
+
+            &:nth-child(2) {
+                border-color: $pale-brown;
+                background-color: $pale-brown;
+
+                @include hover {
+                    background-color: $black;
+                    color: $white;
+                }
+            }
+        }
+    }
+
+    &__bottom-box {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        background-color: $pale-brown;
+        width: 100%;
+        padding: 10px 0;
+
+        .container {   
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            @include mq($md) {
+				flex-direction: column;
+			}
+        }
+    }
+
+    &__bottom-left {
+        @include mq($md) {
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 14px;
+            font-family: $font-main;
+            color: $white;
+
+            @include mq($md) {
+                text-align: center;
+            }
+        }
+    }
+
+    &__bottom-right {
+        p {
+            display: flex;
+            align-items: center;
+
+            a {
+                margin-left: 23px;
+            }
+        }
+    }
+
+    &.is-fading-out {
+        animation: fadeOutPopup 0.6s ease forwards;
+    }
+
+    @keyframes fadeOutPopup {
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+}

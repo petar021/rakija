@@ -1,8 +1,9 @@
 .brands {
-    margin: 50px 0;
+    padding: 50px 0;
+    background-color: $gray;
 
     @include mq($md) {
-        margin: 25px 0;
+        padding: 25px 0;
     }
 
     &-grid {
@@ -22,6 +23,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            filter: grayscale(1);
 
             @include mq($md) {
                 flex: 1 1 calc(50% - 15px);
@@ -36,11 +39,33 @@
                 top: 0;
             }
 
+            .subcategory-name {
+                position: absolute;
+                text-align: center;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                text-transform: uppercase;
+                color: $white;
+                font-family: $font-section-title;
+                font-size: 40px;
+                line-height: 20px;
+                width: 100%;
+            }
+
             @include hover {
-                img {
-                    top: -10px;
-                }
+                filter: grayscale(0);
             }
         }
     }  
+}
+
+.page-template-destilerije-archive {
+    .site-header {
+        background-color: $gray;
+    }
+
+    .banner-title {
+        background-color: $gray;
+    }
 }

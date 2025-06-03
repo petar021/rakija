@@ -18,7 +18,7 @@
                         <h3 class="product-title">Alba šljiva prepečenica</h3>
                     </a>
                     <span class="product-tax">700ml</span>
-                    <a href="javascript:;" class="add-to-cart-btn"><span class="font-cart"></span></a>
+                    <a href="javascript:;" class="add-to-cart-btn"><span class="font-cart-plus"></span></a>
                 </div>
             </div>
             <div class="product-box">
@@ -37,7 +37,7 @@
                         <h3 class="product-title">Branko Šljiva Traditional</h3>
                     </a>
                     <span class="product-tax">700ml</span>
-                    <a href="javascript:;" class="add-to-cart-btn"><span class="font-cart"></span></a>
+                    <a href="javascript:;" class="add-to-cart-btn"><span class="font-cart-plus"></span></a>
                 </div>
             </div>
             <div class="product-box">
@@ -56,7 +56,7 @@
                         <h3 class="product-title">Alba šljiva prepečenica</h3>
                     </a>
                     <span class="product-tax">700ml</span>
-                    <a href="javascript:;" class="add-to-cart-btn"><span class="font-cart"></span></a>
+                    <a href="javascript:;" class="add-to-cart-btn"><span class="font-cart-plus"></span></a>
                 </div>
             </div>
             <div class="product-box">
@@ -75,7 +75,7 @@
                         <h3 class="product-title">Zlatna Kap rakija od Šljive</h3>
                     </a>
                     <span class="product-tax">9 godina, 700ml</span>
-                    <a href="javascript:;" class="add-to-cart-btn"><span class="font-cart"></span></a>
+                    <a href="javascript:;" class="add-to-cart-btn"><span class="font-cart-plus"></span></a>
                 </div>
             </div>
             <div class="product-box">
@@ -94,7 +94,7 @@
                         <h3 class="product-title">Branko Šljiva Traditional</h3>
                     </a>
                     <span class="product-tax">700ml</span>
-                    <a href="javascript:;" class="add-to-cart-btn"><span class="font-cart"></span></a>
+                    <a href="javascript:;" class="add-to-cart-btn"><span class="font-cart-plus"></span></a>
                 </div>
             </div>
             <div class="product-box">
@@ -113,7 +113,7 @@
                         <h3 class="product-title">Alba šljiva prepečenica</h3>
                     </a>
                     <span class="product-tax">700ml</span>
-                    <a href="javascript:;" class="add-to-cart-btn"><span class="font-cart"></span></a>
+                    <a href="javascript:;" class="add-to-cart-btn"><span class="font-cart-plus"></span></a>
                 </div>
             </div>
             <div class="product-box">
@@ -132,7 +132,7 @@
                         <h3 class="product-title">Alba šljiva prepečenica</h3>
                     </a>
                     <span class="product-tax">700ml</span>
-                    <a href="javascript:;" class="add-to-cart-btn"><span class="font-cart"></span></a>
+                    <a href="javascript:;" class="add-to-cart-btn"><span class="font-cart-plus"></span></a>
                 </div>
             </div>
             <div class="product-box">
@@ -151,7 +151,7 @@
                         <h3 class="product-title">Zlatna Kap rakija od Šljive</h3>
                     </a>
                     <span class="product-tax">9 godina, 700ml</span>
-                    <a href="javascript:;" class="add-to-cart-btn"><span class="font-cart"></span></a>
+                    <a href="javascript:;" class="add-to-cart-btn"><span class="font-cart-plus"></span></a>
                 </div>
             </div>
         </div>

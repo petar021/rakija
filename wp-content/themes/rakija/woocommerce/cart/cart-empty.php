@@ -48,7 +48,7 @@ if ( $products_query->have_posts() ) : ?>
                             </div>
                             <div class="product-item__btn">
                                 <?php woocommerce_template_loop_add_to_cart(); ?>
-                                <span class="font-cart"></span>
+                                <span class="font-cart-plus"></span>
                             </div>
                         </div>
                     </div>

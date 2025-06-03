@@ -1,90 +1,53 @@
 <?php
-/**
- * The template for displaying product content within loops
- *
- * This template can be overridden by copying it to yourtheme/woocommerce/content-product.php.
- *
- * HOWEVER, on occasion WooCommerce will need to update template files and you
- * (the theme developer) will need to copy the new files to your theme to
- * maintain compatibility. We try to do this as little as possible, but it does
- * happen. When this occurs the version of the template file will be bumped and
- * the readme will list any important changes.
- *
- * @see     https://woo.com/document/template-structure/
- * @package WooCommerce\Templates
- * @version 3.6.0
- */
-
 defined( 'ABSPATH' ) || exit;
 
 global $product;
 
-// Ensure visibility.
 if ( empty( $product ) || ! $product->is_visible() ) {
-	return;
+    return;
 }
+
+$product_id = get_the_ID();
+$product_link = get_permalink( $product_id );
+$product_title = get_the_title( $product_id );
+$product_image = wp_get_attachment_image_src( get_post_thumbnail_id( $product_id ), 'medium' );
+$product_price = $product->get_price();
+$product_cat = wc_get_product_category_list( $product_id, ', ' );
+$product_volume = $product->get_attribute( 'pa_zapremina' ); // ili naziv tvog atributa (slug)
 ?>
-<div <?php wc_product_class( 'product-item', $product ); ?>>
-	<?php
-	/**
-	 * Hook: woocommerce_before_shop_loop_item.
-	 *
-	 * @hooked woocommerce_template_loop_product_link_open - 10
-	 */
 
-	$product_id = get_the_ID(); // Uzimanje ID-a trenutnog proizvoda
-	?>
-
-	<div class="product-item__wrap">
-		<a href="<?php the_permalink(); ?>" class="product-item__img-wrapper woocommerce-LoopProduct-link">
-			<?php
-			/**
-			 * Hook: woocommerce_before_shop_loop_item_title.
-			 *
-			 * @hooked woocommerce_show_product_loop_sale_flash - 10
-			 * @hooked woocommerce_template_loop_product_thumbnail - 10
-			 */
-
-			do_action( 'woocommerce_before_shop_loop_item_title' ); 
-			?>
-		</a>
-
-		<!-- <div class="product-item__actions">
-			<?php //woocommerce_template_loop_add_to_cart(); ?>
-		</div> -->
-	</div>
-
-	<div class="product-item__info">
+<div <?php wc_product_class( 'product-box', $product ); ?>>
+    <div class="product-box__top">
+		<?php echo do_shortcode('[yith_wcwl_add_to_wishlist]'); ?>
+        <a href="<?php echo esc_url( $product_link ); ?>">
+            <?php if ( $product_image ) : ?>
+                <img src="<?php echo esc_url( $product_image[0] ); ?>" alt="<?php echo esc_attr( $product_title ); ?>">
+            <?php endif; ?>
+        </a>
+    </div>
+    <div class="product-box__bottom">
+        <div class="price-box">
+            <span class="price"><?php echo wc_price( $product_price ); ?></span>
+        </div>
 		<?php
-		woocommerce_template_loop_product_link_open();
-		/**
-		 * Hook: woocommerce_shop_loop_item_title.
-		 *
-		 * @hooked woocommerce_template_loop_product_title - 10
-		 */
-		do_action( 'woocommerce_shop_loop_item_title' );
+			$product_cats = get_the_terms( $product_id, 'product_cat' );
 
-		woocommerce_template_loop_product_link_close();
-
-		/**
-		 * Hook: woocommerce_after_shop_loop_item_title.
-		 *
-		 * @hooked woocommerce_template_loop_rating - 5
-		 * @hooked woocommerce_template_loop_price - 10
-		 */
-		//do_action( 'woocommerce_after_shop_loop_item_title' ); ?>
-		<div class="product-item__price">
-			<?php woocommerce_template_loop_price(); ?>
-		</div>
-		<?php /**
-		 * Hook: woocommerce_after_shop_loop_item.
-		 *
-		 * @hooked woocommerce_template_loop_product_link_close - 5
-		 * @hooked woocommerce_template_loop_add_to_cart - 10
-		 */
-		// do_action( 'woocommerce_after_shop_loop_item' );
+			if ( $product_cats && ! is_wp_error( $product_cats ) ) {
+				$cat_names = wp_list_pluck( $product_cats, 'name' ); // Izvlači samo imena
+				echo '<span class="product-cat">' . esc_html( implode( ', ', $cat_names ) ) . '</span>';
+			}
 		?>
 
-		
-	</div>
+        <a href="<?php echo esc_url( $product_link ); ?>" class="product-title-link">
+            <h3 class="product-title"><?php echo esc_html( $product_title ); ?></h3>
+        </a>
+
+        <?php if ( $product_volume ) : ?>
+            <span class="product-tax"><?php echo esc_html( $product_volume ); ?></span>
+        <?php endif; ?>
+
+        <a href="?add-to-cart=<?php echo esc_attr( $product_id ); ?>" data-quantity="1" data-product_id="<?php echo esc_attr( $product_id ); ?>" class="add-to-cart-btn ajax_add_to_cart add_to_cart_button product_type_<?php echo esc_attr( $product->get_type() ); ?>">
+            <span class="font-cart-plus"></span>
+        </a>
+    </div>
 </div>

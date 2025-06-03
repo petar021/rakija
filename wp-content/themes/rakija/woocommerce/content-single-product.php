@@ -105,17 +105,9 @@ global $product;
 				</div>
 			</div>
 		</div> -->
-
-		<?php if (get_field("content")) : ?>
-			<section class="basic-block">
-				<div class="container-small">
-					<div class="entry-content">
-						<?php the_field("content"); ?>
-					</div>
-				</div>
-			</section>
-		<?php endif; ?>
-
+		<?php // get content blocks
+			get_template_part( 'template-views/blocks/basic-block/basic-block' );
+		?>
 
 		<?php
 		/**
@@ -130,6 +122,16 @@ global $product;
 		?>
 
 		<?php woocommerce_output_related_products(); ?>
+
+		<?php if (get_field("content")) : ?>
+			<section class="basic-block">
+				<div class="container-small">
+					<div class="entry-content">
+						<?php the_field("content"); ?>
+					</div>
+				</div>
+			</section>
+		<?php endif; ?>
 	</div>
 <?php do_action( 'woocommerce_after_single_product' ); ?>
 

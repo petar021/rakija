@@ -5,13 +5,6 @@
 	background-color: $gray;
 	padding: 30px 0;
 
-	h2 {
-		color: $black;
-		@include clamp-font-size(20, 35);
-		font-weight: 900;
-		margin-bottom: 40px;
-	}
-
 	@include mq($md) {
 		padding-bottom: 50px;
 	}
