@@ -156,7 +156,7 @@
             </div>
         </div>
         <div class="products-wrapper-cta-box">
-            <a href="https://rakija.baseline.rs/shop/" class="btn-icon"><span class="font-eye"></span>Pogledaj sve</a>
+            <a href="https://rakija.baseline.rs/product-category/rakija/" class="btn-icon"><span class="font-eye"></span>Pogledaj sve</a>
         </div>
     </div>
 </section>

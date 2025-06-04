@@ -1,15 +1,6 @@
 <?php
 /**
  * Template Name: Destilerije Archive
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package NM_Theme
  */
 
 get_header();
@@ -17,13 +8,24 @@ get_header();
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
-		<?php // get content blocks
-			get_template_part( 'template-views/blocks/banner-title/banner-title-destilerije' );
-			get_template_part( 'template-views/blocks/brands/brands' );
-			get_template_part( 'template-views/blocks/basic-block/basic-block-destilerije' );
-		?>
+		<?php if (have_rows('content')) : ?>
+            <?php while (have_rows('content')) : the_row(); ?>
+
+                <?php if (get_row_layout() == 'banner_title') : ?>
+                    <?php get_template_part('template-views/blocks/banner-title/banner-title-destilerije'); ?>
+                <?php endif; ?>
+
+                <?php if (get_row_layout() == 'brands') : ?>
+                    <?php get_template_part('template-views/blocks/brands/brands'); ?>
+                <?php endif; ?>
+
+                <?php if (get_row_layout() == 'basic_block') : ?>
+                    <?php get_template_part('template-views/blocks/basic-block/basic-block-destilerije'); ?>
+                <?php endif; ?>
+
+            <?php endwhile; ?>
+        <?php endif; ?>
 	</main>
 </div>
 
-<?php
-get_footer();
+<?php get_footer(); ?>

@@ -53,70 +53,85 @@
                     </div>
                 </div>
             </div>
-
             <div class="hero__right">
                 <div class="swiper hero-swiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide hero-image__right">
-                            <div class="hero-image__right-image">
-                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/image-05.png" alt="">
-                            </div>
-                            <div class="hero-image__right-info">
-                                <div class="hero-image__right-info-price">
-                                    <span>3.350 RSD</span>
-                                </div>
-                                <div class="hero-image__right-info-distillery">
-                                    <span>Zlatni Tok</span>
-                                </div>
-                                <div class="hero-image__right-info-product-name">
-                                    <h3>Alba šljiva prepečenica</h3>
-                                </div>
-                                <div class="hero-image__right-info-product-size">
-                                    <span>700ml</span>
-                                </div>
-                                <a href="javascript:;" class="add-to-cart-btn"><span class="font-cart-plus"></span></a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide hero-image__right">
-                            <div class="hero-image__right-image">
-                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/image-03-slide.png" alt="">
-                            </div>
-                            <div class="hero-image__right-info">
-                                <div class="hero-image__right-info-price">
-                                    <span>1.700 RSD</span>
-                                </div>
-                                <div class="hero-image__right-info-distillery">
-                                    <span>Zlatna Kap</span>
-                                </div>
-                                <div class="hero-image__right-info-product-name">
-                                    <h3>Rakija od domaće šljive Barrique</h3>
-                                </div>
-                                <div class="hero-image__right-info-product-size">
-                                    <span>1000ml</span>
-                                </div>
-                                <a href="javascript:;" class="add-to-cart-btn"><span class="font-cart-plus"></span></a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide hero-image__right">
-                            <div class="hero-image__right-image">
-                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/project/image-02-slide.png" alt="">
-                            </div>
-                            <div class="hero-image__right-info">
-                                <div class="hero-image__right-info-price">
-                                    <span>3.350 RSD</span>
-                                </div>
-                                <div class="hero-image__right-info-distillery">
-                                    <span>Zlatni Tok</span>
-                                </div>
-                                <div class="hero-image__right-info-product-name">
-                                    <h3>Alba šljiva prepečenica</h3>
-                                </div>
-                                <div class="hero-image__right-info-product-size">
-                                    <span>700ml</span>
-                                </div>
-                                <a href="javascript:;" class="add-to-cart-btn"><span class="font-cart-plus"></span></a>
-                            </div>
-                        </div>
+                        <?php if (have_rows('hero_products_display')) : ?>
+                            <?php while (have_rows('hero_products_display')) : the_row(); ?>
+                                <?php
+                                    $product = get_sub_field('hero_products'); // relationship field
+                                    $custom_image = get_sub_field('custom_product_image'); // image array
+
+                                    if ($product) :
+                                    // Ako je relationship više vrednosti, koristi foreach:
+                                    foreach ($product as $p) :
+                                        $price = get_post_meta($p->ID, '_price', true);
+                                        $distillery = get_the_terms($p->ID, 'pa_destilerija'); // custom taxonomy – proveri tačan slug
+                                        $size = get_the_terms($p->ID, 'pa_tezina'); // ili 'pa_zapremina' ako koristiš to za veličinu
+                                        $categories = get_the_terms($p->ID, 'product_cat');
+                                        $tags = get_the_terms($p->ID, 'product_tag');
+                                        $product_name = get_the_title($p->ID);
+                                        $product_link = get_permalink($p->ID);
+                                        ?>
+                                        
+                                        <div class="swiper-slide hero-image__right">
+                                            <div class="hero-image__right-image">
+                                                <a href="<?php echo get_permalink($p->ID); ?>">
+                                                    <?php if ($custom_image) : ?>
+                                                        <img src="<?php echo esc_url($custom_image['url']); ?>" alt="<?php echo esc_attr($custom_image['alt']); ?>">
+                                                    <?php else : ?>
+                                                        <?php echo get_the_post_thumbnail($p->ID, 'medium'); ?>
+                                                    <?php endif; ?>
+                                                </a>
+                                            </div>
+
+                                            <div class="hero-image__right-info">
+                                                <div class="hero-image__right-info-price">
+                                                    <span><?php echo wc_price($price); ?></span>
+                                                </div>
+
+                                                <div class="hero-image__right-info-distillery">
+                                                    <span>
+                                                        <?php 
+                                                        if ($categories && !is_wp_error($categories)) {
+                                                            $names = wp_list_pluck($categories, 'name');
+                                                            echo esc_html(implode(', ', $names));
+                                                        }
+                                                        ?>
+                                                    </span>
+                                                </div>
+
+                                                <div class="hero-image__right-info-product-name">
+                                                    <a href="<?php echo get_permalink($p->ID); ?>">
+                                                        <h3>
+                                                                <?php echo esc_html($product_name); ?>
+                                                        </h3>
+                                                    </a>
+                                                </div>
+
+                                                <div class="hero-image__right-info-product-size">
+                                                    <span>
+                                                        <?php 
+                                                        if ($tags && !is_wp_error($tags)) {
+                                                            $names = wp_list_pluck($tags, 'name');
+                                                            echo esc_html(implode(', ', $names));
+                                                        }
+                                                        ?>
+                                                    </span>
+                                                </div>
+
+                                                <a href="<?php echo esc_url('?add-to-cart=' . $p->ID); ?>"
+                                                    class="add-to-cart-btn button product_type_simple add_to_cart_button ajax_add_to_cart"
+                                                    data-product_id="<?php echo esc_attr($p->ID); ?>"
+                                                    data-quantity="1">
+                                                    <span class="font-cart-plus"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            <?php endwhile; ?>
+                        <?php endif; ?>
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>

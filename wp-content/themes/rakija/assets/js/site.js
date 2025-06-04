@@ -11,7 +11,7 @@ import PriceRange from './_site/price-range';
 import Filters from './_site/filters';
 import Pagination from './_site/woo-pagination';
 import PopupAccept from './_site/popup-accept';
-// import Geolocation from './_site/geolocation';
+import Geolocation from './_site/geolocation';
 // import Wishlist from './_site/wishlist';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -27,6 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	Filters.init();
 	Pagination.init();
 	PopupAccept.init();
-	// Geolocation.init();
+	Geolocation.init();
 	// Wishlist.init();
 });

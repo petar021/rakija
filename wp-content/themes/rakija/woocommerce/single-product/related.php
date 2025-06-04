@@ -40,7 +40,9 @@ if ( $related_products ) : ?>
 
                     <div class="product-box">
                         <div class="product-box__top">
-                            <?php echo do_shortcode('[yith_wcwl_add_to_wishlist]'); ?>
+                            <?php // echo do_shortcode('[yith_wcwl_add_to_wishlist]'); ?>
+                            <?php echo do_shortcode('[yith_wcwl_add_to_wishlist product_id="' . esc_attr( $related_product_id ) . '"]'); ?>
+
                             <a href="<?php echo esc_url( $product_permalink ); ?>"> <!-- Link ka stranici proizvoda -->
                                 <img src="<?php echo esc_url( $product_image_url ); ?>" alt="<?php echo esc_attr( $product_name ); ?>" />
                             </a>
@@ -51,15 +53,14 @@ if ( $related_products ) : ?>
                             </div>
 
                             <?php
-$product_id = get_the_ID(); // ili $product->get_id() ako koristiš WC_Product objekat
-$terms = get_the_terms($product_id, 'product_cat');
+                                $product_id = get_the_ID(); // ili $product->get_id() ako koristiš WC_Product objekat
+                                $terms = get_the_terms($product_id, 'product_cat');
 
-if (!empty($terms) && !is_wp_error($terms)) {
-    $category_names = wp_list_pluck($terms, 'name');
-    echo '<span class="product-cat">' . esc_html(implode(', ', $category_names)) . '</span>';
-}
-?>
-
+                                if (!empty($terms) && !is_wp_error($terms)) {
+                                    $category_names = wp_list_pluck($terms, 'name');
+                                    echo '<span class="product-cat">' . esc_html(implode(', ', $category_names)) . '</span>';
+                                }
+                            ?>
 
                             <a href="<?php echo esc_url( $product_permalink ); ?>" class="product-title-link">
                                 <h3 class="product-item__name product-title"><?php echo esc_html( $product_name ); ?></h3>
@@ -78,7 +79,7 @@ if (!empty($terms) && !is_wp_error($terms)) {
                 <?php endforeach; ?>
             </div>
             <div class="products-wrapper-cta-box">
-                <a href="http://localhost/rakija/shop/" class="btn-icon">
+                <a href="https://rakija.baseline.rs/product-category/rakija/" class="btn-icon">
                     <span class="font-eye"></span>
                     Pogledaj sve
                 </a>

@@ -323,9 +323,22 @@
     line-height: 1.05;
     font-style: normal;
     margin-bottom: 5px;
+    padding-right: 75px;
 
     @include mq($md) {
         font-size: 14px;
+    }
+
+    a {
+        h3 {
+            transition: $dur $ease;
+        }
+
+        @include hover {
+            h3 {
+                color: $pale-brown;
+            }
+        }
     }
 }
 

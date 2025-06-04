@@ -2796,10 +2796,19 @@ a:hover, a:focus, a:active {
   line-height: 1.05;
   font-style: normal;
   margin-bottom: 5px;
+  padding-right: 75px;
 }
 @media screen and (max-width: 767px) {
   .hero-image__right-info-product-name {
     font-size: 14px;
+  }
+}
+.hero-image__right-info-product-name a h3 {
+  transition: 350ms ease;
+}
+@media only screen and (min-width: 1199px) {
+  .hero-image__right-info-product-name a:hover h3 {
+    color: #997249;
   }
 }
 
@@ -3696,6 +3705,7 @@ a:hover, a:focus, a:active {
   font-style: italic;
   max-width: 75%;
   width: 100%;
+  margin-left: auto;
 }
 @media screen and (max-width: 991px) {
   .banner-title__right p {
@@ -5539,7 +5549,7 @@ bdi {
   height: auto;
   -o-object-fit: contain;
      object-fit: contain;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 .product__gallery-thumbs .swiper-slide:hover, .product__gallery-thumbs .swiper-slide.swiper-slide-thumb-active {
   border-color: #997249;
