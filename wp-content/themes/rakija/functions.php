@@ -478,5 +478,4 @@ function enqueue_filter_scripts() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_filter_scripts');
 
-
 // WooCommerce translate

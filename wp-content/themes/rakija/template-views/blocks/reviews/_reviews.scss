@@ -53,4 +53,18 @@
             padding-right: 30px;
         }
     }
+
+    .swiper-pagination {
+        bottom: 0;
+        
+        .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background-color: $black;
+        }
+    }
+
+    &-swiper {
+        padding-bottom: 30px;
+    }
 }

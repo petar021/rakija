@@ -13,6 +13,11 @@
 
         .section-title {
             width: 100%;
+
+            @include mq($md) {
+                margin-top: 0;
+                line-height: 1;
+            }
         }
 
         .woocommerce-ordering {
@@ -22,6 +27,10 @@
 
             .js-example-basic-single {
                 max-width: 200px;
+
+                @include mq($md) {
+                    max-width: 100%;
+                }
             }
         }
     }
@@ -73,7 +82,7 @@
         }
 
         @include mq($md) {
-            // flex: 0 0 100%;
+            flex: 0 0 47%;
             display: flex;
             flex-direction: column;
         }
@@ -83,48 +92,62 @@
             transition: $dur $ease;
             border-radius: 10px;
             position: relative;
-            height: 300px;
-
-            @include mq($md) {
-                height: 200px;
-            }
-
+            
             .yith-add-to-wishlist-button-block {
                 position: absolute;
-                top: 10px;
-                right: 10px;
+                top: 6px;
+                right: 9px;
                 z-index: 5;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 margin: 0;
                 cursor: pointer;
+                max-width: 21px;
 
                 a {
                     gap: 0;
+                    width: 100%;
 
                     @include hover {
                         svg path {
-                            color: $black;
-                            fill: $black;
+                            color: $red-second;
+                            fill: $red-light;
                             cursor: pointer;
                         }
                     }
                 }
+
+                &.yith-wcwl-add-to-wishlist-button--added {
+                    a {
+                        svg path {
+                            fill: $red-second;
+                        }
+                    }
+                }
+            }
+
+            .yith-wcwl-add-to-wishlist-button:not(.yith-wcwl-add-to-wishlist-button--themed-button).yith-wcwl-add-to-wishlist-button--added svg.yith-wcwl-add-to-wishlist-button-icon {
+                fill: $red-second;
             }
 
             img {
                 transition: $dur $ease;
                 transform: scale(1);
                 border-radius: 10px;
-                height: 100%;
-                width: auto;
+                width: 100%;
                 margin: 0 auto;
             }
 
             @include hover {
                 img {
                     transform: scale(1.05);
+                }
+
+                .yith-add-to-wishlist-button-block {
+                    img {
+                        transform: scale(1);
+                    }
                 }
             }
         }
@@ -170,6 +193,10 @@
                 font-size: 0.813rem;
                 padding-right: 30px;
 
+                @include mq($md) {
+                    padding-right: 0;
+                }
+
                 &::before {
                     content: '';
                     position: absolute;
@@ -206,7 +233,7 @@
                     padding-right: 50px;
 
                     @include mq($md) {
-                        padding-right: 30px;
+                        padding-right: 0;
                     }
                 }
 
@@ -233,6 +260,7 @@
                     width: 34px;
                     height: 34px;
                     border-radius: 10px;
+                    display: none;
 
                     .font-cart-plus {
                         display: flex;
@@ -243,6 +271,9 @@
 
                 span {
                     transition: $dur $ease;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                 }
 
                 @include hover {

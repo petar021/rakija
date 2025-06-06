@@ -28,14 +28,30 @@ const Sliders = {
 			if (!reviewsSwiper) {
 				reviewsSwiper = new Swiper('.reviews-swiper', {
 					direction: 'horizontal',
-					slidesPerView: 3,
-					breakpoints: {
-						992: { slidesPerView: 3 },
-						768: { slidesPerView: 2 },
-						0:   { slidesPerView: 1 },
-					},
 					loop: true,
-					pagination: false,
+					breakpoints: {
+						1024: {
+							slidesPerView: 3,
+							pagination: {
+								el: '.swiper-pagination',
+								clickable: true,
+							},
+						},
+						768: {
+							slidesPerView: 2,
+							pagination: {
+								el: '.swiper-pagination',
+								clickable: true,
+							},
+						},
+						0: {
+							slidesPerView: 1,
+							pagination: {
+								el: '.swiper-pagination',
+								clickable: true,
+							},
+						}
+					},
 					navigation: false,
 				});
 			}

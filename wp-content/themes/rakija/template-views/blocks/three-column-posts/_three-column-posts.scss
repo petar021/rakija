@@ -136,6 +136,12 @@
 
             .btn-icon {
                 padding: 11px 17px;
+
+                @include mq($md) {
+                    padding: 5px 10px;
+                    margin: 0;
+                    margin-right: auto;
+                }
             }
         }
     }

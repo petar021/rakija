@@ -29,27 +29,26 @@
                     </a>
                 <?php endif; ?>
             </div>
-                    <?php if (get_row_layout() === 'destilerije_categories') : ?>
-                        <div class="two-column-brands__logos">
-                            <?php if (have_rows('category_links')) : ?>
-                                <?php while (have_rows('category_links')) : the_row(); ?>
-                                    <?php
-                                    $link = get_sub_field('link');
-                                    $image = get_sub_field('image');
-                                    if ($link && $image) :
-                                        $url = $link['url'];
-                                        $title = $link['title'] ?: '';
-                                        $target = $link['target'] ?: '_self';
-                                        ?>
-                                        <a href="<?php echo esc_url($url); ?>" target="<?php echo esc_attr($target); ?>">
-                                            <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($title); ?>">
-                                        </a>
-                                    <?php endif; ?>
-                                <?php endwhile; ?>
-                            <?php endif; ?>
-                        </div>
-                    <?php endif; ?>
-
+                <?php if (get_row_layout() === 'destilerije_categories') : ?>
+                    <div class="two-column-brands__logos">
+                        <?php if (have_rows('category_links')) : ?>
+                            <?php while (have_rows('category_links')) : the_row(); ?>
+                                <?php
+                                $link = get_sub_field('link');
+                                $image = get_sub_field('image');
+                                if ($link && $image) :
+                                    $url = $link['url'];
+                                    $title = $link['title'] ?: '';
+                                    $target = $link['target'] ?: '_self';
+                                    ?>
+                                    <a href="<?php echo esc_url($url); ?>" target="<?php echo esc_attr($target); ?>">
+                                        <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($title); ?>">
+                                    </a>
+                                <?php endif; ?>
+                            <?php endwhile; ?>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
         </div>
     </div>
 </section>

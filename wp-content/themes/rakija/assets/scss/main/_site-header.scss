@@ -32,6 +32,7 @@
 		display: flex;
 		align-items: center;
 		position: relative;
+		margin-left: auto;
 		
 		.cart-count {
 			position: absolute;
@@ -95,7 +96,7 @@
 			align-items: center;
 			justify-content: center;
 			position: absolute;
-			right: 100%;
+			right: 112%;
 			top: 5px;
 
 			@include hover {
@@ -198,7 +199,6 @@
 .site-header__container {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
 
 	@include mq($xl) {
 		justify-content: flex-start;
@@ -214,6 +214,11 @@
 .site-header__nav {
 	display: flex;
 	align-items: center;
+	margin-left: 120px;
+
+	@include mq($lt) {
+		margin-left: 40px;
+	}
 
 	@include mq($xl) {
 		order: 4;

@@ -36,7 +36,7 @@
     flex: 0 0 65%;
     padding-right: 60px;
 
-    @include mq($md) {
+    @include mq($ipad) {
 		max-width: 100%;
         flex: 0 0 100%;
         padding-right: 0;
@@ -49,7 +49,7 @@
     max-width: 35%;
     flex: 0 0 35%;
 
-    @include mq($md) {
+    @include mq($ipad) {
 		max-width: 100%;
         flex: 0 0 100%;
 	}
@@ -642,7 +642,7 @@
     }
 
     .checkout__totals-item {
-        background-color: rgba($pale-brown, 0.6);
+        background-color: rgba($brown-light, 0.6);
         padding: 10px 15px;
         border-radius: 15px;
         display: flex;
@@ -716,6 +716,7 @@
         border: 1px solid $gray-light;
         background-color: $white;
         color: $black;
+        font-weight: 300;
 
         @include mq($md) {
             padding: 10px 15px;

@@ -12,6 +12,14 @@
 
         @include mq($ipad) {
             gap: 15px;
+            justify-content: center;
+
+            a {
+                flex: 0 0 33%;
+            }
+        }
+
+        @include mq($md) {
             flex-direction: column;
         }
     }
@@ -28,8 +36,9 @@
         align-items: center;
         overflow: hidden;
 
-        @include mq($md) {
+        @include mq($ipad) {
             width: 100%;
+            height: auto;
         }
 
         &::after {
@@ -73,6 +82,10 @@
             width: fit-content;
             max-width: 100%;
             pointer-events: none;
+
+            @include mq($ipad) {
+                display: none;
+            }
         }
 
         h2 {
@@ -83,6 +96,10 @@
             font-family: $font-section-title;
             line-height: 93px;
             margin-top: 10px;
+
+            @include mq($ipad) {
+                font-size: 55px;
+            }
         }
 
         a {

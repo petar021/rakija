@@ -52,6 +52,7 @@
                         <?php endforeach; ?>
                     </div>
                     <!-- Nema pagination, nema arrows -->
+                     <div class="swiper-pagination"></div>
                 </div>
             
             <?php

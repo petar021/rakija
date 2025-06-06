@@ -13,11 +13,10 @@
 
         @include mq($ipad) {
             gap: 0;
-            flex-direction: column;
+            flex-direction: column-reverse;
         }
 
         @include mq($md) {
-            flex-direction: column;
             gap: 25px;
         }
     }

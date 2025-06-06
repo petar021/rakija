@@ -9,6 +9,8 @@
 
     @include mq($md) {
         max-width: 100%;
+        margin-top: 0;
+        padding-bottom: 0;
     }
 
     .product-item {
@@ -472,6 +474,10 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+
+                span {
+                    margin: 0 5px;
+                }
             }
 
             &.bottom {
@@ -519,7 +525,7 @@
             font-family: 'fonticons';
             position: absolute;
             left: 15px;
-            top: -5px;
+            top: -2px;
             transition: $dur $ease;
             font-style: normal;
             opacity: 1;
@@ -535,7 +541,7 @@
                 font-family: 'fonticons';
                 position: absolute;
                 left: 15px;
-                top: -5px;
+                top: -2px;
                 transition: $dur $ease;
                 font-style: normal;
                 opacity: 1;

@@ -4,7 +4,7 @@
 .checkout__main {
     padding: 50px 0 100px;
 
-    @include mq($md) {
+    @include mq($ipad) {
         padding: 20px 0 0;
     }
 }
@@ -136,6 +136,7 @@
         color: $black;
         font-size: 1rem;
         font-style: italic;
+        font-weight: 300;
     }
 
     .form-row {
@@ -144,6 +145,12 @@
         input {
             background-color: $white;
             padding: 7px 11px;
+            font-weight: 300;
+
+            &::placeholder {
+                font-weight: 300;
+                font-family: $font-main;
+            }
         }
     }
 
@@ -231,10 +238,6 @@ abbr[title] {
 
 .checkout__payment-methods {
     display: none;
-}
-
-.woocommerce-checkout-payment {
-    margin-top: 20px;
 }
 
 .checkout__terms,
@@ -436,7 +439,7 @@ abbr[title] {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background-color: rgba($pale-brown, 0.6);
+        background-color: rgba($brown-light, 0.6);
         padding: 10px 15px;
         border-radius: 15px;
         margin-bottom: 15px;
@@ -505,6 +508,8 @@ abbr[title] {
 }
 
 .woocommerce-checkout-payment {
+    margin-top: 20px;
+
     .checkout__payment-method {
         label {
             margin-bottom: 0;

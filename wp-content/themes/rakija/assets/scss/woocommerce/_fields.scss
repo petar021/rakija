@@ -73,10 +73,6 @@
     @include hover {
         color: $pale-brown;
     }
-
-    @include mq($md) {
-        min-width: fit-content;
-    }
 }
 
 .quantity__minus {

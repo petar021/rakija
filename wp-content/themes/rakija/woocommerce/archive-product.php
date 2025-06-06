@@ -9,6 +9,7 @@ get_header('shop'); ?>
 
 <div class="woocommerce-products-page">
     <div class="products-sidebar">
+
 		<div class="products__filtration">
 			<div class="products__filtration-cta">
 				<span class="font-filter"></span>
@@ -28,21 +29,21 @@ get_header('shop'); ?>
 
 							if ($term_slug === 'rakija') {
 								// Filteri za rakiju
-								echo do_shortcode('[searchandfilter field="Rakije Voće"]');
+								echo do_shortcode('[searchandfilter field="Rakije & Destilerije"]');
 								// echo do_shortcode('[searchandfilter field="Destilerije Duplicate"]');
-								echo do_shortcode('[searchandfilter field="Destilerije Duplicate (copy)"]');
+								// echo do_shortcode('[searchandfilter field="Destilerije Duplicate (copy)"]');
 								
-								echo do_shortcode('[searchandfilter field="Price Range - Slider"]');
+								// echo do_shortcode('[searchandfilter field="Price Range - Slider"]');
 							} elseif ($term_slug === 'gin-dzin') {
 								// Filteri za gin
-								echo do_shortcode('[searchandfilter field="Gin"]'); // primer shortcoda, zameni stvarnim
-								echo do_shortcode('[searchandfilter field="Destilerije Duplicate (copy)"]');
-								echo do_shortcode('[searchandfilter field="Price Range - Slider"]');
+								echo do_shortcode('[searchandfilter field="Gin & Destilerije"]'); // primer shortcoda, zameni stvarnim
+								// echo do_shortcode('[searchandfilter field="Destilerije Duplicate (copy)"]');
+								// echo do_shortcode('[searchandfilter field="Price Range - Slider"]');
 							} elseif ($term_slug === 'likeri') {
 								// Filteri za likere
-								echo do_shortcode('[searchandfilter field="Likeri"]'); // primer shortcoda, zameni stvarnim
-								echo do_shortcode('[searchandfilter field="Destilerije Duplicate (copy)"]');
-								echo do_shortcode('[searchandfilter field="Price Range - Slider"]');
+								// echo do_shortcode('[searchandfilter field="Likeri"]'); // primer shortcoda, zameni stvarnim
+								// echo do_shortcode('[searchandfilter field="Destilerije Duplicate (copy)"]');
+								echo do_shortcode('[searchandfilter field="Likeri & Destilerije"]');
 							} elseif ($term_slug === 'poklon-pakovanja') {
 								// Filteri za likere
 								echo do_shortcode('[searchandfilter field="Poklon Pakovanja"]'); // primer shortcoda, zameni stvarnim

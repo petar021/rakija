@@ -196,7 +196,7 @@
                 ?>
                     <div class="product-box">
                         <div class="product-box__top">
-                            <?php echo do_shortcode('[yith_wcwl_add_to_wishlist]') ?>
+                            <?php echo do_shortcode('[yith_wcwl_add_to_wishlist product_id="' . $product_id . '"]'); ?>
                             <a href="<?php echo get_permalink($product_id); ?>">
                                 <img src="<?php echo esc_url($thumbnail); ?>" alt="">
                             </a>

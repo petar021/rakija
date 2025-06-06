@@ -38,7 +38,7 @@ pre {
 }
 
 .page-title {
-	@include clamp-font-size(32, 160);
+	@include clamp-font-size(54, 160);
 	font-family: $font-section-title;
 	color: $black;
 	text-transform: uppercase;
@@ -123,6 +123,7 @@ pre {
 		em {
 			font-family: $font-second;
 			font-size: 1.25rem;
+			color: $pale-brown;
 
 			@include mq($md) {
 				font-size: 0.875rem;

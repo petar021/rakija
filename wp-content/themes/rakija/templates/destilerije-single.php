@@ -18,9 +18,20 @@ get_header();
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
 		<?php // get content blocks
-			get_template_part( 'template-views/blocks/banner-title/banner-title-destilerije-single' );
-			get_template_part( 'template-views/blocks/products/products-destilerije-single' );
-			get_template_part( 'template-views/blocks/basic-block/basic-block-destilerije' );
+			$basic_block = get_field('basic_block');
+			if ($basic_block) {
+				get_template_part( 'template-views/blocks/basic-block/basic-block-destilerije' );
+			}
+
+			$banner_title_destilerije_single = get_field('banner-title-destilerije-single');
+			if ($banner_title_destilerije_single) {
+				get_template_part( 'template-views/blocks/banner-title/banner-title-destilerije-single' );
+			}
+
+			$products_destilerije_single = get_field('products-destilerije-single');
+			if ($products_destilerije_single) {
+				get_template_part( 'template-views/blocks/products/products-destilerije-single' );
+			}
 		?>
 	</main>
 </div>

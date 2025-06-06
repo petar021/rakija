@@ -180,12 +180,12 @@
 		appearance: none;
 		-webkit-appearance: none; // sass-lint:disable-line no-vendor-prefixes
 		-moz-appearance: none; // sass-lint:disable-line no-vendor-prefixes
-		background-color: $white;
+		background-color: $gray;
 		color: $black;
-		padding: 10px 30px 10px 10px;
-		border: 1px solid $white;
-		border-radius: 4px;
-		font-size: 14px;
+		padding: 10px 30px 10px 20px;
+		border: 1px solid rgba($black, 0.2);
+		border-radius: 10px;
+		font-size: 16px;
 		outline: none;
 		cursor: pointer;
 		width: 100%;
@@ -254,5 +254,9 @@ bdi {
 .woocommerce-page {
     .section-title {
         margin-top: 50px;
+
+		@include mq($md) {
+			margin: 0;
+		}
     }
 }

@@ -127,7 +127,7 @@
 						</form>
 					</div>
 					<div class="site-header__cart-right">
-						<a href="<?php echo wc_get_cart_url(); ?>" class="btn-icon"><span class="font-cart-plus"></span> Korpa</a>
+						<a href="<?php echo wc_get_cart_url(); ?>" class="btn-icon"><span class="font-cart-basic"></span> Korpa</a>
 						<span class="cart-count site-header__actions-link-sup js-cart-count"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
 					</div>
 				</div>

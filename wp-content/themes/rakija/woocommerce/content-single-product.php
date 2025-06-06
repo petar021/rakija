@@ -27,13 +27,6 @@ global $product;
 	?>
 
 	<div id="product-<?php the_ID(); ?>" <?php wc_product_class( '', $product ); ?>>
-		<!-- <div class="banner banner--sm">
-			<div class="container">
-				<div class="banner__content">
-					<?php woocommerce_breadcrumb(); ?>
-				</div>
-			</div>
-		</div> -->
 		<div class="container">
 			<?php /**
 			 * Hook: woocommerce_before_single_product.
@@ -72,7 +65,6 @@ global $product;
 
 					<div class="product__main-summary">
 						<div class="product__main-summary-wrap">
-							
 							<?php
 							remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
 							/**
@@ -89,24 +81,17 @@ global $product;
 							 */
 								do_action( 'woocommerce_single_product_summary' );
 							?>
-							
-							
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<!-- <div class="product__main-content">
-			<div class="container">
-				<span class="product__main-content-title">Opis i dodatne informacije</span>
-				<div class="product__main-content-wrap entry-content">
-					<?php the_content(); ?>
-				</div>
-			</div>
-		</div> -->
-		<?php // get content blocks
-			get_template_part( 'template-views/blocks/basic-block/basic-block' );
+		<?php
+			$basic_block = get_field('basic_block');
+			if ($basic_block) {
+				get_template_part( 'template-views/blocks/basic-block/basic-block' );
+			}
 		?>
 
 		<?php

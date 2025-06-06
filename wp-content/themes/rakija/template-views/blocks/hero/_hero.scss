@@ -22,6 +22,7 @@
         flex-direction: column;
         gap: 25px;
         align-items: flex-start;
+        padding-top: 30px;
     }
 
     .hero__right {
@@ -36,6 +37,7 @@
 
     @include mq($lg) {
         flex-direction: column;
+        margin-top: 30px;
     }
 
     img {
@@ -308,6 +310,8 @@
 }
 
 .hero-image__right-info-distillery {
+    padding-right: 75px;
+    
     span {
         font-size: 14px;
         color: $pale-brown;
